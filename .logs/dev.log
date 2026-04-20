@@ -1,0 +1,75 @@
+
+> app@0.1.0 dev
+> next dev -p 3000
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.4:3000
+- Environments: .env.local
+✓ Ready in 1583ms
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/macbookpro/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/macbookpro/Documents/Application/Dubai Restaurants/app/package-lock.json
+   * /Users/macbookpro/Documents/Application/Dubai Restaurants/package-lock.json
+
+Creating turbopack project {
+  dir: '/Users/macbookpro/Documents/Application/Dubai Restaurants/app',
+  testMode: true
+}
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+
+ GET / 200 in 1816ms (next.js: 415ms, proxy.ts: 251ms, application-code: 1150ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" className="manrope_de...">
+                          <body
+                            className="min-h-full text-zinc-900"
+-                           __processed_c4919eb9-ff4e-4753-9f11-063b7fcd0b34__="true"
+-                           bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWll..."
+-                           data-new-gr-c-s-check-loaded="14.1284.0"
+-                           data-gr-ext-installed=""
+                          >
+                  ...
+ 
+ GET / 200 in 650ms (next.js: 139ms, proxy.ts: 69ms, application-code: 442ms)
+ GET /search/results 200 in 951ms (next.js: 812ms, proxy.ts: 9ms, application-code: 130ms)
+ GET /search/results 200 in 199ms (next.js: 25ms, proxy.ts: 8ms, application-code: 166ms)
+ GET /search/suggestions 200 in 83ms (next.js: 16ms, proxy.ts: 5ms, application-code: 62ms)
+ GET /search/suggestions 200 in 220ms (next.js: 18ms, proxy.ts: 8ms, application-code: 194ms)
+ GET /search/filters 200 in 190ms (next.js: 21ms, proxy.ts: 6ms, application-code: 163ms)
+ GET /search/filters 200 in 254ms (next.js: 9ms, proxy.ts: 9ms, application-code: 237ms)
+ GET /map 200 in 123ms (next.js: 23ms, proxy.ts: 8ms, application-code: 91ms)
+ GET /map 200 in 264ms (next.js: 9ms, proxy.ts: 13ms, application-code: 242ms)
+✓ Compiled in 228ms
+✓ Compiled in 1881ms
+✓ Compiled in 243ms

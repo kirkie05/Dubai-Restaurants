@@ -9,9 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^7.2.3",
+    "@supabase/supabase-js": "^2.104.0",
+    "@tanstack/react-query": "^5.99.2",
+    "lucide-react": "^1.8.0",
     "next": "16.2.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-hook-form": "^7.72.1",
+    "zod": "^4.3.6",
+    "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
