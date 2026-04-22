@@ -27,7 +27,7 @@ export default function AdminDashboard() {
          <aside className="w-full lg:w-80 shrink-0 space-y-12">
             <header className="space-y-4">
                <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.4em] block">Master Control</span>
-               <h2 className="text-4xl font-headline font-black italic tracking-tighter text-zinc-900">The <br /><span className="text-slate-300">Hub.</span></h2>
+               <h2 className="text-4xl font-headline font-black italic tracking-tighter text-zinc-900">The <br /><span className="text-primary">Hub.</span></h2>
             </header>
 
             <nav className="flex flex-col gap-2">
@@ -48,7 +48,7 @@ export default function AdminDashboard() {
             <header className="pb-12 border-b border-slate-200 flex justify-between items-end">
                <div className="space-y-6">
                   <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.4em] block mb-4">System Intelligence</span>
-                  <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter text-zinc-900">Global <span className="text-slate-300">Pulse.</span></h1>
+                  <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter text-zinc-900">Global <span className="text-primary">Pulse.</span></h1>
                </div>
             </header>
 

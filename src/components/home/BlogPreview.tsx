@@ -36,7 +36,13 @@ export function BlogPreview() {
           {BLOGS.map((blog) => (
             <div key={blog.id} className="group italic">
                <div className="relative aspect-square rounded-2xl overflow-hidden mb-8 border border-slate-50 shadow-sm">
-                  <Image src={blog.image} alt={blog.title} fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms]" />
+                  <Image 
+                    src={blog.image} 
+                    alt={blog.title} 
+                    fill 
+                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms]" 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
                   <div className="absolute top-6 left-6 bg-primary text-white text-[9px] font-bold px-3 py-1.5 rounded-sm uppercase tracking-widest">{blog.category}</div>
                </div>
                <div className="space-y-6">

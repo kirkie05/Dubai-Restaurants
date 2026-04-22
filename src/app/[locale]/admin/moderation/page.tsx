@@ -35,7 +35,7 @@ export default function ReviewsModeration() {
          <div className="flex-grow space-y-16">
             <header className="pb-12 border-b border-slate-200">
                <span className="text-secondary font-body text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Quality Control</span>
-               <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter text-zinc-900">Review <span className="text-slate-300">Sanctity.</span></h1>
+               <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter text-zinc-900">Review <span className="text-primary">Sanctity.</span></h1>
             </header>
 
             <section className="space-y-6">

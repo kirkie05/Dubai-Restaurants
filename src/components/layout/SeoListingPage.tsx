@@ -8,7 +8,7 @@ import type { ScreenDefinition } from "@/lib/screen-catalog";
 const MOCK_RESTAURANTS = [
   {
     name: "Al Mahara",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDLtde8_LII8BrUWQcgLXqOMC3CVFnFj9FxbOsRYP4l0mWRJYtygww6dIt1hgvOfX0tVzqAIoLMOgpyd8WYmAW4bzvWshUOwihYNFWxg7PyGbu-Vqe_7LMb3v3WEHazAzjwC-xhYpE-2NBsC9uszBVCGXcOJI91rzKucIT0yUkxmBPE76xwq5o-RWLsk_E-7yyuEEiF8l58DEG4OH1Ns52wUz77uTc_NpPc4bhWKimp6JI1Eh511_wyfL6AuBSsN93IlG4k8EXtrpbn",
+    image: "/al_mahara_restaurant_1776785631205.png",
     location: "Burj Al Arab",
     cuisine: "Seafood",
     price: "AED 800+",
@@ -20,7 +20,7 @@ const MOCK_RESTAURANTS = [
   },
   {
     name: "Atmosphere",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA7Pmek0qsO0lvrw5umCHvRetQyjnYXOfcnm-KC7Mc2ebPP_hx6rxDz9UIxG8hxvp_o0iFKc0FZciQ79LvKxEpKkYnI686LlkLvfsyP9qon1VapM9waMyVlU1wVjM3CcIS2I6LYV0CCJb3z1xf4IgdYPxNI1Wa8pqTlXufKqLbCmSRwhns510y6DUaDUXmTjxNID9cFbzM_j5lX8Neh2uIRPKA8jezZZpO7OW1vkIfjxwMY6qnIFPRQmQlTnaWV5XB6K0YBbRzhMRRk",
+    image: "/cuisine_italian_high_fidelity_1776785759860.png",
     location: "Burj Khalifa",
     cuisine: "Contemporary",
     price: "AED 700+",
@@ -32,7 +32,7 @@ const MOCK_RESTAURANTS = [
   },
   {
     name: "Zuma Dubai",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBa2zXOa1qVUcY2BR-ldWlSfR10bvl9mboHBCRlgjr4wkXHCBnvGkxZo6cXE9ZPvw-Ybg0QvZS-NCYjhXlFAZShWfG0I4VkOUG7z-BZcD5ySDTHiB5A7z8Thncq-t3hxxPmeo-UQK2uYlKfuucYFwkbBwEDfTC5JmQ98dth68yGwkTbKeJskMHgwvJMwt3B2FVO8OjBt2YmEUQTiAo-vMh3jI9vWpss_E-ggrpwaij7GwG_OVKzXZaU-lNHN7oU-dBJKayEQ23X81Pc",
+    image: "/cuisine_japanese_high_fidelity_1776785722454.png",
     location: "DIFC",
     cuisine: "Japanese",
     price: "AED 450+",
@@ -76,7 +76,7 @@ export function SeoListingPage({ screen }: { screen: ScreenDefinition }) {
           <div className="lg:col-span-5 relative">
             <div className="aspect-[4/5] rounded-lg overflow-hidden shadow-2xl transform lg:rotate-3 hover:rotate-0 transition-transform duration-700 bg-slate-200">
               <Image 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh0gDLUI4TB6O9PTKn7QybGGM2OtpVNRvW3H4B2njUea1QRvaCuB9zRFv6hXgZTwWdXBKqTd66a7Q3J-JhCMJxqMRGGJO3waiLxgz5U5dY8cjEfx_t5Chh5tomuZkccudMjTwfRGxNBX37fkuWVQKUYTmewdbn99CZ0lNfs3jFnOS0qaAyfLn9HrObkh5dPxljsX1yx26J4NII5CcwgarkGU-jrhnlKIJm9J8K8_P6trPdSekqGJ6w7gQc8dGDemi8Wm11IpGe2hNI" 
+                src="/dubai_spatial_map_background_1776785841856.png" 
                 alt="SEO Context" 
                 fill 
                 className="object-cover brightness-95"

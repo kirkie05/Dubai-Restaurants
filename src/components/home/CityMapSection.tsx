@@ -4,6 +4,7 @@ import { InteractiveMap } from "@/components/ui/InteractiveMap";
 import Image from "next/image";
 import { Link } from "@/navigation";
 import { useTranslations } from "next-intl";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function CityMapSection() {
   const t = useTranslations("CityMapSection");
@@ -23,12 +24,13 @@ export function CityMapSection() {
            alt="Dubai Map Texture"
            fill
            className="object-cover grayscale"
+           sizes="100vw"
          />
       </div>
       <div className="absolute top-0 right-0 w-[500px] h-full bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-24 items-center relative z-10">
-         <div className="lg:col-span-12 xl:col-span-7 relative aspect-video bg-zinc-900 rounded-[3rem] lg:rounded-[5rem] border border-white/5 overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] group/map reveal-on-scroll">
+         <Reveal className="lg:col-span-12 xl:col-span-7 relative aspect-video bg-zinc-900 rounded-[3rem] lg:rounded-[5rem] border border-white/5 overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] group/map">
             <InteractiveMap markers={CLUSTERS} />
 
             <div className="absolute bottom-12 right-12 z-20">
@@ -37,9 +39,9 @@ export function CityMapSection() {
                   <span className="material-symbols-outlined text-base group-hover/btn:translate-x-2 transition-transform">explore</span>
                </Link>
             </div>
-         </div>
+         </Reveal>
 
-         <div className="lg:col-span-12 xl:col-span-5 space-y-12 lg:pl-12 reveal-on-scroll stagger-1">
+         <Reveal className="lg:col-span-12 xl:col-span-5 space-y-12 lg:pl-12 stagger-1">
             <header className="space-y-8">
                <div className="flex items-center gap-6">
                   <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.6em] block">{t("label")}</span>
@@ -69,7 +71,7 @@ export function CityMapSection() {
                <div className="w-8 h-1 bg-white/20"></div>
                <div className="w-8 h-1 bg-zinc-800"></div>
             </div>
-         </div>
+         </Reveal>
       </div>
     </section>
   );

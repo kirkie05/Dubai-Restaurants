@@ -41,7 +41,13 @@ export function TrendingCarousel() {
           {TRENDING_MOCK.map((item) => (
             <div key={item.id} className="min-w-[320px] md:min-w-[400px] snap-start group bg-slate-50 p-4 rounded-xl border border-white hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
                <div className="relative aspect-video rounded-lg overflow-hidden mb-6">
-                  <Image src={item.image} alt={item.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                  <Image 
+                    src={item.image} 
+                    alt={item.name} 
+                    fill 
+                    className="object-cover group-hover:scale-110 transition-transform duration-1000" 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
                   <div className="absolute top-4 left-4 bg-white/95 backdrop-blur px-3 py-1 rounded-sm text-[10px] font-black uppercase tracking-widest flex items-center gap-1 shadow-sm">
                      <span className="material-symbols-outlined text-sm text-primary" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
                      {item.rating}

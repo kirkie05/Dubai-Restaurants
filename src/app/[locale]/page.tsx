@@ -17,32 +17,46 @@ export default function Home() {
       <Navbar />
       
       <main className="flex-grow">
-        <HeroSection />
+        <div className="relative z-30">
+          <HeroSection />
+        </div>
         
-        <TrendingCarousel />
+        <div className="relative z-20">
+          <TrendingCarousel />
+        </div>
 
         {/* Slanted Divider 01 */}
         <div className="h-12 bg-slate-50 -skew-y-2 origin-left scale-110 mb-[-1px] relative z-20"></div>
         
-        <CategoryGrid />
+        <div className="relative z-10">
+          <CategoryGrid />
+        </div>
         
         {/* Slanted Divider 02 (To Dark) */}
-        <div className="h-12 bg-zinc-950 -skew-y-2 origin-right scale-110 mb-[-1px]"></div>
+        <div className="h-12 bg-zinc-950 -skew-y-2 origin-right scale-110 mb-[-1px] relative z-10"></div>
         
-        <RestaurantList />
+        <div className="relative z-0">
+          <RestaurantList />
+        </div>
 
         {/* Simple Grid Transition */}
-        <RestaurantGrid />
+        <div className="relative z-0">
+          <RestaurantGrid />
+        </div>
 
         {/* Slanted Divider 03 (To Light) */}
-        <div className="h-12 bg-white skew-y-2 origin-left scale-110 mb-[-1px]"></div>
+        <div className="h-12 bg-white skew-y-2 origin-left scale-110 mb-[-1px] relative z-0"></div>
 
-        <ChefGrid />
+        <div className="relative z-0">
+          <ChefGrid />
+        </div>
 
         {/* Slanted Divider 04 (To Dark/Map) */}
-        <div className="h-12 bg-zinc-900 -skew-y-2 origin-right scale-110 mb-[-1px]"></div>
+        <div className="h-12 bg-zinc-900 -skew-y-2 origin-right scale-110 mb-[-1px] relative z-0"></div>
 
-        <CityMapSection />
+        <div className="relative z-0">
+          <CityMapSection />
+        </div>
 
         {/* Global Journal & Community */}
         <div className="bg-white py-24 border-t border-slate-100">

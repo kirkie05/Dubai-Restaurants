@@ -13,7 +13,7 @@ export default function MenuEditor() {
           <header className="pb-12 border-b border-white/5 flex justify-between items-end">
              <div className="space-y-6">
                 <span className="text-secondary font-body text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Tactile Curation</span>
-                <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter text-white">The <span className="text-zinc-800">Card.</span></h1>
+                <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter text-white">The <span className="text-primary">Card.</span></h1>
              </div>
              <button className="px-10 py-5 bg-primary text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-2xl">New Category</button>
           </header>

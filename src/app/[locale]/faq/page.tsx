@@ -13,7 +13,7 @@ export default function FAQPage() {
         <header className="mb-24 lg:ml-12 max-w-4xl space-y-8">
           <span className="font-body text-[10px] uppercase tracking-[0.4em] text-primary font-bold">Information Center</span>
           <h1 className="font-headline text-[4rem] md:text-[6rem] font-extrabold tracking-tighter leading-[0.8] text-on-surface italic">
-            How can we <br/><span className="text-zinc-200 font-normal">assist you</span> today?
+            How can we <br/><span className="text-primary font-normal">assist you</span> today?
           </h1>
           <p className="font-body text-xl text-slate-500 max-w-2xl leading-relaxed italic">
             Explore our curated guide to navigating Dubai&apos;s finest culinary experiences. From membership perks to reservation protocols.

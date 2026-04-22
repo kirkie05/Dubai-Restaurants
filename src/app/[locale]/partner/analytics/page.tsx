@@ -14,7 +14,7 @@ export default function PartnerAnalytics() {
           <header className="pb-12 border-b border-white/5 flex justify-between items-end">
              <div className="space-y-6">
                 <span className="text-secondary font-body text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Curation Intelligence</span>
-                <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter text-white">The <span className="text-zinc-800">Insights.</span></h1>
+                <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter text-white">The <span className="text-primary">Insights.</span></h1>
              </div>
              <div className="flex gap-4 mb-4">
                 <button className="px-8 py-3 bg-white/5 rounded-full border border-white/10 text-[9px] font-black uppercase tracking-widest text-zinc-400">Download Report</button>

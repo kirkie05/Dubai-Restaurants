@@ -16,7 +16,7 @@ export default function LoginPage() {
            <div className="space-y-12">
               <div className="space-y-6">
                  <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.4em] block">Digital Curation</span>
-                 <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-[0.8] text-on-surface">The <br /><span className="text-zinc-300">Access.</span></h1>
+                 <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-[0.8] text-on-surface">The <br /><span className="text-primary">Access.</span></h1>
                  <p className="text-xl text-slate-500 font-body italic leading-relaxed max-w-lg">
                     Enter the city&apos;s most exclusive gastronomic repository. Your curated journey resumes here.
                  </p>

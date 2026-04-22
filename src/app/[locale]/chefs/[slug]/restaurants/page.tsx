@@ -44,7 +44,7 @@ export default async function ChefRestaurants({ params }: { params: Promise<{ sl
              <div className="space-y-6 max-w-4xl">
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Chef Portfolio</span>
                 <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-[0.85] text-on-surface">
-                   The <br /><span className="text-zinc-400">Library.</span>
+                   The <br /><span className="text-primary">Library.</span>
                 </h1>
                 <p className="text-xl text-slate-500 font-body italic leading-relaxed max-w-xl">
                    Every culinary destination currently curated or owned by **{chefName}**. A legacy of flavor across Dubai.

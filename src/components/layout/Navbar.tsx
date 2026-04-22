@@ -30,7 +30,9 @@ export const Navbar = () => {
     { name: dt('cuisines.italian'), slug: 'italian' },
     { name: dt('cuisines.japanese'), slug: 'japanese' },
     { name: dt('cuisines.indian'), slug: 'indian' },
-    { name: dt('cuisines.lebanese'), slug: 'lebanese' }
+    { name: dt('cuisines.lebanese'), slug: 'lebanese' },
+    { name: dt('cuisines.french'), slug: 'french' },
+    { name: dt('cuisines.mexican'), slug: 'mexican' }
   ];
 
   const OCCASIONS_LIST = [
@@ -91,6 +93,15 @@ export const Navbar = () => {
                     {item.name}
                  </Link>
                ))}
+               <div className="pt-4 mt-4 border-t border-slate-100">
+                  <Link 
+                    href={`/${label.toLowerCase()}`}
+                    className="flex items-center justify-between px-4 py-3 rounded-lg bg-primary/5 text-[9px] font-black uppercase tracking-widest text-primary hover:bg-primary hover:text-white transition-all group/all"
+                  >
+                     <span>View All {label}</span>
+                     <span className="material-symbols-outlined text-xs group-hover/all:translate-x-1 transition-transform">east</span>
+                  </Link>
+               </div>
             </div>
           </div>
         )}

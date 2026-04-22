@@ -13,7 +13,7 @@ export default function ChefDashboard() {
        <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <header className="pb-12 border-b border-white/5">
              <span className="text-secondary font-body text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Culinary Command</span>
-             <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter">The <span className="text-zinc-900">Portfolio.</span></h1>
+             <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter">The <span className="text-primary">Portfolio.</span></h1>
           </header>
 
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -12,7 +12,7 @@ export function TestimonialSlider() {
       quote: "Dubai Restaurants has completely changed how we explore the city. The curation is impeccable, and we never have to worry about the quality of the listing.",
       author: "Mandy Price",
       role: "VP of Aspire Group",
-      avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuCb4y0Juf2MsQER6FTpPRMb5-6YfdjMILsug_yQYyNrPe80_1qOZlxB-GCS_l3Hn5nHEGWNp-nt4zN_fyAc5mCWK7qwQ2djnw9cTMcdkuDH-J829lKr0Ff6KBLhJWlGpjGF9y9lRO6bwy4euRrxa-nOQxJl28KmX93xeUjiQibT8cQBRnbgOJGRJZeNEnnpy1HwQJUicd4iYgt2coXyOmS16uQ3IxNCKmgdgpgKWhGRfiOUxLCPgtS7Y1EScILmjP-yzJQCVhzjtF3h"
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mandy"
     }
   ];
 

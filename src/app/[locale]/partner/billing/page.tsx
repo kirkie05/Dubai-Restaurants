@@ -12,7 +12,7 @@ export default function PartnerBilling() {
           <header className="pb-12 border-b border-white/5 flex justify-between items-end">
              <div className="space-y-6">
                 <span className="text-secondary font-body text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Financial Protocol</span>
-                <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter text-white">The <span className="text-zinc-800">Tenure.</span></h1>
+                <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter text-white">The <span className="text-primary">Tenure.</span></h1>
              </div>
              <div className="flex flex-col items-end text-right">
                 <span className="text-4xl font-headline font-black italic text-secondary">Elite Archive</span>

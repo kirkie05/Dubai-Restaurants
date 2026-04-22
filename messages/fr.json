@@ -107,5 +107,41 @@
     "aboutUs": "À propos",
     "contact": "Contact",
     "faq": "FAQ"
+  },
+  "Data": {
+    "areas": {
+      "burj-al-arab": "Burj Al Arab",
+      "downtown": "Downtown Dubai",
+      "palm-jumeirah": "Palm Jumeirah",
+      "marina": "Dubai Marina",
+      "city-center": "City Center",
+      "global": "Global",
+      "coastal": "Coastal",
+      "difc": "DIFC",
+      "jbr": "JBR"
+    },
+    "types": {
+      "restaurant": "Restaurant",
+      "area": "Area",
+      "category": "Category"
+    },
+    "cuisines": {
+      "indian": "Cuisine Indienne",
+      "seafood": "Fruits de Mer",
+      "levantine": "Levantin",
+      "italian": "Italien",
+      "japanese": "Japonais",
+      "lebanese": "Libanais",
+      "contemporary": "Contemporain",
+      "indian-fusion": "Fusion Indienne",
+      "french": "Français",
+      "mexican": "Mexicain"
+    },
+    "occasions": {
+      "romantic": "Dîner Romantique",
+      "brunch": "Brunch",
+      "fine": "Gastronomie",
+      "outdoor": "Dîner en Plein Air"
+    }
   }
 }

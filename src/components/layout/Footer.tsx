@@ -13,14 +13,14 @@ export const Footer = async () => {
         </div>
         <div className="flex flex-col gap-4">
           <p className="font-bold text-slate-900 mb-2">{t('neighborhoods')}</p>
-          <Link href="/neighborhood/jumeirah" className="text-slate-500 hover:text-primary transition-colors">{t('jumeirah')}</Link>
-          <Link href="/neighborhood/downtown" className="text-slate-500 hover:text-primary transition-colors">{t('downtownDubai')}</Link>
-          <Link href="/neighborhood/difc" className="text-slate-500 hover:text-primary transition-colors">{t('difc')}</Link>
+          <Link href="/restaurants?neighborhood=jumeirah" className="text-slate-500 hover:text-primary transition-colors">{t('jumeirah')}</Link>
+          <Link href="/restaurants?neighborhood=downtown" className="text-slate-500 hover:text-primary transition-colors">{t('downtownDubai')}</Link>
+          <Link href="/restaurants?neighborhood=difc" className="text-slate-500 hover:text-primary transition-colors">{t('difc')}</Link>
         </div>
         <div className="flex flex-col gap-4">
           <p className="font-bold text-slate-900 mb-2">{t('cuisines')}</p>
-          <Link href="/cuisine/fine-dining" className="text-slate-500 hover:text-primary transition-colors">{t('fineDining')}</Link>
-          <Link href="/cuisine/brunch" className="text-slate-500 hover:text-primary transition-colors">{t('brunchGuides')}</Link>
+          <Link href="/cuisines/french" className="text-slate-500 hover:text-primary transition-colors">{t('fineDining')}</Link>
+          <Link href="/cuisines/mexican" className="text-slate-500 hover:text-primary transition-colors">{t('brunchGuides')}</Link>
         </div>
         <div className="flex flex-col gap-4">
           <p className="font-bold text-slate-900 mb-2">{t('company')}</p>

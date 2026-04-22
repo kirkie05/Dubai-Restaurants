@@ -12,7 +12,7 @@ export default function LegalPage() {
              <div className="space-y-6 max-w-4xl">
                 <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.4em] block">Governing Manifestos</span>
                 <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-[0.85] text-on-surface">
-                   Terms & <br /><span className="text-zinc-400">Privacy.</span>
+                   Terms & <br /><span className="text-primary">Privacy.</span>
                 </h1>
                 <p className="text-xl text-slate-500 font-body italic leading-relaxed max-w-xl">
                    The legal framework that ensures the integrity and exclusivity of the Dubai Restaurants experience.

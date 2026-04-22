@@ -13,7 +13,7 @@ export default function AboutPage() {
              <div className="space-y-6 max-w-4xl">
                 <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.4em] block">Our Manifesto</span>
                 <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-[0.85] text-on-surface">
-                   The <br /><span className="text-zinc-400">Curator.</span>
+                   The <br /><span className="text-primary">Curator.</span>
                 </h1>
                 <p className="text-xl text-slate-500 font-body italic leading-relaxed max-w-xl">
                    We are the digital architects of Dubai&apos;s culinary identity. Verifying, documenting, and elevating the city&apos;s finest destinations.

@@ -1,9 +1,8 @@
-import Image from 'next/image';
 import { Link } from '@/navigation';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { RestaurantCard } from '@/components/ui/RestaurantCard';
 import { getTranslations } from 'next-intl/server';
+import { RestaurantDirectory } from '@/components/restaurants/RestaurantDirectory';
 
 export default async function RestaurantListing({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -14,7 +13,7 @@ export default async function RestaurantListing({ params }: { params: Promise<{ 
     {
       slug: "al-mahara",
       name: tr("al-mahara.name"),
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBcoFe6omNLIs7L32v-ULd2AqewYUWTBeHElsiYHNRC2ZHbGGUNFbcOf4TfXKaC-IQSgBqUUF0Td5Z4JOLYd9MbQeyCKpPcIIMV1NdXyCjCdb4NyvVEJa14-n27O9uuSEBtKhSgQmiVhXMe1IwnyOapfm3AEAhtsFevHDY0Gm0nuYInxRYULu9gsVCz1Ms4q0VX97ij367363xeRiFk2pghjkNDhkbeFnBEu-oKOxkvIemvkjYoL-mJ7ZjMiZnUV_YeVYDOjAuhhYTI",
+      image: "/al_mahara_restaurant_1776785631205.png",
       rating: tr("al-mahara.rating"),
       cuisine: tr("al-mahara.cuisine"),
       price: tr("al-mahara.price"),
@@ -25,13 +24,57 @@ export default async function RestaurantListing({ params }: { params: Promise<{ 
     {
       slug: "nobu-dubai",
       name: tr("nobu-dubai.name"),
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDfVdlQINWCdMaUxtjxx1kXumeKxVR8P2R93viySJAg0uYmrlFjT6kIIpJ99byKhc1tBNLoYaLWqIMxU20_i-eEHeqLKCQvRSrVR27dID8n9J390UARe9wqLw3VfUrypGLj-I3Q6F54UwsDQaQxmiIxO-qBd7EjlU0dP8EVR3VtM8_wtGXQXnA2XSYvu3oL6Gtn2Sro2X16z7Qnp6_1ZGAoHjXr2j6bP7grY8jEZZBy7bHZHMfBR6pB-Jy-5hc2-MYEOgssDiR5rOtf",
+      image: "/cuisine_japanese_high_fidelity_1776785722454.png",
       rating: tr("nobu-dubai.rating"),
       cuisine: tr("nobu-dubai.cuisine"),
       price: tr("nobu-dubai.price"),
       location: tr("nobu-dubai.location"),
       description: tr("nobu-dubai.description"),
       badge: tr("nobu-dubai.badge")
+    },
+    {
+      slug: "ossiano",
+      name: tr("ossiano.name"),
+      image: "/ossiano_restaurant_1776785646414.png",
+      rating: tr("ossiano.rating"),
+      cuisine: tr("ossiano.cuisine"),
+      price: tr("ossiano.price"),
+      location: tr("ossiano.location"),
+      description: tr("ossiano.description"),
+      badge: tr("ossiano.badge")
+    },
+    {
+      slug: "tresind-studio",
+      name: tr("tresind-studio.name"),
+      image: "/cuisine_indian_high_fidelity_1776785772426.png",
+      rating: tr("tresind-studio.rating"),
+      cuisine: tr("tresind-studio.cuisine"),
+      price: tr("tresind-studio.price"),
+      location: tr("tresind-studio.location"),
+      description: tr("tresind-studio.description"),
+      badge: tr("tresind-studio.badge")
+    },
+    {
+      slug: "zuma",
+      name: tr("zuma.name"),
+      image: "/cuisine_japanese_high_fidelity_1776785722454.png",
+      rating: tr("zuma.rating"),
+      cuisine: tr("zuma.cuisine"),
+      price: tr("zuma.price"),
+      location: tr("zuma.location"),
+      description: tr("zuma.description"),
+      badge: tr("zuma.badge")
+    },
+    {
+      slug: "primos-pizza",
+      name: tr("primos-pizza.name"),
+      image: "/primos_pizza_restaurant_1776785706161.png",
+      rating: tr("primos-pizza.rating"),
+      cuisine: tr("primos-pizza.cuisine"),
+      price: tr("primos-pizza.price"),
+      location: tr("primos-pizza.location"),
+      description: tr("primos-pizza.description"),
+      badge: tr("primos-pizza.badge")
     }
   ];
 
@@ -45,7 +88,7 @@ export default async function RestaurantListing({ params }: { params: Promise<{ 
              <div className="space-y-6 max-w-4xl">
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">{t('label')}</span>
                 <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-[0.85] text-on-surface">
-                   {t('title').split(' ')[0]} <br /><span className="text-zinc-400">{t('title').split(' ')[1]}</span>
+                   {t('title').split(' ')[0]} <br /><span className="text-primary">{t('title').split(' ')[1]}</span>
                 </h1>
                 <p className="text-xl text-slate-500 font-body italic leading-relaxed max-w-xl">
                    {t('subtitle')}
@@ -58,10 +101,8 @@ export default async function RestaurantListing({ params }: { params: Promise<{ 
           </div>
         </header>
 
-        <section className="max-w-[1920px] mx-auto px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
-           {LISTING_ITEMS.map((item) => (
-             <RestaurantCard key={item.slug} {...item} />
-           ))}
+        <section className="max-w-[1920px] mx-auto px-8 lg:px-16">
+           <RestaurantDirectory items={LISTING_ITEMS} />
         </section>
 
         <section className="mt-48 max-w-[1920px] mx-auto px-8 lg:px-16">

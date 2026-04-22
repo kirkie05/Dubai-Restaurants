@@ -26,7 +26,7 @@ export default function BookingConfirmation() {
                  <span className="material-symbols-outlined text-4xl">check_circle</span>
               </div>
               <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.5em] block">Status: Confirmed</span>
-              <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-none">The Table <br />is <span className="text-zinc-600">Reserved.</span></h1>
+              <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-none">The Table <br />is <span className="text-primary">Reserved.</span></h1>
               <p className="text-xl text-zinc-400 font-body italic leading-relaxed max-w-2xl mx-auto">
                  Your placement at **Al-Maha Crystal Lounge** has been secured for **Saturday, Nov 24 at 20:30**. 
                  A confirmation has been sent to your digital repository.

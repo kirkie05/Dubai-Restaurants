@@ -85,7 +85,7 @@ export default async function CuisineDetailPage({
   const t = await getTranslations({ locale, namespace: 'CuisineDetail' });
   const dt = await getTranslations({ locale, namespace: 'Data' });
   
-  const cuisineName = dt(`cuisines.${slug}`) || slug;
+  const cuisineName = dt(`cuisines.${slug}`) || dt(`occasions.${slug}`) || slug;
   const restaurants = getRestaurantsForCuisine(slug);
   
   return (

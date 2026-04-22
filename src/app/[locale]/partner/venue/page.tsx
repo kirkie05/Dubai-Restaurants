@@ -6,7 +6,7 @@ export default function RestaurantManagement() {
        <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <header className="pb-12 border-b border-white/5">
              <span className="text-secondary font-body text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Venue Configuration</span>
-             <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter">The <span className="text-zinc-800">Profile.</span></h1>
+             <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter">The <span className="text-primary">Profile.</span></h1>
           </header>
 
           <section className="bg-white/5 p-12 md:p-20 rounded-[3rem] border border-white/5 space-y-16">

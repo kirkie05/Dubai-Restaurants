@@ -49,19 +49,6 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
-        <script dangerouslySetInnerHTML={{ __html: `
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-              }
-            });
-          }, { threshold: 0.1 });
-          
-          document.addEventListener('DOMContentLoaded', () => {
-             document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-          });
-        `}} />
       </body>
     </html>
   );

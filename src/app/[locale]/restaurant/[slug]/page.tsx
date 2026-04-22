@@ -43,7 +43,7 @@ export default async function RestaurantDetail({ params }: { params: Promise<{ s
     chef: tr(`${slug}.chef`),
     badge: tr(`${slug}.badge`),
     status: tr(`${slug}.status`),
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBScFTU5wYXxlVQjth8aCZ9LedSVLqxxLEusO3iFznSTrSTlnuSzIMdLWcLYRZ3ZqEs_8NNkhMJ5yDxOTrhA6W-3iQ-UlgnPVDta3m_5S0r9FXRxl5eYl51pYc6k_v4WOrw2QRehEqr-plNlZmxnL9Bm6jQrKrx2ZXNg6O-d_Xz9f_663knA_6A14-2v8uPGHgf6THAkwEDT0FCetS7861RoHJVSeqdCZqMBkS0wvscF6KUR8YO7rcjnipDAP3bgIdAmipuPo2l6FzQ"
+    image: "/al_mahara_restaurant_1776785631205.png"
   };
 
   return (
@@ -139,7 +139,7 @@ export default async function RestaurantDetail({ params }: { params: Promise<{ s
           <div className="md:col-span-6 relative">
             <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-8 border-slate-50 shadow-2xl animate-float">
                <Image 
-                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdc7lSbzK-fWgtbQ-W888RdtZBVq36fh9OOdQc-kQctlbMo4uKOnTbs3qwkHCa4UNABdMhkKh4U805FJ8rXVL273eZ18qrg7vR7UzsV2d7uc6WuMkTXwNIbFz4RNFpFmXrqkUuKybw9jAF9YO5X4jh8lousBzZbvjDOsM8jR1FXEoh7-cOuSfOmPhYll5FamukRMp8YjMnGYy5AL2K9ijjf1mGrYQHkdIHw4LXwVRY2OEc-8kAc0V9I0vdrmKxYKaPGU5HBXY49TRq" 
+                 src="/cuisine_japanese_high_fidelity_1776785722454.png" 
                  alt="Atmosphere" 
                  fill 
                  className="object-cover" 
@@ -167,7 +167,7 @@ export default async function RestaurantDetail({ params }: { params: Promise<{ s
                  ].map(dish => (
                    <article key={dish.id} className="group space-y-6 cursor-pointer">
                       <div className="relative aspect-video rounded-2xl overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-1000">
-                         <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUtWuDKOglxmhwkLGfkr7t9r-5VPlKDaXA0ZeC_VunLqhIjzXj9ERY19lo_h2EuBaU3QAfdmWb6DCqU-YM7myLuy4lhzJVtx3UIUtG8EKFPdR1AbSXdB40K4dmbdTToXKIHbHlD6DWNYGTgV-vAW25Xl1PVGlMeODOiMxBjM5e3MnfXzAoCWFDSLr70vRT1ROrlOfzIqnHAVE7l0FZaSzDIwK8AYlhkloK1JLO5q3Ya2gOOYKNP8hOpZwDlem8IO55mDYSJ2w52_m8" alt={dish.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                         <Image src="/cuisine_indian_high_fidelity_1776785772426.png" alt={dish.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                       </div>
                       <div className="space-y-2">
                          <h4 className="font-headline text-3xl font-black italic group-hover:text-primary transition-colors">{dish.name}</h4>

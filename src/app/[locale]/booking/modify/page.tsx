@@ -10,7 +10,7 @@ export default function BookingModification() {
       <main className="flex-grow pt-32 pb-24 px-8 max-w-4xl mx-auto w-full space-y-20">
          <header className="space-y-6">
             <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.4em] block">Refine Your Schedule</span>
-            <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter leading-none text-on-surface">The <span className="text-zinc-400">Shift.</span></h1>
+            <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter leading-none text-on-surface">The <span className="text-primary">Shift.</span></h1>
             <p className="text-xl text-slate-500 font-body italic leading-relaxed max-w-xl">
                Adjusting the chronology of your reservation at **Al-Maha Crystal Lounge**. 
             </p>

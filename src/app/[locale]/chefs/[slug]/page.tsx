@@ -52,7 +52,7 @@ export default async function ChefProfile({ params }: { params: Promise<{ slug: 
              <div className="space-y-6 max-w-4xl">
                 <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.4em] block">Principal Authority</span>
                 <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-[0.8] text-white">
-                   Chef <br />{chef.name}.
+                   Chef <br /><span className="text-primary">{chef.name}.</span>
                 </h1>
                 <p className="text-2xl text-zinc-300 font-body italic max-w-2xl leading-relaxed">
                    {chef.tagline}

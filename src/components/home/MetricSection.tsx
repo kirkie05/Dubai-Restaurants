@@ -41,7 +41,7 @@ export function MetricSection() {
         <div className="lg:col-span-12 xl:col-span-5 relative">
           <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-8 border-white/5 shadow-[0_0_80px_rgba(187,0,35,0.2)]">
             <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCQaZ4Rzc4yh_i9VR536sMqU5IBHantXMBrYBHokcOmg9dIbwIROyioKWiPgXvM1Xex7Qn45bdBXrnPFK6sIMzuW1dBqql49dAoBCtgrDZomgB5586Olg-3jakrU-1dWLBmMoJL0uAty__ERh9lsuWyQK39CRq6-nZ3TSQGyqfdYR8V-wFGHZc4g6cs2Urhj_peVI7bk9kKcheCUSOXTbk0HNk0L24bItA_BldAVnbNOkHQj_xcq58wbCLpOLADYKruPqAb30R01Z2"
+              src="/ossiano_restaurant_1776785646414.png"
               alt="Curation Process"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-[2000ms]"

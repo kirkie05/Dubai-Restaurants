@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
           <div className="lg:col-span-8 space-y-8">
             <span className="font-body text-[10px] uppercase tracking-[0.4em] text-primary font-bold">Regulatory Framework</span>
             <h1 className="font-headline text-[4rem] md:text-[6rem] leading-[0.9] font-extrabold tracking-tighter text-on-surface italic">
-              Privacy <br/><span className="text-zinc-200 font-normal">Policy</span>
+              Privacy <br/><span className="text-primary font-normal">Policy</span>
             </h1>
             <p className="text-xl text-slate-500 max-w-xl leading-relaxed italic font-body">
               At Dubai Restaurants, we curate experiences. This policy outlines how we handle the digital footprint you leave while discovering the finest culinary destinations in the UAE.

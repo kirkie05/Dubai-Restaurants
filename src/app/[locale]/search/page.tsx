@@ -50,7 +50,7 @@ export default function SearchPage() {
           <header className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8 pb-10 border-b border-slate-100">
             <div className="space-y-4">
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Curation Discovery</span>
-              <h1 className="font-headline text-6xl md:text-8xl font-black tracking-tighter italic text-on-surface leading-none">Find your <br /><span className="text-zinc-400">Atmosphere.</span></h1>
+              <h1 className="font-headline text-6xl md:text-8xl font-black tracking-tighter italic text-on-surface leading-none">Find your <br /><span className="text-primary">Atmosphere.</span></h1>
               <p className="text-slate-400 font-body text-sm font-medium italic mt-4 max-w-xl">84 Destinations verified by our editorial board. Filter by mood, cuisine, or district.</p>
             </div>
             <div className="flex items-center gap-6">

@@ -17,7 +17,7 @@ export default function BlogManagement() {
          <aside className="w-full lg:w-80 shrink-0 space-y-12">
             <header className="space-y-4">
                <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.4em] block">Master Control</span>
-               <h2 className="text-4xl font-headline font-black italic tracking-tighter text-zinc-900">The <br /><span className="text-slate-300">Journal.</span></h2>
+               <h2 className="text-4xl font-headline font-black italic tracking-tighter text-zinc-900">The <br /><span className="text-primary">Journal.</span></h2>
             </header>
 
             <nav className="flex flex-col gap-2">
@@ -36,7 +36,7 @@ export default function BlogManagement() {
             <header className="pb-12 border-b border-slate-200 flex justify-between items-end">
                <div className="space-y-6">
                   <span className="text-secondary font-body text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Content Repository</span>
-                  <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter text-zinc-900">Story <span className="text-slate-300">Archives.</span></h1>
+                  <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter text-zinc-900">Story <span className="text-primary">Archives.</span></h1>
                </div>
                <button className="px-10 py-5 bg-zinc-900 text-white rounded-2xl font-headline font-black text-xl italic hover:bg-primary transition-all shadow-2xl">Create New Bundle</button>
             </header>

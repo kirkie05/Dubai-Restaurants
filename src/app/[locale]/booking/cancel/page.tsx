@@ -11,7 +11,7 @@ export default function BookingCancellation() {
         <div className="max-w-2xl w-full text-center space-y-16">
            <div className="space-y-6">
               <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.4em] block">Voiding Sequence</span>
-              <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter leading-none text-on-surface">The <span className="text-zinc-300">Cancellation.</span></h1>
+              <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter leading-none text-on-surface">The <span className="text-primary">Cancellation.</span></h1>
               <p className="text-xl text-slate-400 font-body italic leading-relaxed max-w-xl mx-auto">
                  Are you certain you wish to relinquish your placement for **Al-Maha Crystal Lounge**? 
                  This action is irreversible within the current curation window.

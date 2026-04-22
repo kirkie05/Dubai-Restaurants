@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { Reveal } from "@/components/ui/Reveal";
 
 const MEDIA = [
   { id: 1, url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBScFTU5wYXxlVQjth8aCZ9LedSVLqxxLEusO3iFznSTrSTlnuSzIMdLWcLYRZ3ZqEs_8NNkhMJ5yDxOTrhA6W-3iQ-UlgnPVDta3m_5S0r9FXRxl5eYl51pYc6k_v4WOrw2QRehEqr-plNlZmxnL9Bm6jQrKrx2ZXNg6O-d_Xz9f_663knA_6A14-2v8uPGHgf6THAkwEDT0FCetS7861RoHJVSeqdCZqMBkS0wvscF6KUR8YO7rcjnipDAP3bgIdAmipuPo2l6FzQ" },
@@ -19,28 +20,30 @@ export default async function RestaurantGallery({ params }: { params: Promise<{ 
       
       <main className="pt-32 min-h-screen">
         <div className="max-w-[1920px] mx-auto px-8 lg:px-16 py-20 space-y-20">
-           <header className="flex flex-col md:flex-row justify-between items-end gap-8 pb-12 border-b border-white/10">
-              <div className="space-y-4">
-                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Visual Identity</span>
-                 <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter leading-none text-white">The <span className="text-zinc-600">Gallery.</span></h1>
-                 <p className="text-zinc-500 font-body text-sm font-medium italic mt-6">A cinematic exploration of textures, light, and culinary precision.</p>
-              </div>
-              <Link href={`/restaurant/${slug}`} className="text-primary font-body text-[10px] font-black uppercase tracking-[0.3em] pb-1 border-b border-primary/20 hover:border-primary transition-all">Close Gallery</Link>
-           </header>
+           <Reveal>
+             <header className="flex flex-col md:flex-row justify-between items-end gap-8 pb-12 border-b border-white/10">
+                <div className="space-y-4">
+                   <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Visual Identity</span>
+                   <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter leading-none text-white">The <span className="text-zinc-600">Gallery.</span></h1>
+                   <p className="text-zinc-500 font-body text-sm font-medium italic mt-6">A cinematic exploration of textures, light, and culinary precision.</p>
+                </div>
+                <Link href={`/restaurant/${slug}`} className="text-primary font-body text-[10px] font-black uppercase tracking-[0.3em] pb-1 border-b border-primary/20 hover:border-primary transition-all">Close Gallery</Link>
+             </header>
+           </Reveal>
 
            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:h-[1200px]">
-              <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-3xl">
-                 <Image src={MEDIA[0].url} alt="Gallery 1" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" unoptimized />
-              </div>
-              <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-3xl">
-                 <Image src={MEDIA[1].url} alt="Gallery 2" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" unoptimized />
-              </div>
-              <div className="md:col-span-1 md:row-span-2 relative group overflow-hidden rounded-3xl">
-                 <Image src={MEDIA[2].url} alt="Gallery 3" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" unoptimized />
-              </div>
-              <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-3xl">
-                 <Image src={MEDIA[3].url} alt="Gallery 4" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" unoptimized />
-              </div>
+              <Reveal className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-3xl">
+                 <Image src={MEDIA[0].url} alt="Gallery 1" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" />
+              </Reveal>
+              <Reveal className="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-3xl stagger-1">
+                 <Image src={MEDIA[1].url} alt="Gallery 2" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 25vw" />
+              </Reveal>
+              <Reveal className="md:col-span-1 md:row-span-2 relative group overflow-hidden rounded-3xl stagger-2">
+                 <Image src={MEDIA[2].url} alt="Gallery 3" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 25vw" />
+              </Reveal>
+              <Reveal className="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-3xl stagger-3">
+                 <Image src={MEDIA[3].url} alt="Gallery 4" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 25vw" />
+              </Reveal>
            </div>
         </div>
       </main>

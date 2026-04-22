@@ -6,7 +6,7 @@ export default function EditProfile() {
        <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <header className="pb-12 border-b border-slate-100">
              <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Account settings</span>
-             <h1 className="text-5xl md:text-7xl font-headline font-black italic tracking-tighter text-on-surface">The <span className="text-zinc-300">Identity.</span></h1>
+             <h1 className="text-5xl md:text-7xl font-headline font-black italic tracking-tighter text-on-surface">The <span className="text-primary">Identity.</span></h1>
           </header>
 
           <section className="bg-white p-12 md:p-20 rounded-[3rem] shadow-2xl border border-slate-50 space-y-16">

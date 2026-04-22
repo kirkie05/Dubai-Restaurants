@@ -48,7 +48,7 @@ export default function SignUpPage() {
            <div className="text-right lg:text-left space-y-12">
               <div className="space-y-6">
                  <span className="text-primary font-body text-[10px] font-black uppercase tracking-[0.4em] block">Member Privileges</span>
-                 <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-[0.8] text-white">The <br /><span className="text-zinc-600">Treasury.</span></h1>
+                 <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-[0.8] text-white">The <br /><span className="text-primary">Treasury.</span></h1>
                  <p className="text-xl text-zinc-400 font-body italic leading-relaxed max-w-lg lg:ml-0 ml-auto">
                     Unlock preferred seating, priority table releases, and personalized concierge support across the city&apos;s finest venues.
                  </p>

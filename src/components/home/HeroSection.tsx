@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useTranslations } from 'next-intl';
+import { Reveal } from "@/components/ui/Reveal";
 
 const MOCK_SUGGESTIONS = [
   { id: 1, name: "Al Mahara", type: "Restaurant", area: "Burj Al Arab" },
@@ -16,34 +17,36 @@ export function HeroSection() {
   const t = useTranslations('Hero');
   const ct = useTranslations('Common');
   const dt = useTranslations('Data');
+  const t_root = useTranslations();
   
-  const MOCK_SUGGESTIONS = [
+  const mockSuggestions = useMemo(() => [
     { id: 1, name: "Al Mahara", type: dt('types.restaurant'), area: dt('areas.burj-al-arab') },
     { id: 2, name: dt('areas.downtown'), type: dt('types.area'), area: dt('areas.city-center') },
     { id: 3, name: dt('cuisines.indian'), type: dt('types.category'), area: dt('areas.global') },
     { id: 4, name: "Ossiano", type: dt('types.restaurant'), area: dt('areas.palm-jumeirah') },
     { id: 5, name: dt('areas.marina'), type: dt('types.area'), area: dt('areas.coastal') },
-  ];
+    { id: 6, name: "Zuma", type: dt('types.restaurant'), area: t_root('Data.areas.difc') },
+    { id: 7, name: "Nobu", type: dt('types.restaurant'), area: dt('areas.palm-jumeirah') },
+  ], [dt, t_root]);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [suggestions, setSuggestions] = useState<typeof MOCK_SUGGESTIONS>([]);
+  const [suggestions, setSuggestions] = useState<typeof mockSuggestions>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isLocating, setIsLocating] = useState(false);
   const suggestionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (searchQuery.length > 1) {
-      const filtered = MOCK_SUGGESTIONS.filter(item => 
+    if (searchQuery.length > 0) {
+      const filtered = mockSuggestions.filter(item => 
         item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.area.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setSuggestions(filtered);
       setShowSuggestions(true);
     } else {
-      setSuggestions([]);
-      setShowSuggestions(false);
+      setSuggestions(mockSuggestions);
     }
-  }, [searchQuery]);
+  }, [searchQuery, mockSuggestions]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -75,23 +78,25 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative pt-32 lg:pt-48 pb-20 px-6 lg:px-16 overflow-hidden bg-background">
+    <section className="relative pt-32 lg:pt-48 pb-20 px-6 lg:px-16 z-30 bg-background">
       <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
         {/* Left Column: Content & Search */}
         <div className="lg:col-span-7 space-y-12 z-10">
-          <div className="space-y-6">
+          <Reveal className="space-y-6">
             <div className="flex items-center gap-4">
                <span className="font-body text-[10px] uppercase tracking-[0.6em] text-primary font-black">{ct('digitalCurator')}</span>
                <div className="w-12 h-px bg-slate-200"></div>
                <span className="font-body text-[10px] uppercase tracking-[0.6em] text-secondary font-black">{ct('official')}</span>
             </div>
             <h1 className="text-5xl md:text-7xl lg:text-9xl font-headline font-black tracking-tighter leading-[0.85] text-on-surface">
-              {t('title')}
+              {t.rich('title', {
+                red: (chunks) => <span className="text-primary">{chunks}</span>
+              })}
             </h1>
             <p className="text-xl text-slate-500 font-body max-w-2xl leading-relaxed italic">
               {t('subtitle')}
             </p>
-          </div>
+          </Reveal>
 
           <div className="flex flex-col sm:flex-row gap-4 max-w-2xl relative">
              <div className="flex-1 flex items-center bg-white border border-slate-100 rounded-2xl p-2 shadow-2xl focus-within:ring-4 focus-within:ring-primary/5 transition-all relative">
@@ -99,6 +104,8 @@ export function HeroSection() {
                 <input 
                    type="text" 
                    value={searchQuery}
+                                      onFocus={() => setShowSuggestions(true)}
+
                    onChange={(e) => setSearchQuery(e.target.value)}
                    placeholder={t('searchPlaceholder')}
                    className="w-full border-none focus:ring-0 text-sm lg:text-base font-body italic p-4 ml-2"
@@ -109,7 +116,7 @@ export function HeroSection() {
 
                 {/* Suggestions Dropdown */}
                 {showSuggestions && suggestions.length > 0 && (
-                  <div ref={suggestionRef} className="absolute top-full left-0 right-0 mt-4 bg-white/95 backdrop-blur-2xl border border-slate-100 shadow-[0_30px_60px_rgba(0,0,0,0.1)] rounded-2xl overflow-hidden z-50 p-4 animate-in fade-in slide-in-from-top-2">
+                  <div ref={suggestionRef} className="absolute top-full left-0 right-0 mt-4 bg-white/95 backdrop-blur-2xl border border-slate-100 shadow-[0_30px_60px_rgba(0,0,0,0.1)] rounded-2xl overflow-hidden z-[100] p-4 animate-in fade-in slide-in-from-top-2">
                      <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-4 px-4">{t('suggestions.instant')}</p>
                      <div className="space-y-1">
                         {suggestions.map((item) => (
@@ -161,7 +168,7 @@ export function HeroSection() {
             
             <div className="relative h-full w-full rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] border-[12px] border-white -rotate-6 hover:rotate-0 transition-all duration-1000 group">
               <Image 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzv0qhsoRFmpbHaf_2gJ_lKOUMZVdzV0SBQT9r1fZ1EEpAv2epAT_tNIR6XOChNUVmNnOvDAbZK6SaW4Bn1dHTQo3VJOBeyrqTBElxkS8ZbtUdNglTvQM9CBzWTmgyMnWBo4vOA9PsIu5tcJIGAy5Gk8mxTzZXEUzIRv3LG0iF2ABnY4Yl4UMWSO8A2-Z6v90UL2S2Dq_IzNTcJimIMCVNtrTylS4qApQ1XawxxKhd4h8h9xQ6fLaB6rC5xCWKYJ7MAbISfcTbl7ty"
+                src="/al_mahara_restaurant_1776785631205.png"
                 alt="Signature Dish"
                 fill
                 className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"

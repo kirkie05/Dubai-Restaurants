@@ -1,6 +1,6 @@
 {
   "Hero": {
-    "title": "Curated Dubai Restaurants.",
+    "title": "Curated <red>Dubai Restaurants</red>.",
     "subtitle": "The definitive guide to Dubai's Michelin-star venues, global cuisines, and hidden gems. Expertly curated, editorially verified.",
     "searchPlaceholder": "Search Location...",
     "locateMe": "Locate Me",
@@ -79,7 +79,7 @@
   },
   "Cuisines": {
     "label": "Heritage Registry",
-    "title": "Global Archetypes.",
+    "title": "Global Tastes.",
     "subtitle": "Explore Dubai's culinary topography through the lens of global heritage. Every category a portal to a different world.",
     "traditionsLabel": "Global Traditions",
     "editorPick": "Editor Pick",
@@ -389,7 +389,9 @@
       "marina": "Dubai Marina",
       "city-center": "City Center",
       "global": "Global",
-      "coastal": "Coastal"
+      "coastal": "Coastal",
+      "difc": "DIFC",
+      "jbr": "JBR"
     },
     "types": {
       "restaurant": "Restaurant",
@@ -404,7 +406,9 @@
       "japanese": "Japanese",
       "lebanese": "Lebanese",
       "contemporary": "Contemporary",
-      "indian-fusion": "Indian Fusion"
+      "indian-fusion": "Indian Fusion",
+      "french": "French",
+      "mexican": "Mexican"
     },
     "occasions": {
       "romantic": "Romantic Dining",
