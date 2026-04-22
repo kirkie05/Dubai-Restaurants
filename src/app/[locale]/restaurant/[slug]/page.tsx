@@ -3,20 +3,22 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { getTranslations } from 'next-intl/server';
+import { getRestaurantBySlug } from "@/lib/db";
 
 export default async function RestaurantDetail({ params }: { params: Promise<{ slug: string, locale: string }> }) {
   const resolvedParams = await params;
   const { slug, locale } = resolvedParams;
   
   const t = await getTranslations({ locale, namespace: 'RestaurantDetail' });
-  const tr = await getTranslations({ locale, namespace: 'Restaurants' });
   
-  // Lookup restaurant data from translations
-  // Note: For a real app, this would be a fetch, but here we use the localized mock data
-  const restaurantName = tr(`${slug}.name`);
-  
-  // If the translation key is returned, it means the restaurant wasn't found
-  if (restaurantName === `${slug}.name`) {
+  let dbRestaurant;
+  try {
+    dbRestaurant = await getRestaurantBySlug(slug);
+  } catch (error) {
+    console.error(`Error fetching restaurant ${slug}:`, error);
+  }
+
+  if (!dbRestaurant) {
     return (
       <div className="flex flex-col min-h-screen bg-background">
         <Navbar />
@@ -33,17 +35,17 @@ export default async function RestaurantDetail({ params }: { params: Promise<{ s
   }
 
   const restaurant = {
-    name: restaurantName,
-    description: tr(`${slug}.description`),
-    longDescription: tr(`${slug}.longDescription`),
-    cuisine: tr(`${slug}.cuisine`),
-    price: tr(`${slug}.price`),
-    rating: tr(`${slug}.rating`) || "4.9",
-    reviewsCount: tr(`${slug}.reviewsCount`),
-    chef: tr(`${slug}.chef`),
-    badge: tr(`${slug}.badge`),
-    status: tr(`${slug}.status`),
-    image: "/al_mahara_restaurant_1776785631205.png"
+    name: dbRestaurant.name,
+    description: dbRestaurant.description,
+    longDescription: dbRestaurant.long_description,
+    cuisine: dbRestaurant.cuisines?.name || 'Various',
+    price: dbRestaurant.price_range,
+    rating: dbRestaurant.rating.toString(),
+    reviewsCount: dbRestaurant.reviews_count?.toLocaleString() || "0",
+    chef: dbRestaurant.chef_name,
+    badge: dbRestaurant.badge,
+    status: dbRestaurant.status,
+    image: dbRestaurant.image_url
   };
 
   return (

@@ -15,6 +15,8 @@ const LANGUAGES = [
   { code: 'es', name: 'Español', flag: '🇪🇸' },
 ];
 
+import Image from "next/image";
+
 export const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -114,16 +116,16 @@ export const Navbar = () => {
       <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-slate-50">
         <div className="max-w-[1920px] mx-auto px-6 lg:px-16 h-20 lg:h-24 flex justify-between items-center">
           <div className="flex items-center gap-12 xl:gap-20">
-            <Link href="/" className="group flex items-center gap-3">
-               <div className="w-10 h-10 bg-zinc-900 rounded-lg flex items-center justify-center group-hover:bg-primary transition-all">
-                  <div className="grid grid-cols-2 gap-0.5 transform group-hover:rotate-12 transition-transform">
-                     <div className="w-1.5 h-1.5 bg-white"></div>
-                     <div className="w-1.5 h-1.5 bg-secondary"></div>
-                     <div className="w-1.5 h-1.5 bg-primary"></div>
-                     <div className="w-1.5 h-1.5 bg-zinc-500"></div>
-                  </div>
+            <Link href="/" className="group flex items-center">
+               <div className="relative h-16 lg:h-20 w-40 lg:w-64 rounded-xl overflow-hidden transition-all duration-500">
+                  <Image 
+                    src="/logo.png" 
+                    alt="Dubai Restaurants Logo" 
+                    fill 
+                    className="object-contain object-left"
+                    priority
+                  />
                </div>
-               <span className="font-headline font-black italic text-xl lg:text-2xl tracking-tighter text-on-surface">Dubai Restaurants.</span>
             </Link>
 
             <div className="hidden lg:flex items-center gap-12 xl:gap-16">
@@ -187,11 +189,15 @@ export const Navbar = () => {
         <div className="fixed inset-0 z-[100] bg-zinc-950 text-white animate-in fade-in duration-500">
            <div className="relative z-10 h-full flex flex-col p-12">
               <div className="flex justify-between items-center mb-16">
-                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
-                       <span className="text-black font-headline font-black italic">D</span>
+                 <div className="flex items-center">
+                    <div className="relative w-48 h-48 rounded-3xl overflow-hidden">
+                       <Image 
+                         src="/logo.png" 
+                         alt="Logo" 
+                         fill 
+                         className="object-contain"
+                       />
                     </div>
-                    <span className="font-headline font-black italic text-xl">Restaurants.</span>
                  </div>
                  <button onClick={() => setIsMobileMenuOpen(false)} className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
                     <span className="material-symbols-outlined">close</span>

@@ -5,39 +5,22 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/ui/Reveal";
 
-export function RestaurantList() {
-  const t = useTranslations("RestaurantList");
-  const tr = useTranslations("Restaurants");
+interface Restaurant {
+  slug: string;
+  name: string;
+  location: string;
+  cuisine: string;
+  rating: string;
+  image: string;
+  description: string;
+}
 
-  const TOP_PICKS = [
-    {
-      slug: "al-mahara",
-      name: tr("al-mahara.name"),
-      location: tr("al-mahara.location"),
-      cuisine: tr("al-mahara.cuisine"),
-      rating: tr("al-mahara.rating"),
-      image: "/al_mahara_restaurant_1776785631205.png",
-      description: tr("al-mahara.description")
-    },
-    {
-      slug: "ossiano",
-      name: tr("ossiano.name"),
-      location: tr("ossiano.location"),
-      cuisine: tr("ossiano.cuisine"),
-      rating: tr("ossiano.rating"),
-      image: "/ossiano_restaurant_1776785646414.png",
-      description: tr("ossiano.description")
-    },
-    {
-      slug: "tresind-studio",
-      name: tr("tresind-studio.name"),
-      location: tr("tresind-studio.location"),
-      cuisine: tr("tresind-studio.cuisine"),
-      rating: tr("tresind-studio.rating"),
-      image: "/al_mahara_restaurant_1776785631205.png",
-      description: tr("tresind-studio.description")
-    }
-  ];
+interface Props {
+  items: Restaurant[];
+}
+
+export function RestaurantList({ items }: Props) {
+  const t = useTranslations("RestaurantList");
 
   return (
     <section id="featured" className="py-24 lg:py-32 px-6 lg:px-16 bg-zinc-950 text-white overflow-hidden relative scroll-mt-24">
@@ -64,7 +47,7 @@ export function RestaurantList() {
          </Reveal>
 
          <div className="lg:col-span-7 xl:col-span-8 space-y-8 lg:space-y-12">
-            {TOP_PICKS.map((item, i) => (
+            {items.map((item, i) => (
               <Reveal 
                 key={item.slug} 
                 className={`${i === 0 ? 'stagger-1' : 'stagger-2'}`}

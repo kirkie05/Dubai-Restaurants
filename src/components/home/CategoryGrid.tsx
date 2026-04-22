@@ -5,23 +5,19 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/ui/Reveal";
 
-const CUISINES = [
-  { name: "Italian", count: 142, slug: "italian", image: "/cuisine_italian_high_fidelity_1776785759860.png" },
-  { name: "Japanese", count: 89, slug: "japanese", image: "/cuisine_japanese_high_fidelity_1776785722454.png" },
-  { name: "Indian", count: 112, slug: "indian", image: "/cuisine_indian_high_fidelity_1776785772426.png" },
-  { name: "Lebanese", count: 76, slug: "lebanese", image: "/cuisine_lebanese_high_fidelity_1776785787411.png" },
-];
+interface Cuisine {
+  name: string;
+  count: number;
+  slug: string;
+  image: string;
+}
 
-export function CategoryGrid() {
+interface Props {
+  cuisines: Cuisine[];
+}
+
+export function CategoryGrid({ cuisines }: Props) {
   const t = useTranslations("CategoryGrid");
-  const dt = useTranslations("Data");
-
-  const CUISINES = [
-    { name: dt("cuisines.italian"), count: 142, slug: "italian", image: "/cuisine_italian_high_fidelity_1776785759860.png" },
-    { name: dt("cuisines.japanese"), count: 89, slug: "japanese", image: "/cuisine_japanese_high_fidelity_1776785722454.png" },
-    { name: dt("cuisines.indian"), count: 112, slug: "indian", image: "/cuisine_indian_high_fidelity_1776785772426.png" },
-    { name: dt("cuisines.lebanese"), count: 76, slug: "lebanese", image: "/cuisine_lebanese_high_fidelity_1776785787411.png" },
-  ];
 
   return (
     <section id="categories" className="py-24 lg:py-32 px-6 lg:px-16 bg-slate-50 relative overflow-hidden scroll-mt-24">
@@ -43,7 +39,7 @@ export function CategoryGrid() {
         </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-           {CUISINES.map((cuisine, i) => (
+           {cuisines.map((cuisine, i) => (
              <Reveal 
                key={cuisine.slug} 
                className={`group aspect-[3/4] lg:aspect-square rounded-[3rem] lg:rounded-[4rem] overflow-hidden shadow-2xl hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] transition-all duration-700 ${i === 0 ? 'stagger-1' : i === 1 ? 'stagger-2' : i === 2 ? 'stagger-3' : 'stagger-4'}`}

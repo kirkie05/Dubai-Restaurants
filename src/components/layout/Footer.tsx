@@ -1,14 +1,22 @@
 import { Link } from '@/navigation';
 import { getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 
 export const Footer = async () => {
   const t = await getTranslations('Footer');
 
   return (
-    <footer className="w-full py-16 px-8 mt-auto bg-slate-50 border-t border-slate-200">
+    <footer className="w-full py-12 px-8 mt-auto bg-slate-50 border-t border-slate-200">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-screen-2xl mx-auto text-sm leading-relaxed">
         <div className="col-span-2 md:col-span-1">
-          <div className="text-xl font-black text-slate-900 mb-4 tracking-tighter">DRD</div>
+          <div className="relative h-16 w-40 mb-2">
+             <Image 
+               src="/logo.png" 
+               alt="Logo" 
+               fill 
+               className="object-contain"
+             />
+          </div>
           <p className="text-slate-500 mb-6 max-w-xs">© {new Date().getFullYear()} {t('copyright')}</p>
         </div>
         <div className="flex flex-col gap-4">

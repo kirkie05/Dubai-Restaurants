@@ -11,14 +11,54 @@ import { BlogPreview } from "@/components/home/BlogPreview";
 import { TestimonialSlider } from "@/components/home/TestimonialSlider";
 import { AppDownload } from "@/components/home/AppDownload";
 
-export default function Home() {
+import { getCuisines, getFeaturedRestaurants, getRestaurants } from "@/lib/db";
+
+export default async function Home() {
+  const cuisines = await getCuisines();
+  const featured = await getFeaturedRestaurants();
+  const allRestaurants = await getRestaurants();
+  
+  // Map Supabase data to component structure
+  const cuisineItems = cuisines.slice(0, 4).map(c => ({
+    name: c.name,
+    slug: c.slug,
+    image: c.image_url,
+    count: 0 // We'll implement count aggregation later if needed
+  }));
+
+  const featuredItems = featured.map(res => ({
+    slug: res.slug,
+    name: res.name,
+    location: res.location,
+    cuisine: res.cuisines?.name || 'Various',
+    rating: res.rating.toString(),
+    image: res.image_url,
+    description: res.description
+  }));
+
+  const gridItems = allRestaurants.slice(0, 6).map(res => ({
+    slug: res.slug,
+    name: res.name,
+    location: res.location,
+    cuisine: res.cuisines?.name || 'Various',
+    rating: res.rating.toString(),
+    image: res.image_url
+  }));
+
+  const heroSuggestions = allRestaurants.map(res => ({
+    id: res.id,
+    name: res.name,
+    type: 'Restaurant',
+    area: res.location
+  }));
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Navbar />
       
       <main className="flex-grow">
         <div className="relative z-30">
-          <HeroSection />
+          <HeroSection initialSuggestions={heroSuggestions} />
         </div>
         
         <div className="relative z-20">
@@ -29,19 +69,19 @@ export default function Home() {
         <div className="h-12 bg-slate-50 -skew-y-2 origin-left scale-110 mb-[-1px] relative z-20"></div>
         
         <div className="relative z-10">
-          <CategoryGrid />
+          <CategoryGrid cuisines={cuisineItems} />
         </div>
         
         {/* Slanted Divider 02 (To Dark) */}
         <div className="h-12 bg-zinc-950 -skew-y-2 origin-right scale-110 mb-[-1px] relative z-10"></div>
         
         <div className="relative z-0">
-          <RestaurantList />
+          <RestaurantList items={featuredItems} />
         </div>
 
         {/* Simple Grid Transition */}
         <div className="relative z-0">
-          <RestaurantGrid />
+          <RestaurantGrid items={gridItems} />
         </div>
 
         {/* Slanted Divider 03 (To Light) */}

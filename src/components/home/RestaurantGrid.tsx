@@ -4,16 +4,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-const OTHER_RESTAURANTS = [
-  { name: "Dean's Cheesecake", cuisine: "Bakery", location: "DIFC", rating: "4.8", image: "/deans_cheesecake_1776785663897.png", slug: "deans-cheesecake" },
-  { name: "Primo's Pizza & Grill", cuisine: "Italian", location: "Marina", rating: "4.6", image: "/primos_pizza_restaurant_1776785706161.png", slug: "primos-pizza" },
-  { name: "Tijuana Flare", cuisine: "Mexican", location: "Downtown", rating: "4.9", image: "/tijuana_flare_restaurant_1776785691604.png", slug: "tijuana-flare" },
-  { name: "Zuma", cuisine: "Japanese", location: "DIFC", rating: "4.8", image: "/cuisine_japanese_high_fidelity_1776785722454.png", slug: "zuma" },
-  { name: "Indochine", cuisine: "French-Vietnamese", location: "DIFC", rating: "4.7", image: "/al_mahara_restaurant_1776785631205.png", slug: "indochine" },
-  { name: "Amazonico", cuisine: "Latin American", location: "DIFC", rating: "4.6", image: "/tijuana_flare_restaurant_1776785691604.png", slug: "amazonico" },
-];
+interface Restaurant {
+  slug: string;
+  name: string;
+  location: string;
+  cuisine: string;
+  rating: string;
+  image: string;
+}
 
-export function RestaurantGrid() {
+interface Props {
+  items: Restaurant[];
+}
+
+export function RestaurantGrid({ items }: Props) {
   const t = useTranslations("RestaurantGrid");
 
   return (
@@ -28,7 +32,7 @@ export function RestaurantGrid() {
         </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          {OTHER_RESTAURANTS.map((item) => (
+          {items.map((item) => (
             <Link key={item.slug} href={`/restaurant/${item.slug}`} className="group space-y-6">
               <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-700">
                 <Image

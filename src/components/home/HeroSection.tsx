@@ -13,13 +13,24 @@ const MOCK_SUGGESTIONS = [
   { id: 5, name: "Dubai Marina", type: "Area", area: "Coastal" },
 ];
 
-export function HeroSection() {
+interface Suggestion {
+  id: string | number;
+  name: string;
+  type: string;
+  area: string;
+}
+
+interface Props {
+  initialSuggestions?: Suggestion[];
+}
+
+export function HeroSection({ initialSuggestions }: Props) {
   const t = useTranslations('Hero');
   const ct = useTranslations('Common');
   const dt = useTranslations('Data');
   const t_root = useTranslations();
   
-  const mockSuggestions = useMemo(() => [
+  const defaultSuggestions = useMemo(() => [
     { id: 1, name: "Al Mahara", type: dt('types.restaurant'), area: dt('areas.burj-al-arab') },
     { id: 2, name: dt('areas.downtown'), type: dt('types.area'), area: dt('areas.city-center') },
     { id: 3, name: dt('cuisines.indian'), type: dt('types.category'), area: dt('areas.global') },
@@ -28,6 +39,8 @@ export function HeroSection() {
     { id: 6, name: "Zuma", type: dt('types.restaurant'), area: t_root('Data.areas.difc') },
     { id: 7, name: "Nobu", type: dt('types.restaurant'), area: dt('areas.palm-jumeirah') },
   ], [dt, t_root]);
+
+  const mockSuggestions = (initialSuggestions && initialSuggestions.length > 0) ? initialSuggestions : defaultSuggestions;
 
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState<typeof mockSuggestions>([]);
@@ -99,13 +112,12 @@ export function HeroSection() {
           </Reveal>
 
           <div className="flex flex-col sm:flex-row gap-4 max-w-2xl relative">
-             <div className="flex-1 flex items-center bg-white border border-slate-100 rounded-2xl p-2 shadow-2xl focus-within:ring-4 focus-within:ring-primary/5 transition-all relative">
+             <div ref={suggestionRef} className="flex-1 flex items-center bg-white border border-slate-100 rounded-2xl p-2 shadow-2xl focus-within:ring-4 focus-within:ring-primary/5 transition-all relative">
                 <span className="material-symbols-outlined ml-4 text-slate-300">location_on</span>
                 <input 
                    type="text" 
                    value={searchQuery}
-                                      onFocus={() => setShowSuggestions(true)}
-
+                   onFocus={() => setShowSuggestions(true)}
                    onChange={(e) => setSearchQuery(e.target.value)}
                    placeholder={t('searchPlaceholder')}
                    className="w-full border-none focus:ring-0 text-sm lg:text-base font-body italic p-4 ml-2"
@@ -116,7 +128,7 @@ export function HeroSection() {
 
                 {/* Suggestions Dropdown */}
                 {showSuggestions && suggestions.length > 0 && (
-                  <div ref={suggestionRef} className="absolute top-full left-0 right-0 mt-4 bg-white/95 backdrop-blur-2xl border border-slate-100 shadow-[0_30px_60px_rgba(0,0,0,0.1)] rounded-2xl overflow-hidden z-[100] p-4 animate-in fade-in slide-in-from-top-2">
+                  <div className="absolute top-full left-0 right-0 mt-4 bg-white/95 backdrop-blur-2xl border border-slate-100 shadow-[0_30px_60px_rgba(0,0,0,0.1)] rounded-2xl overflow-hidden z-[100] p-4 animate-in fade-in slide-in-from-top-2">
                      <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-4 px-4">{t('suggestions.instant')}</p>
                      <div className="space-y-1">
                         {suggestions.map((item) => (

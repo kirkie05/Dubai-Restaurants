@@ -4,79 +4,26 @@ import { Footer } from '@/components/layout/Footer';
 import { getTranslations } from 'next-intl/server';
 import { RestaurantDirectory } from '@/components/restaurants/RestaurantDirectory';
 
+import { getRestaurants } from '@/lib/db';
+
 export default async function RestaurantListing({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'RestaurantListing' });
-  const tr = await getTranslations({ locale, namespace: 'Restaurants' });
+  
+  // Fetch from Supabase
+  const dbRestaurants = await getRestaurants();
 
-  const LISTING_ITEMS = [
-    {
-      slug: "al-mahara",
-      name: tr("al-mahara.name"),
-      image: "/al_mahara_restaurant_1776785631205.png",
-      rating: tr("al-mahara.rating"),
-      cuisine: tr("al-mahara.cuisine"),
-      price: tr("al-mahara.price"),
-      location: tr("al-mahara.location"),
-      description: tr("al-mahara.description"),
-      badge: tr("al-mahara.badge")
-    },
-    {
-      slug: "nobu-dubai",
-      name: tr("nobu-dubai.name"),
-      image: "/cuisine_japanese_high_fidelity_1776785722454.png",
-      rating: tr("nobu-dubai.rating"),
-      cuisine: tr("nobu-dubai.cuisine"),
-      price: tr("nobu-dubai.price"),
-      location: tr("nobu-dubai.location"),
-      description: tr("nobu-dubai.description"),
-      badge: tr("nobu-dubai.badge")
-    },
-    {
-      slug: "ossiano",
-      name: tr("ossiano.name"),
-      image: "/ossiano_restaurant_1776785646414.png",
-      rating: tr("ossiano.rating"),
-      cuisine: tr("ossiano.cuisine"),
-      price: tr("ossiano.price"),
-      location: tr("ossiano.location"),
-      description: tr("ossiano.description"),
-      badge: tr("ossiano.badge")
-    },
-    {
-      slug: "tresind-studio",
-      name: tr("tresind-studio.name"),
-      image: "/cuisine_indian_high_fidelity_1776785772426.png",
-      rating: tr("tresind-studio.rating"),
-      cuisine: tr("tresind-studio.cuisine"),
-      price: tr("tresind-studio.price"),
-      location: tr("tresind-studio.location"),
-      description: tr("tresind-studio.description"),
-      badge: tr("tresind-studio.badge")
-    },
-    {
-      slug: "zuma",
-      name: tr("zuma.name"),
-      image: "/cuisine_japanese_high_fidelity_1776785722454.png",
-      rating: tr("zuma.rating"),
-      cuisine: tr("zuma.cuisine"),
-      price: tr("zuma.price"),
-      location: tr("zuma.location"),
-      description: tr("zuma.description"),
-      badge: tr("zuma.badge")
-    },
-    {
-      slug: "primos-pizza",
-      name: tr("primos-pizza.name"),
-      image: "/primos_pizza_restaurant_1776785706161.png",
-      rating: tr("primos-pizza.rating"),
-      cuisine: tr("primos-pizza.cuisine"),
-      price: tr("primos-pizza.price"),
-      location: tr("primos-pizza.location"),
-      description: tr("primos-pizza.description"),
-      badge: tr("primos-pizza.badge")
-    }
-  ];
+  const LISTING_ITEMS = dbRestaurants.map(res => ({
+    slug: res.slug,
+    name: res.name,
+    image: res.image_url,
+    rating: res.rating.toString(),
+    cuisine: res.cuisines?.name || 'Various',
+    price: res.price_range,
+    location: res.location,
+    description: res.description,
+    badge: res.badge
+  }));
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-on-surface">
