@@ -1,20 +1,31 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const TRENDING_MOCK = [
-  { id: 1, name: "Dean's Cheesecake", rating: 4.8, type: "Bakery", location: "DIFC, Dubai", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDrIsYUUoc19uEnsaiJEirMxyd2g0H-fk2fuOCTIO27M3_C7dK84aSQymRafH2q932HYkqhCg4ROdaklHVY7nlInnzZRBaGL6rMXfYtl7EiAJp-SqEI18zpN2iBFYs9kfsgKaq84BCHccmzJV2BggEe01u0pNDS32l20rpK-1AmQvYeCBFMkhQlvP620w9PmRNrxhNVKkf1ACb7HDyslrSPPUh93kw0xW1xtG40tvfMEtMOD_KZVj64p2MXq5c-kDgAOTyGSjqebF_w" },
-  { id: 2, name: "Primo's Pizza & Grill", rating: 4.6, type: "Italian", location: "Marina, Dubai", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAzv0qhsoRFmpbHaf_2gJ_lKOUMZVdzV0SBQT9r1fZ1EEpAv2epAT_tNIR6XOChNUVmNnOvDAbZK6SaW4Bn1dHTQo3VJOBeyrqTBElxkS8ZbtUdNglTvQM9CBzWTmgyMnWBo4vOA9PsIu5tcJIGAy5Gk8mxTzZXEUzIRv3LG0iF2ABnY4Yl4UMWSO8A2-Z6v90UL2S2Dq_IzNTcJimIMCVNtrTylS4qApQ1XawxxKhd4h8h9xQ6fLaB6rC5xCWKYJ7MAbISfcTbl7ty" },
-  { id: 3, name: "Tijuana Flare", rating: 4.9, type: "Mexican", location: "Downtown, Dubai", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAGa4CwW44iM04VNtHF6xpbm3v-__4K0qWXbVOgML_MZ0bCI1maDFyaT2OufKmnTeReschX3WXF-8DDdsgUWIyM-ZPVKfWCDqfbGIFguAMlHxvppgnxBUW2KdpfQL5E26DbsWA23Xy5a1-kb5N3DCGI9JwTY_53PouhL748ldeA5TcFUFiOVAHbq4FUJpGBfnD_yF6Cc3_0JBD7kdM_fuQGUSHdCVY-bIwyxI2E2pc9Q0MAIyApeYbpKbR8nvfsCjnEFKv-6ig6tGjq" }
+  { id: 1, name: "Dean's Cheesecake", rating: 4.8, type: "Bakery", location: "DIFC, Dubai", image: "/deans_cheesecake_1776785663897.png" },
+  { id: 2, name: "Primo's Pizza & Grill", rating: 4.6, type: "Italian", location: "Marina, Dubai", image: "/primos_pizza_restaurant_1776785706161.png" },
+  { id: 3, name: "Tijuana Flare", rating: 4.9, type: "Mexican", location: "Downtown, Dubai", image: "/tijuana_flare_restaurant_1776785691604.png" }
 ];
 
 export function TrendingCarousel() {
+  const t = useTranslations("TrendingCarousel");
+
+  const TRENDING_MOCK = [
+    { id: "deans-cheesecake", name: t("items.deans.name"), rating: 4.8, type: t("items.deans.type"), location: t("items.deans.location"), image: "/deans_cheesecake_1776785663897.png" },
+    { id: "primos-pizza", name: t("items.primos.name"), rating: 4.6, type: t("items.primos.type"), location: t("items.primos.location"), image: "/primos_pizza_restaurant_1776785706161.png" },
+    { id: "tijuana-flare", name: t("items.tijuana.name"), rating: 4.9, type: t("items.tijuana.type"), location: t("items.tijuana.location"), image: "/tijuana_flare_restaurant_1776785691604.png" }
+  ];
+
   return (
     <section className="py-24 px-8 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-12">
         <div className="flex flex-col md:flex-row justify-between items-end gap-6 border-l-4 border-primary pl-8">
           <div className="space-y-2">
-            <h2 className="text-4xl font-headline font-black italic tracking-tight text-on-surface">Trending This Week</h2>
-            <p className="text-slate-400 font-body text-sm font-medium">The most popular restaurants in Dubai right now.</p>
+            <h2 className="text-4xl font-headline font-black italic tracking-tight text-on-surface">{t("title")}</h2>
+            <p className="text-slate-400 font-body text-sm font-medium">{t("subtitle")}</p>
           </div>
           <div className="flex gap-4">
              <button className="w-12 h-12 rounded-full border border-slate-100 flex items-center justify-center text-slate-300 hover:border-primary hover:text-primary transition-all">

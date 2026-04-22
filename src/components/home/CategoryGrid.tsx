@@ -1,36 +1,49 @@
-import Link from "next/link";
+"use client";
+
+import { Link } from "@/navigation";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const CUISINES = [
-  { name: "Italian", count: 142, slug: "italian", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB6i_-Wj6_G0_N8_v_oZ_u_j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z" },
-  { name: "Japanese", count: 89, slug: "japanese", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC1_a_b_c_d_e_f_g_h_i_j_k_l_m_n_o_p_q_r_s_t_u_v_w-x-y-z" },
-  { name: "Indian", count: 112, slug: "indian", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD2_1_2_3_4_5_6_7_8_9_0_a_b_c_d_e_f_g_h_i_j_k_l_m_n_o" },
-  { name: "Lebanese", count: 76, slug: "lebanese", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuE3_q_w_e_r_t_y_u_i_o_p_a_s_d_f_g_h_j_k_l_z_x_c_v_b_n" },
+  { name: "Italian", count: 142, slug: "italian", image: "/cuisine_italian_high_fidelity_1776785759860.png" },
+  { name: "Japanese", count: 89, slug: "japanese", image: "/cuisine_japanese_high_fidelity_1776785722454.png" },
+  { name: "Indian", count: 112, slug: "indian", image: "/cuisine_indian_high_fidelity_1776785772426.png" },
+  { name: "Lebanese", count: 76, slug: "lebanese", image: "/cuisine_lebanese_high_fidelity_1776785787411.png" },
 ];
 
 export function CategoryGrid() {
+  const t = useTranslations("CategoryGrid");
+  const dt = useTranslations("Data");
+
+  const CUISINES = [
+    { name: dt("cuisines.italian"), count: 142, slug: "italian", image: "/cuisine_italian_high_fidelity_1776785759860.png" },
+    { name: dt("cuisines.japanese"), count: 89, slug: "japanese", image: "/cuisine_japanese_high_fidelity_1776785722454.png" },
+    { name: dt("cuisines.indian"), count: 112, slug: "indian", image: "/cuisine_indian_high_fidelity_1776785772426.png" },
+    { name: dt("cuisines.lebanese"), count: 76, slug: "lebanese", image: "/cuisine_lebanese_high_fidelity_1776785787411.png" },
+  ];
+
   return (
-    <section className="py-32 lg:py-48 px-6 lg:px-16 bg-slate-50 relative overflow-hidden">
+    <section id="categories" className="py-24 lg:py-32 px-6 lg:px-16 bg-slate-50 relative overflow-hidden scroll-mt-24">
       <div className="max-w-[1920px] mx-auto space-y-20 relative z-10">
-        <header className="flex flex-col lg:flex-row justify-between items-end gap-12 pb-16 border-b border-slate-200">
+        <header className="flex flex-col lg:flex-row justify-between items-end gap-12 pb-16 border-b border-slate-200 reveal-on-scroll">
            <div className="space-y-6">
               <div className="flex items-center gap-4">
-                 <span className="text-secondary font-body text-[10px] font-black uppercase tracking-[0.6em] block">Taste Archetypes</span>
+                 <span className="text-secondary font-body text-[10px] font-black uppercase tracking-[0.6em] block">{t("label")}</span>
                  <div className="w-8 h-1 bg-primary"></div>
               </div>
-              <h2 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter leading-none text-on-surface">The <br /><span className="text-zinc-300">Cuisines.</span></h2>
-              <p className="text-xl text-slate-500 font-body italic leading-relaxed max-w-2xl">
-                 Explore Dubai&apos;s culinary landscape through the lens of global heritage. From Michelin-star Italian to avant-garde Japanese.
+              <h2 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter leading-none text-on-surface">{t("title")}</h2>
+              <p className="text-xl text-slate-500 font-body italic leading-relaxed max-w-xl">
+                 {t("subtitle")}
               </p>
            </div>
-           <Link href="/cuisines" className="text-[10px] font-black uppercase tracking-[0.4em] text-primary border-b-2 border-primary/20 pb-2 hover:border-primary transition-all font-body">View All Heritage Categories</Link>
+           <Link href="/cuisines" className="text-[10px] font-black uppercase tracking-[0.4em] text-primary border-b-2 border-primary/20 pb-2 hover:border-primary transition-all font-body">{t("viewAll")}</Link>
         </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-           {CUISINES.map((cuisine) => (
-             <Link key={cuisine.slug} href={`/cuisines/${cuisine.slug}`} className="group relative aspect-[3/4] lg:aspect-square rounded-[3rem] lg:rounded-[4rem] overflow-hidden shadow-2xl hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] transition-all duration-700">
-                <Image 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2Vov6_iK_6_T_i_X_l_m_n_o_p_q_r_s_t_u_v_w_x_y_z_1_2_3_4_5_6_7_8_9_0" 
+           {CUISINES.map((cuisine, i) => (
+             <Link key={cuisine.slug} href={`/cuisines/${cuisine.slug}`} className={`group relative aspect-[3/4] lg:aspect-square rounded-[3rem] lg:rounded-[4rem] overflow-hidden shadow-2xl hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] transition-all duration-700 reveal-on-scroll ${i === 0 ? 'stagger-1' : i === 1 ? 'stagger-2' : i === 2 ? 'stagger-3' : 'stagger-4'}`}>
+                <Image
+                  src={cuisine.image}
                   alt={cuisine.name}
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
@@ -40,7 +53,7 @@ export function CategoryGrid() {
                    <h3 className="text-4xl lg:text-5xl font-headline font-black italic tracking-tighter">{cuisine.name}.</h3>
                    <div className="flex items-center gap-3">
                       <div className="w-6 h-px bg-primary"></div>
-                      <span className="text-[10px] font-black uppercase tracking-widest text-secondary group-hover:text-white transition-colors">{cuisine.count} Destinations</span>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-secondary group-hover:text-white transition-colors">{cuisine.count} {t("destinations")}</span>
                    </div>
                 </div>
              </Link>

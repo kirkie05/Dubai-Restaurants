@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/navigation";
+import { useTranslations } from 'next-intl';
 
 interface RestaurantCardProps {
   name: string;
@@ -26,6 +27,8 @@ export const RestaurantCard = ({
   badgeColor = 'primary',
   slug
 }: RestaurantCardProps) => {
+  const t = useTranslations('RestaurantCard');
+
   return (
     <Link href={`/restaurant/${slug}`} className="group cursor-pointer">
       <div className="relative overflow-hidden mb-6 aspect-[4/5] rounded-2xl border border-slate-50 shadow-sm">
@@ -34,6 +37,7 @@ export const RestaurantCard = ({
           alt={name}
           fill
           className="w-full h-full object-cover grayscale transition-all duration-[1200ms] group-hover:grayscale-0 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute top-5 left-5 flex flex-col gap-2">
           <span className="bg-white/95 backdrop-blur-xl text-on-surface px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.2em] rounded-sm shadow-sm">
@@ -63,14 +67,14 @@ export const RestaurantCard = ({
         <p className="text-slate-400 font-body text-sm leading-relaxed line-clamp-2 italic">{description}</p>
         <div className="flex items-center gap-6 pt-2 border-t border-slate-50">
           <div className="flex flex-col">
-            <span className="text-[9px] font-black uppercase text-slate-300 tracking-[0.2em] mb-1">Pricing</span>
+            <span className="text-[9px] font-black uppercase text-slate-300 tracking-[0.2em] mb-1">{t('pricing')}</span>
             <span className="text-xs font-bold text-on-surface">{price}</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-[9px] font-black uppercase text-slate-300 tracking-[0.2em] mb-1">Status</span>
+            <span className="text-[9px] font-black uppercase text-slate-300 tracking-[0.2em] mb-1">{t('status')}</span>
             <span className="text-xs font-bold text-success flex items-center gap-1">
               <span className="w-1 h-1 bg-success rounded-full"></span>
-              Open Now
+              {t('openNow')}
             </span>
           </div>
         </div>

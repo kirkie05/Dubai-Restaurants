@@ -1,0 +1,111 @@
+{
+  "Hero": {
+    "title": "Kuratierte Dubai Restaurants.",
+    "subtitle": "Der ultimative Guide zu Dubais Michelin-Sterne-Locations, globalen Küchen und versteckten Schätzen. Fachmännisch kuratiert, redaktionell geprüft.",
+    "searchPlaceholder": "Ort suchen...",
+    "locateMe": "Mich finden"
+  },
+  "Navbar": {
+    "restaurants": "Restaurants",
+    "cuisines": "Küchen",
+    "experiences": "Erlebnisse",
+    "chefs": "Köche"
+  },
+  "Common": {
+    "digitalCurator": "Digitaler Kurator",
+    "official": "Offiziell"
+  },
+  "TrendingCarousel": {
+    "title": "Trends der Woche",
+    "subtitle": "Die beliebtesten Restaurants in Dubai gerade jetzt."
+  },
+  "CategoryGrid": {
+    "label": "Geschmacksarchetypen",
+    "title": "Die Küchen.",
+    "subtitle": "Entdecken Sie Dubais kulinarische Landschaft durch das Prisma des globalen Erbes. Von Michelin-Stern-Italiener bis zum avantgardistischen Japaner.",
+    "viewAll": "Alle Traditionskategorien anzeigen",
+    "destinations": "Ziele"
+  },
+  "RestaurantList": {
+    "label": "Kuratoren-Auswahl",
+    "labelVerified": "Verifiziert",
+    "title": "Die Elite.",
+    "subtitle": "Ein hochpräzises Audit der einflussreichsten Speisesäle Dubais. Verifiziert von unserem Gremium digitaler Kuratoren.",
+    "browseAll": "Vollständiges Repository durchsuchen",
+    "premiumBadge": "PREMIUM-AUSWAHL"
+  },
+  "ChefGrid": {
+    "label": "Die Geister",
+    "labelVerified": "Verifizierte Autorität",
+    "title": "Die Meister.",
+    "subtitle": "Ein kuratiertes Portal zu Dubais kulinarischen Visionären. Geschmacks-Architekten, die die gastronomische Identität der Stadt neu definieren.",
+    "meetAll": "Alle Kochmeister kennenlernen",
+    "verifiedBadge": "VERIFIZIERTER MEISTER"
+  },
+  "CityMapSection": {
+    "label": "Raumführer",
+    "labelOfficial": "Offiziell",
+    "title": "Die Cluster.",
+    "subtitle": "Navigieren Sie durch Dubais kulinarische Topographie. Von den architektonischen Höhen der Innenstadt bis zu den Küstennarrativen der Marina.",
+    "clusters": "Wichtige kulinarische Cluster",
+    "tables": "Kartierte hochpräzise Tische",
+    "launch": "Räumliche Entdeckung starten"
+  },
+  "RestaurantGrid": {
+    "title": "Kuratierte Restaurants.",
+    "subtitle": "Erkunden Sie die Lieblinge der Nachbarschaft und verifizierte verborgene Schätze.",
+    "browseAll": "Vollständiges Repository durchsuchen"
+  },
+  "BlogPreview": {
+    "title": "Unsere neuesten Blog-Beiträge",
+    "subtitle": "Innere Geschichten aus Dubais kulinarischer Szene.",
+    "seeMore": "Mehr sehen",
+    "continueReading": "Weiterlesen"
+  },
+  "FeatureGrid": {
+    "title": "Service neu definieren.",
+    "subtitle": "Eine vollständige Suite digitaler Tools für den modernen Gast.",
+    "feature1Title": "Erweiterte Tischreservierung",
+    "feature1Desc": "Echtzeit-Reservierungssystem mit sofortiger Bestätigung und digitalem Concierge-Support.",
+    "feature2Title": "Exklusiver Medienzugang",
+    "feature2Desc": "Schalten Sie hochpräzise kulinarische Fotografie und Hinter-den-Kulissen-Galerie frei.",
+    "feature3Title": "Verifizierte Bewertungen",
+    "feature3Desc": "Redaktionelle Bewertungen von Dubais erfahrensten Gastrokritikern.",
+    "feature4Title": "Prioritäts-Support",
+    "feature4Desc": "Rund um die Uhr dedizierte Leitung für unsere Elite-Mitglieder zur Verwaltung von Buchungen."
+  },
+  "MetricSection": {
+    "title": "Einführung des Curation Pulse.",
+    "subtitle": "Stellen Sie sich vor, die Atmosphäre eines Restaurants zu kennen, bevor Sie überhaupt eintreten. Unser proprietäres 50-Punkte-Inspektionssystem quantifiziert Luxus, Service und Konsistenz.",
+    "metric1Title": "Sentiment-Analyse",
+    "metric1Desc": "Wir gleichen Tausende von verifizierten Gästebewertungen ab, um den Echtzeit-Ruf eines Establishments zu bestimmen.",
+    "metric2Title": "Live-Konsistenz",
+    "metric2Desc": "Unsere geheimen Kuratoren besuchen Veranstaltungsorte zu verschiedenen Zeiten der Woche, um sicherzustellen, dass die Qualität nie nachlässt.",
+    "pulseLabel": "Curation Pulse",
+    "eliteStatus": "Elite-Status bestätigt"
+  },
+  "AppDownload": {
+    "label": "Mobile Erfahrung",
+    "title": "Kuratieren Sie Ihren Geschmack unterwegs.",
+    "subtitle": "Die Dubai Restaurants App bringt unsere gesamte redaktionelle Datenbank und das Reservierungssystem an Ihre Fingerspitzen.",
+    "joinDiners": "Schließen Sie sich 50.000+ Elite-Dinern an",
+    "bookNow": "Jetzt buchen"
+  },
+  "TestimonialSlider": {
+    "title": "Unsere Kundengeschichten"
+  },
+  "Footer": {
+    "copyright": "Dubai Restaurants. Der Digitale Kurator. Alle Rechte vorbehalten.",
+    "neighborhoods": "Stadtteile",
+    "cuisines": "Küchen",
+    "company": "Unternehmen",
+    "jumeirah": "Jumeirah",
+    "downtownDubai": "Downtown Dubai",
+    "difc": "DIFC",
+    "fineDining": "Feinküche",
+    "brunchGuides": "Brunch-Guides",
+    "aboutUs": "Über uns",
+    "contact": "Kontakt",
+    "faq": "FAQ"
+  }
+}

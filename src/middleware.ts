@@ -1,37 +1,22 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import { NextResponse, type NextRequest } from "next/server";
-
-const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)', '/', '/api/webhook/clerk']);
-
-const publishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? "";
-const secretKey = process.env.CLERK_SECRET_KEY ?? "";
-
-// Only enable Clerk in this scaffold when real keys are present.
-const hasClerkKeys =
-  /^pk_(test|live)_/.test(publishableKey) &&
-  /^sk_(test|live)_/.test(secretKey);
-
-const guardedMiddleware = hasClerkKeys
-  ? clerkMiddleware(async (auth, request) => {
-      if (!isPublicRoute(request)) {
-        await auth.protect();
-      }
-    })
-  : null;
-
-export default function middleware(request: NextRequest, event: any) {
-  if (!guardedMiddleware) {
-    return NextResponse.next();
-  }
-
-  return guardedMiddleware(request, event);
-}
-
+import createMiddleware from 'next-intl/middleware';
+ 
+export default createMiddleware({
+  // A list of all locales that are supported
+  locales: ['en', 'ar', 'fr', 'de', 'es'],
+ 
+  // Used when no locale matches
+  defaultLocale: 'en',
+  localePrefix: 'always'
+});
+ 
 export const config = {
+  // Skip all paths that should not be internationalized
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Always run for API routes
-    '/(api|trpc)(.*)',
-  ],
+    // Match all pathnames except for
+    // - … if they contain a dot, e.g. `favicon.ico`
+    // - /api
+    // - /_next
+    // - /_vercel
+    '/((?!api|_next/static|_next/image|favicon.ico|apple-touch-icon.png|.*\\..*).*)'
+  ]
 };

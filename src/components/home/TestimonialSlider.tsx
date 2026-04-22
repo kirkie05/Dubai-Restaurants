@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export function TestimonialSlider() {
+  const t = useTranslations("TestimonialSlider");
+
   const testimonials = [
     {
       id: 1,
@@ -16,22 +21,22 @@ export function TestimonialSlider() {
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-16">
         <div className="space-y-4">
            <span className="material-symbols-outlined text-6xl text-primary opacity-20 select-none">format_quote</span>
-           <h2 className="text-4xl font-headline font-black italic tracking-tight text-on-surface">Our Customer Stories</h2>
+           <h2 className="text-4xl font-headline font-black italic tracking-tight text-on-surface">{t("title")}</h2>
         </div>
 
-        {testimonials.map((t) => (
-          <div key={t.id} className="max-w-4xl space-y-10 group">
+        {testimonials.map((testimonial) => (
+          <div key={testimonial.id} className="max-w-4xl space-y-10 group">
              <p className="text-3xl md:text-5xl font-headline font-bold italic leading-tight text-slate-700 tracking-tighter">
-               &quot;{t.quote}&quot;
+               &quot;{testimonial.quote}&quot;
              </p>
-             
+
              <div className="flex flex-col items-center gap-4">
                 <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-xl grayscale group-hover:grayscale-0 transition-all duration-1000">
-                   <Image src={t.avatar} alt={t.author} width={80} height={80} className="object-cover" />
+                   <Image src={testimonial.avatar} alt={testimonial.author} width={80} height={80} className="object-cover" />
                 </div>
                 <div className="space-y-1">
-                   <h4 className="font-headline font-black text-on-surface uppercase tracking-widest text-sm">{t.author}</h4>
-                   <p className="text-primary font-body text-[10px] font-bold uppercase tracking-[0.3em]">{t.role}</p>
+                   <h4 className="font-headline font-black text-on-surface uppercase tracking-widest text-sm">{testimonial.author}</h4>
+                   <p className="text-primary font-body text-[10px] font-bold uppercase tracking-[0.3em]">{testimonial.role}</p>
                 </div>
              </div>
           </div>
