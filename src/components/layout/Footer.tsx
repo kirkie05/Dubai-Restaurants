@@ -1,9 +1,11 @@
+"use client";
+
 import { Link } from '@/navigation';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-export const Footer = async () => {
-  const t = await getTranslations('Footer');
+export const Footer = () => {
+  const t = useTranslations('Footer');
 
   return (
     <footer className="w-full py-12 px-8 mt-auto bg-slate-50 border-t border-slate-200">
@@ -15,6 +17,7 @@ export const Footer = async () => {
                alt="Logo" 
                fill 
                className="object-contain"
+               sizes="160px"
              />
           </div>
           <p className="text-slate-500 mb-6 max-w-xs">© {new Date().getFullYear()} {t('copyright')}</p>

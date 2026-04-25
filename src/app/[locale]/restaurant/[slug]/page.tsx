@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from '@/navigation';
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { getTranslations } from 'next-intl/server';
@@ -45,7 +45,9 @@ export default async function RestaurantDetail({ params }: { params: Promise<{ s
     chef: dbRestaurant.chef_name,
     badge: dbRestaurant.badge,
     status: dbRestaurant.status,
-    image: dbRestaurant.image_url
+    image: dbRestaurant.image_url,
+    isClaimed: dbRestaurant.is_claimed,
+    plan: dbRestaurant.plan
   };
 
   return (
@@ -67,7 +69,11 @@ export default async function RestaurantDetail({ params }: { params: Promise<{ s
           <div className="absolute bottom-0 left-0 w-full px-8 lg:px-16 pb-20 max-w-[1920px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="max-w-4xl space-y-8 z-10">
               <div className="flex flex-wrap items-center gap-4">
-                <span className="bg-primary text-white px-4 py-1.5 rounded-sm text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">{restaurant.badge}</span>
+                {restaurant.isClaimed ? (
+                  <span className="bg-primary text-white px-4 py-1.5 rounded-sm text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">{restaurant.badge}</span>
+                ) : (
+                  <span className="bg-zinc-800 text-zinc-400 px-4 py-1.5 rounded-sm text-[10px] font-black uppercase tracking-[0.3em] border border-zinc-700">{t('discoveryLabel')}</span>
+                )}
                 <span className="bg-white/10 backdrop-blur-xl border border-white/20 text-white px-4 py-1.5 rounded-sm text-[10px] font-black uppercase tracking-[0.3em]">{restaurant.status}</span>
               </div>
               
@@ -101,14 +107,29 @@ export default async function RestaurantDetail({ params }: { params: Promise<{ s
             </div>
             
             <div className="flex flex-col gap-6 z-10 min-w-[320px]">
-              <Link href={`/book/${slug}`} className="bg-white text-zinc-900 px-12 py-6 rounded-xl font-headline font-black text-xl tracking-tight shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-4 group">
-                {t('reserveTable')}
-                <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
-              </Link>
-              <div className="flex gap-4">
-                <Link href={`/restaurant/${slug}/menu`} className="flex-1 bg-white/5 backdrop-blur-xl border border-white/10 text-white py-4 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/20 transition-all text-center">{t('viewMenu')}</Link>
-                <Link href={`/restaurant/${slug}/gallery`} className="flex-1 bg-white/5 backdrop-blur-xl border border-white/10 text-white py-4 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/20 transition-all text-center">{t('gallery')}</Link>
-              </div>
+              {restaurant.isClaimed ? (
+                <>
+                  <Link href={`/book/${slug}`} className="bg-white text-zinc-900 px-12 py-6 rounded-xl font-headline font-black text-xl tracking-tight shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-4 group">
+                    {t('reserveTable')}
+                    <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
+                  </Link>
+                  <div className="flex gap-4">
+                    <Link href={`/restaurant/${slug}/menu`} className="flex-1 bg-white/5 backdrop-blur-xl border border-white/10 text-white py-4 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/20 transition-all text-center">{t('viewMenu')}</Link>
+                    <Link href={`/restaurant/${slug}/gallery`} className="flex-1 bg-white/5 backdrop-blur-xl border border-white/10 text-white py-4 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/20 transition-all text-center">{t('gallery')}</Link>
+                  </div>
+                </>
+              ) : (
+                <div className="bg-white/95 backdrop-blur-xl p-8 rounded-2xl shadow-2xl space-y-6 border border-white">
+                  <div className="space-y-2">
+                    <h4 className="font-headline font-black italic text-zinc-900 text-2xl tracking-tight">{t('claimListing')}</h4>
+                    <p className="text-zinc-500 text-sm italic font-body leading-relaxed">{t('claimDesc')}</p>
+                  </div>
+                  <Link href={`/claim/${slug}`} className="w-full bg-primary text-white py-5 rounded-xl font-headline font-black italic text-lg tracking-tight hover:bg-zinc-900 transition-all flex items-center justify-center gap-3 group">
+                    Claim Ownership
+                    <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">verified</span>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </section>

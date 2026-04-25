@@ -392,7 +392,7 @@ export const screenCatalog: ScreenDefinition[] = [
   {
     id: "partner-registration",
     title: "Partner Registration Page",
-    path: "/partner/register",
+    path: "/partner/registration",
     area: "partner",
     category: "Partner Auth",
     summary: "Restaurant onboarding and registration flow.",

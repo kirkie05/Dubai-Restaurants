@@ -119,10 +119,10 @@
     "subtitle": "An uncompromising collection of Dubai's finest culinary destinations. curated, verified, and updated weekly.",
     "listView": "List View",
     "mapView": "Map View",
-    "partnerLabel": "Become a Partner",
-    "partnerTitle": "List your Destination.",
-    "partnerSubtitle": "Join the city's most exclusive gastronomic directory. Access our elite audience and premium booking engine.",
-    "applyNow": "Apply Now"
+    "partnerLabel": "For Restaurant Owners",
+    "partnerTitle": "Add Your Restaurant.",
+    "partnerSubtitle": "Create your listing in simple steps. You can choose a Free plan or a Paid plan.",
+    "applyNow": "Start Onboarding"
   },
   "ChefListing": {
     "label": "Culinary Artisans",
@@ -357,7 +357,10 @@
       "scallop": { "name": "Saffron Crystal Scallop", "desc": "Hand-dived scallops with a high-clarity saffron infusion." },
       "lamb": { "name": "Levantine Lamb Rack", "desc": "12-hour slow braise with a pomegranate glaze." },
       "baklava": { "name": "The Gold Leaf Baklava", "desc": "24k gold leaf accent with pistachio cream." }
-    }
+    },
+    "discoveryLabel": "Discovery Listing",
+    "claimListing": "Claim this listing",
+    "claimDesc": "If you own this restaurant, claim it now and choose a Free or Paid plan."
   },
   "Footer": {
     "copyright": "Dubai Restaurants Directory. All rights reserved.",

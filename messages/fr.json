@@ -9,7 +9,9 @@
     "restaurants": "Restaurants",
     "cuisines": "Cuisines",
     "experiences": "Expériences",
-    "chefs": "Chefs"
+    "chefs": "Chefs",
+    "signIn": "Se connecter.",
+    "switchLanguage": "Changer de langue"
   },
   "Common": {
     "digitalCurator": "Curateur Numérique",

@@ -1,17 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from 'next-intl';
 import { Reveal } from "@/components/ui/Reveal";
-
-const MOCK_SUGGESTIONS = [
-  { id: 1, name: "Al Mahara", type: "Restaurant", area: "Burj Al Arab" },
-  { id: 2, name: "Downtown Dubai", type: "Area", area: "City Center" },
-  { id: 3, name: "Indian Cuisine", type: "Category", area: "Global" },
-  { id: 4, name: "Ossiano", type: "Restaurant", area: "Palm Jumeirah" },
-  { id: 5, name: "Dubai Marina", type: "Area", area: "Coastal" },
-];
 
 interface Suggestion {
   id: string | number;
@@ -43,23 +35,20 @@ export function HeroSection({ initialSuggestions }: Props) {
   const mockSuggestions = (initialSuggestions && initialSuggestions.length > 0) ? initialSuggestions : defaultSuggestions;
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [suggestions, setSuggestions] = useState<typeof mockSuggestions>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isLocating, setIsLocating] = useState(false);
   const suggestionRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (searchQuery.length > 0) {
-      const filtered = mockSuggestions.filter(item => 
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.area.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      setSuggestions(filtered);
-      setShowSuggestions(true);
-    } else {
-      setSuggestions(mockSuggestions);
+  const filteredSuggestions = useMemo(() => {
+    if (searchQuery.trim().length === 0) {
+      return mockSuggestions;
     }
-  }, [searchQuery, mockSuggestions]);
+
+    const normalized = searchQuery.toLowerCase();
+    return mockSuggestions.filter((item) =>
+      item.name.toLowerCase().includes(normalized) || item.area.toLowerCase().includes(normalized)
+    );
+  }, [mockSuggestions, searchQuery]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -127,11 +116,11 @@ export function HeroSection({ initialSuggestions }: Props) {
                 </button>
 
                 {/* Suggestions Dropdown */}
-                {showSuggestions && suggestions.length > 0 && (
+                {showSuggestions && filteredSuggestions.length > 0 && (
                   <div className="absolute top-full left-0 right-0 mt-4 bg-white/95 backdrop-blur-2xl border border-slate-100 shadow-[0_30px_60px_rgba(0,0,0,0.1)] rounded-2xl overflow-hidden z-[100] p-4 animate-in fade-in slide-in-from-top-2">
                      <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-4 px-4">{t('suggestions.instant')}</p>
                      <div className="space-y-1">
-                        {suggestions.map((item) => (
+                        {filteredSuggestions.map((item) => (
                           <button 
                             key={item.id}
                             onClick={() => {

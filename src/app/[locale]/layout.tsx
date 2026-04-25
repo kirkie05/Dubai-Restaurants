@@ -21,13 +21,11 @@ const ibmPlexArabic = IBM_Plex_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Dubai Restaurants Discover",
-    template: "%s | Dubai Restaurants",
-  },
-  description:
-    "The ultimate guide to curated dining in Dubai. Explore luxury, heritage, and excellence.",
+  title: "Dubai Restaurants Discover",
+  description: "The ultimate guide to curated dining in Dubai.",
 };
+
+import { ClerkProvider } from '@clerk/nextjs';
 
 export default async function RootLayout({
   children,
@@ -41,15 +39,17 @@ export default async function RootLayout({
   const dir = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <html lang={locale} dir={dir} className={`${manrope.variable} ${playfair.variable} ${ibmPlexArabic.variable} h-full antialiased`}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&swap" rel="stylesheet" />
-      </head>
-      <body className={`min-h-full text-zinc-900 ${locale === 'ar' ? 'font-arabic' : 'font-manrope'}`}>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang={locale} dir={dir} className={`${manrope.variable} ${playfair.variable} ${ibmPlexArabic.variable} h-full antialiased`} suppressHydrationWarning>
+        <head>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" />
+        </head>
+        <body className={`min-h-full text-zinc-900 ${locale === 'ar' ? 'font-arabic' : 'font-manrope'}`} suppressHydrationWarning>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

@@ -15,6 +15,20 @@ if (!supabaseUrl || !supabaseServiceKey) {
 
 const supabase = createClient(supabaseUrl, supabaseServiceKey)
 
+type SeedRestaurant = {
+  name: string;
+  description: string;
+  longDescription: string;
+  cuisine: string;
+  price: string;
+  rating: string;
+  reviewsCount?: string;
+  chef: string;
+  badge: string;
+  status: string;
+  location: string;
+};
+
 async function seed() {
   console.log('Starting seed...')
 
@@ -25,10 +39,17 @@ async function seed() {
 
   // 1. Seed Cuisines
   console.log('Seeding cuisines...')
+  const cuisineImages: Record<string, string> = {
+    'indian': 'cuisine_indian_high_fidelity_1776785772426.png',
+    'italian': 'cuisine_italian_high_fidelity_1776785759860.png',
+    'japanese': 'cuisine_japanese_high_fidelity_1776785722454.png',
+    'lebanese': 'cuisine_lebanese_high_fidelity_1776785787411.png'
+  }
+
   const cuisinesToInsert = Object.entries(cuisinesData).map(([slug, name]) => ({
     name: name as string,
     slug,
-    image_url: `/cuisine_${slug}_high_fidelity.png`, // Placeholder pattern
+    image_url: `/${cuisineImages[slug] || 'cuisine_indian_high_fidelity_1776785772426.png'}`,
     description: messages.Cuisines.items[slug] || `Explore the best of ${name} cuisine in Dubai.`
   }))
 
@@ -47,8 +68,16 @@ async function seed() {
   console.log('Seeding restaurants...')
   const restaurantEntries = Object.entries(restaurantsData)
   
+  const restaurantImages: Record<string, string> = {
+    'al-mahara': 'al_mahara_restaurant_1776785631205.png',
+    'ossiano': 'ossiano_restaurant_1776785646414.png',
+    'primos-pizza': 'primos_pizza_restaurant_1776785706161.png',
+    'tijuana-flare': 'tijuana_flare_restaurant_1776785691604.png',
+    'deans-cheesecake': 'deans_cheesecake_1776785663897.png'
+  }
+
   for (const [slug, details] of restaurantEntries) {
-    const res = details as any
+    const res = details as SeedRestaurant
     
     // Find cuisine id
     const cuisineSlug = res.cuisine.toLowerCase().replace(/ /g, '-')
@@ -59,7 +88,7 @@ async function seed() {
       slug,
       description: res.description,
       long_description: res.longDescription,
-      image_url: `/${slug.replace(/-/g, '_')}_restaurant_1776785631205.png`, // Using the known local pattern
+      image_url: `/${restaurantImages[slug] || 'al_mahara_restaurant_1776785631205.png'}`,
       location: res.location,
       cuisine_id: cuisine?.id,
       price_range: res.price,
