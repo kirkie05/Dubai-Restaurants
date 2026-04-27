@@ -1,12 +1,13 @@
-"use client";
-
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Reveal } from "@/components/ui/Reveal";
-import Image from "next/image";
 import { Link } from '@/navigation';
+import { currentUser } from "@clerk/nextjs/server";
 
-export default function SuperAdminDashboard() {
+export default async function SuperAdminDashboard() {
+  const user = await currentUser();
+  const firstName = user?.firstName || "Admin";
+
   return (
     <div className="min-h-screen bg-zinc-950 flex flex-col text-white">
       <Navbar />
@@ -20,7 +21,7 @@ export default function SuperAdminDashboard() {
                  <div className="w-12 h-px bg-zinc-800"></div>
                  <span className="text-zinc-500 font-body text-[10px] font-black uppercase tracking-[0.4em] block">Super Admin Access</span>
               </div>
-              <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-none">The <br /><span className="text-primary">Engine.</span></h1>
+              <h1 className="text-6xl md:text-9xl font-headline font-black italic tracking-tighter leading-none">Welcome, <br /><span className="text-primary">{firstName}.</span></h1>
             </header>
             
             <div className="flex gap-4">

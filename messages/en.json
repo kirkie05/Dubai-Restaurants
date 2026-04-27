@@ -1,6 +1,7 @@
 {
+  "locale": "en",
   "Hero": {
-    "title": "Curated <red>Dubai Restaurants</red>.",
+    "title": "The <red>Collection.</red>",
     "subtitle": "The definitive guide to Dubai's Michelin-star venues, global cuisines, and hidden gems. Expertly curated, editorially verified.",
     "searchPlaceholder": "Search Location...",
     "locateMe": "Locate Me",
@@ -455,6 +456,187 @@
       "role": "Contemporary Pioneer",
       "restaurant": "Orfali Bros",
       "quote": "A journey of flavors that bridge cultures."
+    }
+  },
+  "Dashboard": {
+    "culinaryCommand": "Culinary Command",
+    "thePortfolio": "The Portfolio.",
+    "profileImpressions": "Profile Impressions",
+    "restaurantTraffic": "Restaurant Traffic",
+    "curationPulse": "Curation Pulse",
+    "mediaAssets": "Media Assets",
+    "recentMentions": "Recent Mentions.",
+    "liveVenues": "Live Venues.",
+    "verifiedGuest": "Verified Guest",
+    "stable": "Stable"
+  },
+  "Partner": {
+    "dashboard": "Partner Dashboard",
+    "billing": "Billing & Subscription",
+    "menu": "Menu Management",
+    "businessProfile": "Business Profile",
+    "activeTenure": "Active Tenure",
+    "upgrade": "Upgrade Plan",
+    "loadingFinancial": "Loading financial protocols...",
+    "financialProtocol": "Financial Protocol",
+    "tenure": "Tenure.",
+    "activeSubscription": "Active Subscription",
+    "launchingSoon": "Premium plans launching soon — join the waitlist.",
+    "launchingSoonBtn": "Launching Soon",
+    "month": "Month",
+    "currentChoice": "Current Choice",
+    "manageTenure": "Manage Tenure",
+    "activePlan": "Active Plan",
+    "upgradeSequence": "Upgrade Sequence",
+    "recentInvoices": "Recent Invoices",
+    "downloadAll": "Download All",
+    "noInvoices": "No invoices found in this tenure.",
+    "plans": {
+      "basic": {
+        "name": "Curator Tier",
+        "tier": "Standard",
+        "features": ["Priority Discovery", "Standard Analytics", "10 Bookings/mo"]
+      },
+      "premium": {
+        "name": "Elite Archive",
+        "tier": "Most Popular",
+        "features": ["Global Discovery", "Deep Analytics", "Unlimited Bookings", "Concierge Sync"]
+      }
+    },
+    "onboarding": {
+      "title": "List your restaurant in a few simple steps",
+      "subtitle": "This onboarding is for restaurants and partners. Fill your details, choose a plan, and finish setup.",
+      "claimPrompt": "If your restaurant is already in our admin-uploaded database, you can claim it instead.",
+      "claimLink": "Claim an existing restaurant",
+      "chefLink": "Complete chef onboarding",
+      "step1Title": "Step 1: Your contact details",
+      "step2Title": "Step 2: Business details",
+      "step3Title": "Step 3: Choose your plan",
+      "planDesc": "Pick a plan for this listing. You can upgrade or downgrade later.",
+      "owner": "Owner",
+      "business": "Business",
+      "plan": "Plan",
+      "finishing": "Finishing...",
+      "complete": "Complete onboarding",
+      "guideTitle": "Quick guide",
+      "guideSteps": [
+        "1. Add owner contact details.",
+        "2. Add business details.",
+        "3. Pick basic or premium plan.",
+        "4. Finish and access your partner dashboard."
+      ],
+      "alreadyInDb": "Restaurant already in database?",
+      "alreadyInDbDesc": "Ask admin for your restaurant slug, then open /claim/your-slug to claim and choose your plan."
+    },
+    "stats": {
+      "revenue": "Revenue Impact",
+      "bookings": "Total Bookings",
+      "conversions": "Pulse Conversion"
+    }
+  },
+  "Chef": {
+    "dashboard": "Kitchen Overview",
+    "profile": "Culinary Profile",
+    "venues": "Linked Venues",
+    "media": "Media Assets",
+    "onboarding": {
+      "label": "Chef Onboarding",
+      "submittedTitle": "Application Submitted",
+      "underReview": "Under Admin Review",
+      "underReviewDesc": "Your chef profile has been submitted and is awaiting admin verification. You'll receive access to your dashboard once approved.",
+      "pendingApproval": "Pending Approval",
+      "onboardingLabel": "Onboarding",
+      "whoAreYou": "Who are you joining as?",
+      "whoAreYouDesc": "Select your role to begin the right onboarding process.",
+      "chefRole": "Chef",
+      "imAChef": "I'm a Chef",
+      "chefRoleDesc": "Build your chef profile, link venues, and showcase your culinary work.",
+      "restaurantRole": "Restaurant",
+      "imARestaurant": "I'm a Restaurant",
+      "restaurantRoleDesc": "List your venue, manage your profile, and reach new diners in Dubai.",
+      "buildProfile": "Build your chef profile",
+      "buildProfileDesc": "Use clear details, then choose your plan. This helps guests trust your profile quickly.",
+      "step1Title": "Step 1: Basic details",
+      "step2Title": "Step 2: Professional Details",
+      "step3Title": "Step 3: Choose your plan",
+      "restaurantAffiliation": "Restaurant Affiliation (Optional)",
+      "freePlanLabel": "Free",
+      "freePlanTitle": "Free plan",
+      "freePlanDesc": "Basic chef profile and restaurant linking.",
+      "proPlanLabel": "Pro",
+      "proPlanTitle": "AED 49 / month",
+      "proPlanDesc": "Priority chef placement and premium story sections.",
+      "chef": "Chef",
+      "plan": "Plan",
+      "notSelected": "Not selected",
+      "back": "Back",
+      "continue": "Continue",
+      "submitting": "Submitting...",
+      "submit": "Submit for review"
+    }
+  },
+  "Admin": {
+    "moderation": "Moderation Center",
+    "pendingClaims": "Pending Claims",
+    "approve": "Approve",
+    "reject": "Reject",
+    "stats": "System Stats",
+    "vault": "Vault.",
+    "sanctity": "Sanctity.",
+    "reviews": "Reviews",
+    "chefs": "Chefs",
+    "partners": "Partners",
+    "masterControl": "Master Control",
+    "qualityControl": "Quality Control",
+    "loading": "Loading {type}...",
+    "noPending": "No pending {type} at the moment."
+  },
+  "Account": {
+    "profile": "Diner Profile",
+    "memberSince": "Member Since",
+    "totalBookings": "Total Bookings",
+    "eliteStatus": "Elite Status",
+    "active": "Active",
+    "quickActions": "Quick Actions",
+    "editDetails": "Edit Personal Details",
+    "manageReservations": "Manage Reservations",
+    "yourJournal": "Your Journal.",
+    "journalDesc": "Explore your personal history with Dubai's culinary landscape. Your verified bookings, hidden gem discoveries, and elite preferences.",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "manage": "Manage",
+    "rewardsLabel": "Curator Rewards",
+    "benefitsTitle": "The Heritage Benefits.",
+    "benefitsDesc": "As an elite member, you have early access to new restaurant openings and private tasting menus.",
+    "points": "Points",
+    "priority": "Priority",
+    "visits": "Visits",
+    "badges": "Badges",
+    "eliteMember": "Elite Member",
+    "loading": "Loading personal protocols..."
+  },
+  "Form": {
+    "labels": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "bio": "Biography",
+      "specialty": "Culinary Specialty",
+      "experience": "Years of Experience",
+      "businessName": "Business Name",
+      "contactName": "Contact Name",
+      "plan": "Selection Plan"
+    },
+    "placeholders": {
+      "bio": "Tell people your cooking style and story (min 20 chars).",
+      "fullName": "Enter your full legal name",
+      "email": "your@email.com",
+      "specialty": "e.g. Modern Levantine, Molecular Japanese"
+    },
+    "errors": {
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address",
+      "minChars": "Must be at least {count} characters"
     }
   }
 }

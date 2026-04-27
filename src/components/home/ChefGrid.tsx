@@ -70,7 +70,7 @@ export function ChefGrid() {
              <div className="shrink-0 pb-4">
                <Link href="/chefs" className="group relative text-[11px] font-black uppercase tracking-[0.4em] text-primary transition-all font-body flex items-center gap-5 bg-zinc-950 px-10 py-6 rounded-3xl shadow-2xl hover:bg-primary hover:text-white hover:-translate-y-2">
                   <span className="relative z-10">{t("meetAll")}</span>
-                  <span className="material-symbols-outlined text-lg relative z-10 group-hover:translate-x-3 transition-transform">arrow_forward</span>
+                  <span className="material-symbols-outlined text-lg relative z-10 group-hover:translate-x-3 rtl:group-hover:-translate-x-3 rtl:rotate-180 transition-transform">arrow_forward</span>
                </Link>
              </div>
           </header>
@@ -83,7 +83,7 @@ export function ChefGrid() {
                className={`relative ${i === 0 ? 'stagger-1' : i === 1 ? 'stagger-2' : i === 2 ? 'stagger-3' : ''}`}
              >
                 <ChefCard {...chef} />
-                <div className="absolute -top-6 -right-6 bg-secondary text-white text-[9px] font-black px-6 py-2.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 hidden md:block">
+                <div className="absolute -top-6 -right-6 rtl:-right-auto rtl:-left-6 bg-secondary text-white text-[9px] font-black px-6 py-2.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 hidden md:block">
                    {t("verifiedBadge")}
                 </div>
              </Reveal>

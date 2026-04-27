@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { Footer } from "@/components/layout/Footer";
@@ -8,6 +7,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Reveal } from "@/components/ui/Reveal";
 import { supabase } from "@/lib/supabase";
 import { Link } from "@/navigation";
+import { useQuery } from "@tanstack/react-query";
 
 type DashboardRestaurant = {
   id: string;
@@ -26,30 +26,22 @@ export default function OwnerDashboard() {
   const searchParams = useSearchParams();
   const justClaimed = searchParams.get("claimed");
 
-  const [restaurants, setRestaurants] = useState<DashboardRestaurant[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchRestaurants() {
+  const { data: restaurants = [], isLoading } = useQuery<DashboardRestaurant[]>({
+    queryKey: ["owner-restaurants"],
+    queryFn: async () => {
       const { data } = await supabase.from("restaurants").select("*, cuisines(name)").limit(10);
-
       const safeRows = Array.isArray(data) ? (data as DashboardRestaurant[]) : [];
-      setRestaurants(
-        safeRows.map((restaurant) => ({
-          ...restaurant,
-          is_claimed: true,
-          plan: restaurant.plan || "paid",
-          reviews_count: Number(restaurant.reviews_count || 0),
-          rating: Number(restaurant.rating || 0),
-        }))
-      );
-      setLoading(false);
+      return safeRows.map((restaurant) => ({
+        ...restaurant,
+        is_claimed: true,
+        plan: restaurant.plan || "paid",
+        reviews_count: Number(restaurant.reviews_count || 0),
+        rating: Number(restaurant.rating || 0),
+      }));
     }
+  });
 
-    fetchRestaurants();
-  }, []);
-
-  if (loading) {
+  if (isLoading) {
     return <div className="h-screen flex items-center justify-center italic text-slate-400">Loading dashboard...</div>;
   }
 

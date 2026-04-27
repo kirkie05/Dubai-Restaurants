@@ -4,6 +4,26 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { getTranslations } from 'next-intl/server';
 import { getRestaurantBySlug } from "@/lib/db";
+import { ReviewsSection } from "@/components/ui/ReviewsSection";
+import { locales } from "@/navigation";
+import { getRestaurants } from "@/lib/db";
+
+export const revalidate = 1800; // 30 mins
+
+export async function generateStaticParams() {
+  const restaurants = await getRestaurants();
+  const paths: { slug: string, locale: string }[] = [];
+
+  // Generate paths for top 50 restaurants in all locales
+  restaurants.slice(0, 50).forEach(res => {
+    locales.forEach(locale => {
+      paths.push({ slug: res.slug, locale });
+    });
+  });
+
+  return paths;
+}
+
 
 export default async function RestaurantDetail({ params }: { params: Promise<{ slug: string, locale: string }> }) {
   const resolvedParams = await params;
@@ -199,8 +219,11 @@ export default async function RestaurantDetail({ params }: { params: Promise<{ s
                    </article>
                  ))}
               </div>
-           </div>
-        </section>
+            </div>
+         </section>
+
+         {/* Guest Experiences */}
+         <ReviewsSection restaurantId={dbRestaurant.id} />
       </main>
       
       <Footer />

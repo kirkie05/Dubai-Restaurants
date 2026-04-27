@@ -1,9 +1,20 @@
 {
+  "locale": "es",
   "Hero": {
-    "title": "Restaurantes Curados de Dubái.",
+    "title": "The <red>Collection.</red>",
     "subtitle": "La guía definitiva de los lugares con estrellas Michelin de Dubái, cocinas globales y tesoros escondidos. Seleccionados por expertos, verificados editorialmente.",
     "searchPlaceholder": "Buscar ubicación...",
-    "locateMe": "Ubícame"
+    "locateMe": "Ubícame",
+    "suggestions": {
+      "instant": "Instant Suggestions",
+      "select": "SELECT"
+    },
+    "featuredPick": {
+      "label": "Featured Pick",
+      "name": "Dean's Cheesecake.",
+      "desc": "Top trending dessert in Dubai this week based on editorial review.",
+      "badge": "AUTHENTIC"
+    }
   },
   "Navbar": {
     "restaurants": "Restaurantes",
@@ -19,7 +30,24 @@
   },
   "TrendingCarousel": {
     "title": "Tendencias de la semana",
-    "subtitle": "Los restaurantes más populares en Dubái ahora mismo."
+    "subtitle": "Los restaurantes más populares en Dubái ahora mismo.",
+    "items": {
+      "deans": {
+        "name": "Dean's Cheesecake",
+        "type": "Bakery",
+        "location": "DIFC, Dubai"
+      },
+      "primos": {
+        "name": "Primo's Pizza & Grill",
+        "type": "Italian",
+        "location": "Marina, Dubai"
+      },
+      "tijuana": {
+        "name": "Tijuana Flare",
+        "type": "Mexican",
+        "location": "Downtown, Dubai"
+      }
+    }
   },
   "CategoryGrid": {
     "label": "Arquetipos de sabor",
@@ -51,7 +79,13 @@
     "subtitle": "Navega por la topografía culinaria de Dubái. Desde las alturas arquitectónicas del centro hasta las narrativas costeras de la Marina.",
     "clusters": "Principales clusters culinarios",
     "tables": "Mesas de alta fidelidad mapeadas",
-    "launch": "Lanzar descubrimiento espacial"
+    "launch": "Lanzar descubrimiento espacial",
+    "areas": {
+      "downtown": "Downtown Dubai",
+      "marina": "Dubai Marina",
+      "difc": "DIFC",
+      "jbr": "JBR"
+    }
   },
   "RestaurantGrid": {
     "title": "Restaurantes curados.",
@@ -62,7 +96,24 @@
     "title": "Nuestras últimas entradas del blog",
     "subtitle": "Historias desde dentro de la escena culinaria de Dubái.",
     "seeMore": "Ver más",
-    "continueReading": "Seguir leyendo"
+    "continueReading": "Seguir leyendo",
+    "blogs": {
+      "post1": {
+        "title": "How to choose a Restaurant for your next meal out?",
+        "author": "Janet Martin",
+        "category": "Guide"
+      },
+      "post2": {
+        "title": "The Rise of Underground Dining in Old Dubai",
+        "author": "Elena Rossi",
+        "category": "Editorial"
+      },
+      "post3": {
+        "title": "Top 10 Hidden Gem Brunch Spots for Families",
+        "author": "Zayn Malik",
+        "category": "List"
+      }
+    }
   },
   "FeatureGrid": {
     "title": "Redefiniendo el servicio.",
@@ -144,6 +195,452 @@
       "brunch": "Brunch",
       "fine": "Alta Cocina",
       "outdoor": "Cena al Aire Libre"
+    }
+  },
+  "CuisineDetail": {
+    "label": "Cuisine Explorer",
+    "collection": "Collection.",
+    "subtitle": "Discover the most prestigious {cuisine} dining destinations in Dubai. Hand-curated by our editorial team for exceptional quality and authentic flavor.",
+    "titlePrefix": "The"
+  },
+  "Cuisines": {
+    "label": "Heritage Registry",
+    "title": "Global Tastes.",
+    "subtitle": "Explore Dubai's culinary topography through the lens of global heritage. Every category a portal to a different world.",
+    "traditionsLabel": "Global Traditions",
+    "editorPick": "Editor Pick",
+    "featuredStory": "The Silk Road",
+    "items": {
+      "italian": "From hand-rolled pasta to wood-fired Neapolitan perfection.",
+      "japanese": "Precision, purity, and the finest seasonal seafood.",
+      "indian": "A tapestry of spices redefining subcontinental heritage.",
+      "lebanese": "Coastal fresh mezze and contemporary Levant narratives.",
+      "french": "The foundation of fine dining, reimagined for the desert.",
+      "mexican": "Bold, vibrant, and unapologetically contemporary."
+    }
+  },
+  "RestaurantListing": {
+    "label": "Editorial Selection",
+    "title": "The Restaurants.",
+    "subtitle": "An uncompromising collection of Dubai's finest culinary destinations. curated, verified, and updated weekly.",
+    "listView": "List View",
+    "mapView": "Map View",
+    "partnerLabel": "For Restaurant Owners",
+    "partnerTitle": "Add Your Restaurant.",
+    "partnerSubtitle": "Create your listing in simple steps. You can choose a Free plan or a Paid plan.",
+    "applyNow": "Start Onboarding"
+  },
+  "ChefListing": {
+    "label": "Culinary Artisans",
+    "title": "The Masters.",
+    "subtitle": "A curated directory of the visionary minds redefining Dubai's gastronomic landscape. From Michelin legends to local avant-garde pioneers.",
+    "verifiedLabel": "Verified Chefs",
+    "featuredLabel": "Featured Selection",
+    "featuredTitle": "The Michelin Board",
+    "discoverProfile": "Discover Profile",
+    "journalLabel": "Beyond the Kitchen",
+    "journalTitle": "The Culinary Narrative.",
+    "journalSubtitle": "Explore in-depth interviews, exclusive recipes, and the manifestos behind Dubai's most influential kitchens.",
+    "exploreJournal": "Explore the Journal"
+  },
+  "Restaurants": {
+    "al-mahara": {
+      "name": "Al Mahara",
+      "description": "An underwater dining experience within the Burj Al Arab, featuring world-class seafood curated by Michelin-star chefs.",
+      "longDescription": "Designed by award-winning architects, the lounge features a seamless flow between indoor opulence and an outdoor terrace that seems to float above the city lights. Every detail, from the hand-blown crystal fixtures to the bespoke velvet furnishings, has been curated to create an atmosphere of effortless luxury.",
+      "cuisine": "Seafood",
+      "price": "AED 800+",
+      "reviewsCount": "1,240",
+      "chef": "Chef Marcus Vane",
+      "badge": "Michelin 2*",
+      "status": "Open Until 02:00",
+      "rating": "4.9",
+      "location": "Burj Al Arab"
+    },
+    "ossiano": {
+      "name": "Ossiano",
+      "description": "Redefining the molecular landscape of contemporary heritage. A masterclass in sensory storytelling and contemporary mastery.",
+      "cuisine": "Contemporary",
+      "price": "AED 900+",
+      "reviewsCount": "2,100",
+      "chef": "Chef Gregoire Berger",
+      "badge": "Michelin 1*",
+      "status": "Open Until 00:00",
+      "rating": "4.9",
+      "location": "Palm Jumeirah"
+    },
+    "tresind-studio": {
+      "name": "Tresind Studio",
+      "description": "Exploring the vast landscape of Indian culinary art through a high-fidelity molecular lens.",
+      "cuisine": "Indian Fusion",
+      "price": "AED 750+",
+      "reviewsCount": "1,800",
+      "chef": "Chef Himanshu Saini",
+      "badge": "Michelin 2*",
+      "status": "Open Until 23:30",
+      "rating": "4.9",
+      "location": "Palm Jumeirah"
+    },
+    "crystal-lounge": {
+      "name": "The Crystal Lounge",
+      "description": "A refined space where architectural elegance meets avant-garde culinary fusion.",
+      "longDescription": "Located in the heart of Downtown Dubai, The Crystal Lounge offers a sensory journey through modern fusion cuisine. The space is a masterpiece of light and glass, providing an intimate setting for those who seek the extraordinary.",
+      "cuisine": "Modern Fusion",
+      "price": "AED 500+",
+      "reviewsCount": "850",
+      "chef": "Chef Alessandro Rossi",
+      "badge": "Hot Spot",
+      "status": "Open Until 01:00",
+      "rating": "4.8",
+      "location": "Downtown"
+    },
+    "al-maha": {
+      "name": "Al-Maha Crystal Lounge",
+      "description": "An avant-garde exploration of Levantine flavors, elevated by panoramic skyline views and architectural precision.",
+      "longDescription": "Designed by award-winning architects, the lounge features a seamless flow between indoor opulence and an outdoor terrace that seems to float above the city lights. Every detail, from the hand-blown crystal fixtures to the bespoke velvet furnishings, has been curated to create an atmosphere of effortless luxury.",
+      "cuisine": "Modern Levantine",
+      "price": "AED 600+",
+      "reviewsCount": "1,240",
+      "chef": "Chef Marcus Vane",
+      "badge": "Michelin Recommended",
+      "status": "Open Until 02:00",
+      "rating": "4.9",
+      "location": "Downtown"
+    },
+    "deans-cheesecake": {
+      "name": "Dean's Cheesecake",
+      "description": "Authentic artisan cheesecakes with a modern Dubai twist.",
+      "longDescription": "Dean's Cheesecake is a tribute to the art of baking. Each cake is handcrafted with precision, using the finest local ingredients to create a taste that is both familiar and revolutionary.",
+      "cuisine": "Bakery",
+      "price": "AED 50+",
+      "reviewsCount": "450",
+      "chef": "Chef Dean",
+      "badge": "Trending",
+      "status": "Open Until 22:00",
+      "rating": "4.8",
+      "location": "DIFC"
+    },
+    "primos-pizza": {
+      "name": "Primo's Pizza & Grill",
+      "description": "Traditional Italian wood-fired pizza in the heart of Dubai Marina.",
+      "longDescription": "At Primo's, we believe in the simplicity of Italian flavors. Our pizzas are made from century-old recipes, baked in a traditional wood-fired oven for that perfect crust.",
+      "cuisine": "Italian",
+      "price": "AED 120+",
+      "reviewsCount": "780",
+      "chef": "Chef Giovanni",
+      "badge": "Popular",
+      "status": "Open Until 23:00",
+      "rating": "4.6",
+      "location": "Marina"
+    },
+    "tijuana-flare": {
+      "name": "Tijuana Flare",
+      "description": "Vibrant Mexican street food elevated for the sophisticated palate.",
+      "longDescription": "Tijuana Flare brings the soul of Mexican street food to Downtown Dubai. Experience bold spices, fresh ingredients, and a festive atmosphere that captures the essence of Mexico.",
+      "cuisine": "Mexican",
+      "price": "AED 150+",
+      "reviewsCount": "920",
+      "chef": "Chef Carlos",
+      "badge": "Spicy",
+      "status": "Open Until 01:00",
+      "rating": "4.9",
+      "location": "Downtown"
+    },
+    "zuma": {
+      "name": "Zuma",
+      "description": "Sophisticated Japanese izakaya-style dining in a high-fidelity setting.",
+      "longDescription": "Zuma Dubai offers a unique Japanese dining experience, blending traditional techniques with modern presentation. Located in the heart of DIFC, it is a staple of Dubai's luxury dining scene.",
+      "cuisine": "Japanese",
+      "price": "AED 800+",
+      "reviewsCount": "3,500",
+      "chef": "Chef Rainer Becker",
+      "badge": "Iconic",
+      "status": "Open Until 01:30",
+      "rating": "4.9",
+      "location": "DIFC"
+    },
+    "nobu-dubai": {
+      "name": "Nobu Dubai",
+      "description": "Cutting-edge Japanese cuisine blended with Peruvian influences.",
+      "longDescription": "Nobu Dubai at Atlantis The Palm is a world-renowned destination. Experience Chef Nobu Matsuhisa's legendary fusion of Japanese and Peruvian flavors in a stunning setting.",
+      "cuisine": "Japanese",
+      "price": "AED 500+",
+      "reviewsCount": "2,800",
+      "chef": "Chef Nobu Matsuhisa",
+      "badge": "Hot Spot",
+      "status": "Open Until 01:00",
+      "rating": "4.8",
+      "location": "Atlantis"
+    }
+  },
+  "RestaurantDetail": {
+    "curationScore": "Curation Score",
+    "pricing": "Pricing",
+    "reserveTable": "Reserve a Table",
+    "viewMenu": "View Menu",
+    "gallery": "Gallery",
+    "editorialBoard": "The Editorial Board",
+    "atmosphere": "The Atmosphere.",
+    "signatureDishes": "Signature Dishes.",
+    "signatureDesc": "Selected by {chef}",
+    "exploreMenu": "Explore Full Menu",
+    "atmosphereHighlights": {
+      "tableTitle": "The Table.",
+      "tableDesc": "Hand-crafted ceramic dinnerware and linen settings tailored for this specific venue.",
+      "vybeTitle": "The Vybe.",
+      "vybeDesc": "A curated acoustic landscape blending deep house with traditional Levantine instrumentation."
+    },
+    "dishes": {
+      "scallop": {
+        "name": "Saffron Crystal Scallop",
+        "desc": "Hand-dived scallops with a high-clarity saffron infusion."
+      },
+      "lamb": {
+        "name": "Levantine Lamb Rack",
+        "desc": "12-hour slow braise with a pomegranate glaze."
+      },
+      "baklava": {
+        "name": "The Gold Leaf Baklava",
+        "desc": "24k gold leaf accent with pistachio cream."
+      }
+    },
+    "discoveryLabel": "Discovery Listing",
+    "claimListing": "Claim this listing",
+    "claimDesc": "If you own this restaurant, claim it now and choose a Free or Paid plan."
+  },
+  "RestaurantCard": {
+    "pricing": "Pricing",
+    "status": "Status",
+    "openNow": "Open Now"
+  },
+  "ChefCard": {
+    "masterCurator": "Master Curator"
+  },
+  "Chefs": {
+    "marcus-vane": {
+      "name": "Chef Marcus Vane",
+      "tag": "Levantine Master",
+      "role": "Flavor Architect",
+      "restaurant": "Skyline Lounge",
+      "quote": "Crafting narratives through taste and atmosphere."
+    },
+    "gregoire-berger": {
+      "name": "Chef Gregoire Berger",
+      "tag": "Molecular Specialist",
+      "role": "Ocean Narrative Master",
+      "restaurant": "Ossiano",
+      "quote": "Ocean-inspired narratives served within an underwater sanctuary."
+    },
+    "himanshu-saini": {
+      "name": "Chef Himanshu Saini",
+      "tag": "Fusion Visionary",
+      "role": "Culinary Visionary",
+      "restaurant": "Tresind Studio",
+      "quote": "Reinventing Indian heritage through a lens of modern molecular gastronomy."
+    },
+    "alessandro-rossi": {
+      "name": "Chef Alessandro Rossi",
+      "tag": "Aesthetic Director",
+      "role": "Aesthetic Director",
+      "restaurant": "L'Atelier",
+      "quote": "The beauty of food is in the precision of its craft."
+    },
+    "mohamad-orfali": {
+      "name": "Chef Mohamad Orfali",
+      "tag": "Contemporary Pioneer",
+      "role": "Contemporary Pioneer",
+      "restaurant": "Orfali Bros",
+      "quote": "A journey of flavors that bridge cultures."
+    }
+  },
+  "Dashboard": {
+    "culinaryCommand": "Culinary Command",
+    "thePortfolio": "The Portfolio.",
+    "profileImpressions": "Profile Impressions",
+    "restaurantTraffic": "Restaurant Traffic",
+    "curationPulse": "Curation Pulse",
+    "mediaAssets": "Media Assets",
+    "recentMentions": "Recent Mentions.",
+    "liveVenues": "Live Venues.",
+    "verifiedGuest": "Verified Guest",
+    "stable": "Stable"
+  },
+  "Partner": {
+    "dashboard": "Partner Dashboard",
+    "billing": "Billing & Subscription",
+    "menu": "Menu Management",
+    "businessProfile": "Business Profile",
+    "activeTenure": "Active Tenure",
+    "upgrade": "Upgrade Plan",
+    "loadingFinancial": "Loading financial protocols...",
+    "financialProtocol": "Financial Protocol",
+    "tenure": "Tenure.",
+    "activeSubscription": "Active Subscription",
+    "launchingSoon": "Premium plans launching soon — join the waitlist.",
+    "launchingSoonBtn": "Launching Soon",
+    "month": "Month",
+    "currentChoice": "Current Choice",
+    "manageTenure": "Manage Tenure",
+    "activePlan": "Active Plan",
+    "upgradeSequence": "Upgrade Sequence",
+    "recentInvoices": "Recent Invoices",
+    "downloadAll": "Download All",
+    "noInvoices": "No invoices found in this tenure.",
+    "plans": {
+      "basic": {
+        "name": "Curator Tier",
+        "tier": "Standard",
+        "features": {
+          "0": "Priority Discovery",
+          "1": "Standard Analytics",
+          "2": "10 Bookings/mo"
+        }
+      },
+      "premium": {
+        "name": "Elite Archive",
+        "tier": "Most Popular",
+        "features": {
+          "0": "Global Discovery",
+          "1": "Deep Analytics",
+          "2": "Unlimited Bookings",
+          "3": "Concierge Sync"
+        }
+      }
+    },
+    "onboarding": {
+      "title": "List your restaurant in a few simple steps",
+      "subtitle": "This onboarding is for restaurants and partners. Fill your details, choose a plan, and finish setup.",
+      "claimPrompt": "If your restaurant is already in our admin-uploaded database, you can claim it instead.",
+      "claimLink": "Claim an existing restaurant",
+      "chefLink": "Complete chef onboarding",
+      "step1Title": "Step 1: Your contact details",
+      "step2Title": "Step 2: Business details",
+      "step3Title": "Step 3: Choose your plan",
+      "planDesc": "Pick a plan for this listing. You can upgrade or downgrade later.",
+      "owner": "Owner",
+      "business": "Business",
+      "plan": "Plan",
+      "finishing": "Finishing...",
+      "complete": "Complete onboarding",
+      "guideTitle": "Quick guide",
+      "guideSteps": {
+        "0": "1. Add owner contact details.",
+        "1": "2. Add business details.",
+        "2": "3. Pick basic or premium plan.",
+        "3": "4. Finish and access your partner dashboard."
+      },
+      "alreadyInDb": "Restaurant already in database?",
+      "alreadyInDbDesc": "Ask admin for your restaurant slug, then open /claim/your-slug to claim and choose your plan."
+    },
+    "stats": {
+      "revenue": "Revenue Impact",
+      "bookings": "Total Bookings",
+      "conversions": "Pulse Conversion"
+    }
+  },
+  "Chef": {
+    "dashboard": "Kitchen Overview",
+    "profile": "Culinary Profile",
+    "venues": "Linked Venues",
+    "media": "Media Assets",
+    "onboarding": {
+      "label": "Chef Onboarding",
+      "submittedTitle": "Application Submitted",
+      "underReview": "Under Admin Review",
+      "underReviewDesc": "Your chef profile has been submitted and is awaiting admin verification. You'll receive access to your dashboard once approved.",
+      "pendingApproval": "Pending Approval",
+      "onboardingLabel": "Onboarding",
+      "whoAreYou": "Who are you joining as?",
+      "whoAreYouDesc": "Select your role to begin the right onboarding process.",
+      "chefRole": "Chef",
+      "imAChef": "I'm a Chef",
+      "chefRoleDesc": "Build your chef profile, link venues, and showcase your culinary work.",
+      "restaurantRole": "Restaurant",
+      "imARestaurant": "I'm a Restaurant",
+      "restaurantRoleDesc": "List your venue, manage your profile, and reach new diners in Dubai.",
+      "buildProfile": "Build your chef profile",
+      "buildProfileDesc": "Use clear details, then choose your plan. This helps guests trust your profile quickly.",
+      "step1Title": "Step 1: Basic details",
+      "step2Title": "Step 2: Professional Details",
+      "step3Title": "Step 3: Choose your plan",
+      "restaurantAffiliation": "Restaurant Affiliation (Optional)",
+      "freePlanLabel": "Free",
+      "freePlanTitle": "Free plan",
+      "freePlanDesc": "Basic chef profile and restaurant linking.",
+      "proPlanLabel": "Pro",
+      "proPlanTitle": "AED 49 / month",
+      "proPlanDesc": "Priority chef placement and premium story sections.",
+      "chef": "Chef",
+      "plan": "Plan",
+      "notSelected": "Not selected",
+      "back": "Back",
+      "continue": "Continue",
+      "submitting": "Submitting...",
+      "submit": "Submit for review"
+    }
+  },
+  "Admin": {
+    "moderation": "Moderation Center",
+    "pendingClaims": "Pending Claims",
+    "approve": "Approve",
+    "reject": "Reject",
+    "stats": "System Stats",
+    "vault": "Vault.",
+    "sanctity": "Sanctity.",
+    "reviews": "Reviews",
+    "chefs": "Chefs",
+    "partners": "Partners",
+    "masterControl": "Master Control",
+    "qualityControl": "Quality Control",
+    "loading": "Loading {type}...",
+    "noPending": "No pending {type} at the moment."
+  },
+  "Account": {
+    "profile": "Diner Profile",
+    "memberSince": "Member Since",
+    "totalBookings": "Total Bookings",
+    "eliteStatus": "Elite Status",
+    "active": "Active",
+    "quickActions": "Quick Actions",
+    "editDetails": "Edit Personal Details",
+    "manageReservations": "Manage Reservations",
+    "yourJournal": "Your Journal.",
+    "journalDesc": "Explore your personal history with Dubai's culinary landscape. Your verified bookings, hidden gem discoveries, and elite preferences.",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "manage": "Manage",
+    "rewardsLabel": "Curator Rewards",
+    "benefitsTitle": "The Heritage Benefits.",
+    "benefitsDesc": "As an elite member, you have early access to new restaurant openings and private tasting menus.",
+    "points": "Points",
+    "priority": "Priority",
+    "visits": "Visits",
+    "badges": "Badges",
+    "eliteMember": "Elite Member",
+    "loading": "Loading personal protocols..."
+  },
+  "Form": {
+    "labels": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "bio": "Biography",
+      "specialty": "Culinary Specialty",
+      "experience": "Years of Experience",
+      "businessName": "Business Name",
+      "contactName": "Contact Name",
+      "plan": "Selection Plan"
+    },
+    "placeholders": {
+      "bio": "Tell people your cooking style and story (min 20 chars).",
+      "fullName": "Enter your full legal name",
+      "email": "your@email.com",
+      "specialty": "e.g. Modern Levantine, Molecular Japanese"
+    },
+    "errors": {
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address",
+      "minChars": "Must be at least {count} characters"
     }
   }
 }

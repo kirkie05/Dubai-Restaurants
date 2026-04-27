@@ -1,11 +1,23 @@
+'use client';
+
 import PartnerLayout from "@/components/layout/PartnerLayout";
+import { useUser } from "@clerk/nextjs";
+import { useQuery } from "@tanstack/react-query";
 
 export default function PartnerDashboard() {
-  const stats = [
-    { label: "Total Bookings", value: "1,240", change: "+12%", icon: "calendar_month" },
-    { label: "Profile Views", value: "48.2k", change: "+24%", icon: "visibility" },
-    { label: "Revenue Portions", value: "AED 340k", change: "+8%", icon: "payments" },
-    { label: "Curation Score", value: "4.9/5", change: "Stable", icon: "star" },
+  const { user } = useUser();
+  const firstName = user?.firstName || "Partner";
+
+  const { data: stats, isLoading } = useQuery({
+    queryKey: ['partner-stats'],
+    queryFn: () => fetch('/api/partner/stats').then(res => res.json()),
+  });
+
+  const displayStats = [
+    { label: "Total Bookings", value: stats?.totalBookings?.toLocaleString() || "0", change: "Verified", icon: "calendar_month" },
+    { label: "Profile Views", value: stats?.profileViews?.toLocaleString() || "0", change: "+24%", icon: "visibility" },
+    { label: "Revenue Portions", value: `AED ${(stats?.revenue || 0).toLocaleString()}`, change: "+8%", icon: "payments" },
+    { label: "Curation Score", value: `${stats?.rating || 0}/5`, change: `${stats?.reviewsCount || 0} Reviews`, icon: "star" },
   ];
 
   return (
@@ -13,18 +25,18 @@ export default function PartnerDashboard() {
        <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <header className="pb-12 border-b border-white/5">
              <span className="text-secondary font-body text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Command Overview</span>
-             <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter">The <span className="text-primary">Metrics.</span></h1>
+             <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter">Welcome, <br /><span className="text-primary">{firstName}.</span></h1>
           </header>
 
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-             {stats.map((stat) => (
+             {displayStats.map((stat) => (
                <div key={stat.label} className="p-10 bg-white/5 rounded-[2.5rem] border border-white/5 space-y-6 hover:border-primary/40 transition-all group">
                   <div className="flex justify-between items-start">
                      <span className="material-symbols-outlined text-zinc-700 group-hover:text-primary transition-colors text-3xl">{stat.icon}</span>
                      <span className="text-[10px] font-black uppercase tracking-widest text-secondary">{stat.change}</span>
                   </div>
                   <div>
-                     <p className="text-4xl font-headline font-black italic">{stat.value}</p>
+                     <p className="text-4xl font-headline font-black italic">{isLoading ? "..." : stat.value}</p>
                      <p className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mt-2">{stat.label}</p>
                   </div>
                </div>
@@ -54,17 +66,23 @@ export default function PartnerDashboard() {
              </section>
 
              <section className="lg:col-span-4 p-12 bg-white/5 rounded-[3rem] border border-white/5 space-y-8">
-                <h3 className="text-3xl font-headline font-black italic">Next Shift.</h3>
+                <h3 className="text-3xl font-headline font-black italic">Recent Bookings.</h3>
                 <div className="space-y-6">
-                   {[1, 2, 3].map(i => (
-                     <div key={i} className="flex items-center justify-between group">
+                   {stats?.recentBookings?.length > 0 ? stats.recentBookings.map((b: any) => (
+                     <div key={b.id} className="flex items-center justify-between group">
                         <div className="space-y-1">
-                           <p className="text-[10px] font-black uppercase tracking-widest text-white">20:30 · 4 Guests</p>
-                           <p className="text-[9px] font-black uppercase tracking-widest text-zinc-600">Alexandra Vane</p>
+                           <p className="text-[10px] font-black uppercase tracking-widest text-white">
+                             {new Date(b.booking_datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · {b.guest_count} Guests
+                           </p>
+                           <p className="text-[9px] font-black uppercase tracking-widest text-zinc-600">
+                             {new Date(b.booking_datetime).toLocaleDateString()}
+                           </p>
                         </div>
                         <span className="material-symbols-outlined text-zinc-800 group-hover:text-primary transition-colors">east</span>
                      </div>
-                   ))}
+                   )) : (
+                     <p className="text-sm text-zinc-600 italic">No recent bookings found.</p>
+                   )}
                 </div>
                 <button className="w-full py-5 bg-zinc-900 border border-white/5 rounded-2xl text-[9px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">View All Bookings</button>
              </section>

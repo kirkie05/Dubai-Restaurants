@@ -2,38 +2,28 @@ import Image from "next/image";
 import { Link } from '@/navigation';
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { createAdminClient } from "@/lib/supabase-server";
 
-const ARTICLES = [
-  {
-    title: "The Rise of Desert-First Fine Dining",
-    excerpt: "How Dubai's newest culinary pioneers are rediscovering native heritage ingredients through the lens of modern molecular gastronomy.",
-    category: "Trend Report",
-    time: "12 Min Read",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC2RzhUe6M16PLywslYezi7WUPURd_tfHNltdXsGnJkIj9LuI-KF6p7ykIkrUDXr8TAmZvjs989fhHuCiQmHyWZ2Dq_odRyfW_-_AihLtOEtt4r3gAPT7eGegfkeVd_hKekacfKoalYWap-vYFMOEXNUecP9gmpzZZ7UKrZVb6hMG5SITVl9JsFfJcyeX1PxLO5FJpuZJkOTy3hg0zDOvtaSQ46fo_9sP2E0EspTmU4K0BThCedACx-JzD5BXCMZeI2Zyw1QjzdOP4c",
-    slug: "rise-of-desert-first-dining",
-    featured: true
-  },
-  {
-    title: "Mastering the Heat: 20 Minutes with Omar Salem",
-    excerpt: "The visionary behind 'Sand & Soul' discusses why the traditional wood-fired pit is making a comeback in Jumeirah.",
-    category: "Chef Interviews",
+export default async function BlogListing() {
+  const supabase = createAdminClient();
+  const { data: posts, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('is_published', true)
+    .order('published_at', { ascending: false });
+
+  const articles = (posts || []).map(post => ({
+    title: post.title,
+    excerpt: post.excerpt,
+    category: "Editorial", // Could add category column to DB
     time: "8 Min Read",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCwBjb_etB8bVQb16H9XCqo2yE6KtsGNLcx3cVMI89wgIsSlCHIW-DfBr6Dzpf9RVU8YbYJ7NE9LJnnTp0zQa-mR7jB9dpbIPjBEu5U3pq8tSGC-WfCohdEGG9W-gI8-YLa6Vnnosm4o8em55r_obt24YCIyRN0FGuL47C64aq20oBcCiB2_88Tcm9TsFXA5gG69mpwbnb8HD9wF1bink6ZA075LRffhqUZ7zHUjM5i9BPNOOxcNqot2MnzDUUhLK2fxq2bySmNy8z-",
-    slug: "interview-omar-salem"
-  },
-  {
-    title: "Al Quoz: From Warehouses to Specialty Roasters",
-    excerpt: "A curated map of the hidden caffeine gems tucked within the city's industrial heartland.",
-    category: "Neighborhood Guide",
-    time: "6 Min Read",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA6oZTwm7mu9_2bYshXZh7F3db-TUg_lajz2NpDgfackHX8qi-YQzI-qdWhsf4XhADpbUwI8THFXjWNX-0U81CQ_Rvz3suEF4SlNrI4afyylnBW023DWgYCIWHLXqXJd7Yx84gOy99IjI5SY6PIFavohjcB9SISsXBg2Awt3DTshlwNqnsrCHDwJk6IQ0LXaR0oIopFogyoWlsCMrEhz3Biisv7jeI5Qh_37QiGcqUZGfTAx0c_lIukb5PhdqwBU4XIwRlZ1PkOlD4s",
-    slug: "al-quoz-coffee-guide"
-  }
-];
+    image: post.cover_image_url || "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80",
+    slug: post.slug,
+    featured: post.id === (posts?.[0]?.id) // Make first one featured for now
+  }));
 
-export default function BlogListing() {
-  const featured = ARTICLES.find(a => a.featured);
-  const others = ARTICLES.filter(a => !a.featured);
+  const featured = articles.find(a => a.featured);
+  const others = articles.filter(a => !a.featured);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -53,7 +43,7 @@ export default function BlogListing() {
              </div>
              <div className="flex items-center gap-10">
                 <div className="flex flex-col items-end">
-                   <span className="text-4xl font-headline font-black italic">500+</span>
+                   <span className="text-4xl font-headline font-black italic">{articles.length}</span>
                    <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Published Stories</span>
                 </div>
                 <div className="w-px h-12 bg-slate-200"></div>
@@ -65,7 +55,6 @@ export default function BlogListing() {
           </div>
         </header>
 
-        {/* Featured Hero */}
         {featured && (
           <section className="max-w-[1920px] mx-auto px-8 lg:px-16 mb-32">
              <Link href={`/blog/${featured.slug}`} className="group relative block w-full h-[80vh] rounded-[4rem] overflow-hidden shadow-2xl">
@@ -90,7 +79,6 @@ export default function BlogListing() {
           </section>
         )}
 
-        {/* Grid Selection */}
         <section className="max-w-[1920px] mx-auto px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 pb-40">
            {others.map((article) => (
              <Link key={article.slug} href={`/blog/${article.slug}`} className="group flex flex-col space-y-8">

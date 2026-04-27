@@ -20,7 +20,7 @@ export const Footer = () => {
                sizes="160px"
              />
           </div>
-          <p className="text-slate-500 mb-6 max-w-xs">© {new Date().getFullYear()} {t('copyright')}</p>
+          <p className="text-slate-500 mb-6 max-w-xs rtl:text-right">© {new Date().getFullYear()} {t('copyright')}</p>
         </div>
         <div className="flex flex-col gap-4">
           <p className="font-bold text-slate-900 mb-2">{t('neighborhoods')}</p>

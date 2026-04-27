@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from 'next-intl';
+import { useRouter } from "next/navigation";
 import { Reveal } from "@/components/ui/Reveal";
 
 interface Suggestion {
@@ -36,7 +37,8 @@ export function HeroSection({ initialSuggestions }: Props) {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [isLocating, setIsLocating] = useState(false);
+  const router = useRouter();
+  const locale = t_root('locale') || 'en';
   const suggestionRef = useRef<HTMLDivElement>(null);
 
   const filteredSuggestions = useMemo(() => {
@@ -61,21 +63,13 @@ export function HeroSection({ initialSuggestions }: Props) {
   }, []);
 
   const handleLocateMe = () => {
-    setIsLocating(true);
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setSearchQuery("Current Location Mapped");
-          setIsLocating(false);
-        },
-        (error) => {
-          console.error("Geolocation error:", error);
-          setIsLocating(false);
-        }
-      );
-    } else {
-      alert("Geolocation is not supported by your browser.");
-      setIsLocating(false);
+    router.push(`/search?near=true`);
+  };
+
+  const handleSearchSubmit = (e?: React.FormEvent) => {
+    e?.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
     }
   };
 
@@ -102,16 +96,20 @@ export function HeroSection({ initialSuggestions }: Props) {
 
           <div className="flex flex-col sm:flex-row gap-4 max-w-2xl relative">
              <div ref={suggestionRef} className="flex-1 flex items-center bg-white border border-slate-100 rounded-2xl p-2 shadow-2xl focus-within:ring-4 focus-within:ring-primary/5 transition-all relative">
-                <span className="material-symbols-outlined ml-4 text-slate-300">location_on</span>
+                <span className="material-symbols-outlined ms-4 rtl:ms-0 rtl:me-4 text-slate-300">location_on</span>
                 <input 
                    type="text" 
                    value={searchQuery}
                    onFocus={() => setShowSuggestions(true)}
                    onChange={(e) => setSearchQuery(e.target.value)}
+                   onKeyDown={(e) => e.key === 'Enter' && handleSearchSubmit()}
                    placeholder={t('searchPlaceholder')}
-                   className="w-full border-none focus:ring-0 text-sm lg:text-base font-body italic p-4 ml-2"
+                   className="w-full border-none focus:ring-0 text-sm lg:text-base font-body italic p-4 ms-2 rtl:ms-0 rtl:me-2"
                 />
-                <button className="bg-primary text-white p-4 rounded-xl hover:bg-zinc-900 transition-all flex items-center justify-center">
+                <button 
+                   onClick={() => handleSearchSubmit()}
+                   className="bg-primary text-white p-4 rounded-xl hover:bg-zinc-900 transition-all flex items-center justify-center"
+                >
                    <span className="material-symbols-outlined text-lg">search</span>
                 </button>
 
@@ -124,7 +122,7 @@ export function HeroSection({ initialSuggestions }: Props) {
                           <button 
                             key={item.id}
                             onClick={() => {
-                              setSearchQuery(item.name);
+                              router.push(`/search?q=${encodeURIComponent(item.name)}`);
                               setShowSuggestions(false);
                             }}
                             className="w-full text-left flex items-center justify-between p-4 rounded-xl hover:bg-slate-50 transition-all group"
@@ -148,26 +146,23 @@ export function HeroSection({ initialSuggestions }: Props) {
                 )}
              </div>
 
-             <button 
+              <button 
                 onClick={handleLocateMe}
-                disabled={isLocating}
-                className="bg-secondary text-white px-10 py-5 rounded-2xl font-body text-[10px] font-black uppercase tracking-widest shadow-xl hover:bg-zinc-900 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
-             >
-               <span className={`material-symbols-outlined text-base ${isLocating ? 'animate-spin' : ''}`}>
-                 {isLocating ? 'refresh' : 'my_location'}
-               </span>
-               {isLocating ? 'Locating...' : t('locateMe')}
-             </button>
+                className="bg-secondary text-white px-10 py-5 rounded-2xl font-body text-[10px] font-black uppercase tracking-widest shadow-xl hover:bg-zinc-900 transition-all flex items-center justify-center gap-3"
+              >
+                <span className="material-symbols-outlined text-base">my_location</span>
+                {t('locateMe')}
+              </button>
           </div>
         </div>
 
         {/* Right Column: Featured Image with Glassmorphic Card */}
         <div className="lg:col-span-5 relative hidden lg:block animate-float">
-          <div className="relative aspect-[4/5] w-full max-w-xl mx-auto translate-x-12">
+          <div className="relative aspect-[4/5] w-full max-w-xl mx-auto translate-x-12 rtl:-translate-x-12">
             <div className="absolute -top-20 -right-20 w-80 h-80 bg-primary/10 blur-[120px] rounded-full animate-pulse"></div>
             <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-secondary/10 blur-[120px] rounded-full delay-700 animate-pulse"></div>
             
-            <div className="relative h-full w-full rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] border-[12px] border-white -rotate-6 hover:rotate-0 transition-all duration-1000 group">
+            <div className="relative h-full w-full rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] border-[12px] border-white -rotate-6 rtl:rotate-6 hover:rotate-0 transition-all duration-1000 group">
               <Image 
                 src="/al_mahara_restaurant_1776785631205.png"
                 alt="Signature Dish"
@@ -178,7 +173,7 @@ export function HeroSection({ initialSuggestions }: Props) {
               />
             </div>
 
-            <div className="absolute bottom-12 -left-20 bg-white/80 backdrop-blur-3xl p-8 rounded-[2.5rem] shadow-2xl border border-white/50 max-w-[280px] rotate-3 group hover:rotate-0 transition-all duration-500">
+            <div className="absolute bottom-12 -left-20 rtl:-left-auto rtl:-right-20 bg-white/80 backdrop-blur-3xl p-8 rounded-[2.5rem] shadow-2xl border border-white/50 max-w-[280px] rotate-3 rtl:-rotate-3 group hover:rotate-0 transition-all duration-500">
                <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
                     <span className="material-symbols-outlined text-primary text-2xl" style={{fontVariationSettings: "'FILL' 1"}}>hotel_class</span>
@@ -194,7 +189,7 @@ export function HeroSection({ initialSuggestions }: Props) {
                     <span key={i} className="material-symbols-outlined text-[12px] text-primary" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
                  ))}
                </div>
-               <div className="absolute -top-3 -right-3 bg-secondary text-white text-[9px] font-black px-4 py-2 rounded-full shadow-lg">{t('featuredPick.badge')}</div>
+               <div className="absolute -top-3 -right-3 rtl:-right-auto rtl:-left-3 bg-secondary text-white text-[9px] font-black px-4 py-2 rounded-full shadow-lg">{t('featuredPick.badge')}</div>
             </div>
           </div>
         </div>

@@ -26,6 +26,7 @@ export const metadata: Metadata = {
 };
 
 import { ClerkProvider } from '@clerk/nextjs';
+import { ReactQueryProvider } from '@/components/providers/ReactQueryProvider';
 
 export default async function RootLayout({
   children,
@@ -46,7 +47,9 @@ export default async function RootLayout({
         </head>
         <body className={`min-h-full text-zinc-900 ${locale === 'ar' ? 'font-arabic' : 'font-manrope'}`} suppressHydrationWarning>
           <NextIntlClientProvider messages={messages}>
-            {children}
+            <ReactQueryProvider>
+              {children}
+            </ReactQueryProvider>
           </NextIntlClientProvider>
         </body>
       </html>

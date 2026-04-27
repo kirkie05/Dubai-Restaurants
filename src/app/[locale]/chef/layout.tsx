@@ -1,9 +1,10 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { Link, usePathname, useRouter } from "@/navigation";
+import { redirect } from "next/navigation";
+import { auth } from "@clerk/nextjs/server";
+import { createAdminClient } from "@/lib/supabase-server";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { Link } from "@/navigation";
+import { headers } from "next/headers";
 
 const MENU_ITEMS = [
   { name: "Kitchen Overview", path: "/chef/dashboard", icon: "dashboard" },
@@ -13,27 +14,34 @@ const MENU_ITEMS = [
   { name: "Sign Out", path: "/", icon: "logout" },
 ];
 
-export default function ChefLayout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const router = useRouter();
-  const [status, setStatus] = useState<string | null>(null);
-  const [ready, setReady] = useState(false);
+export default async function ChefLayout({ 
+  children,
+  params
+}: { 
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const { userId } = await auth();
+  if (!userId) {
+    redirect(`/${locale}/sign-in`);
+  }
 
-  const isOnboarding = pathname.endsWith("/chef/profile");
+  const supabase = createAdminClient();
+  const { data: profile } = await supabase
+    .from('chef_profiles')
+    .select('status')
+    .eq('clerk_user_id', userId)
+    .single();
 
-  useEffect(() => {
-    const stored = localStorage.getItem("chef_onboarding_status");
-    setStatus(stored);
-    setReady(true);
+  const headersList = await headers();
+  const pathname = headersList.get('x-invoke-path') || '';
+  const isOnboarding = pathname.includes('/chef/onboarding');
 
-    if (!isOnboarding && !stored) {
-      router.replace("/chef/profile");
-    }
-  }, [pathname, isOnboarding, router]);
+  if (!profile && !isOnboarding) {
+    redirect(`/${locale}/chef/onboarding`);
+  }
 
-  if (!ready) return null;
-
-  // Onboarding page: clean layout, no sidebar
   if (isOnboarding) {
     return (
       <div className="flex flex-col min-h-screen bg-black text-white">
@@ -46,8 +54,7 @@ export default function ChefLayout({ children }: { children: React.ReactNode }) 
     );
   }
 
-  // Submitted but not yet approved: block dashboard access
-  if (status === "submitted") {
+  if (profile?.status === "pending") {
     return (
       <div className="flex flex-col min-h-screen bg-black text-white">
         <Navbar />
@@ -72,7 +79,6 @@ export default function ChefLayout({ children }: { children: React.ReactNode }) 
     );
   }
 
-  // Full dashboard layout — only reached when admin has approved (status === "approved")
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
       <Navbar />

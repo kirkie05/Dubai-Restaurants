@@ -1,16 +1,15 @@
-"use client";
-
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Reveal } from "@/components/ui/Reveal";
 import Image from "next/image";
 import { Link } from '@/navigation';
+import { currentUser } from "@clerk/nextjs/server";
 
-export default function PartnerProfilePage() {
-  // Static Demo Identity
+export default async function PartnerProfilePage() {
+  const user = await currentUser();
   const activeUser = {
-    fullName: "Isabella Rossi",
-    imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop",
+    fullName: user ? `${user.firstName || ''} ${user.lastName || ''}`.trim() || 'Partner' : "Partner",
+    imageUrl: user?.imageUrl || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop",
   };
 
   return (

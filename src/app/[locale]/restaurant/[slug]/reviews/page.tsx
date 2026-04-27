@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Link } from '@/navigation';
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { WriteReviewForm } from "@/components/ui/WriteReviewForm";
+import { getRestaurantBySlug } from "@/lib/restaurants";
 
 const REVIEWS = [
   { id: 1, author: "Sarah Jenkins", rating: 5, date: "April 12, 2024", comment: "The atmosphere is unmatched. The Levantine Lamb was a revelation of textures and flavors. Truly an editorial masterpiece in dining.", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuCb4y0Juf2MsQER6FTpPRMb5-6YfdjMILsug_yQYyNrPe80_1qOZlxB-GCS_l3Hn5nHEGWNp-nt4zN_fyAc5mCWK7qwQ2djnw9cTMcdkuDH-J829lKr0Ff6KBLhJWlGpjGF9y9lRO6bwy4euRrxa-nOQxJl28KmX93xeUjiQibT8cQBRnbgOJGRJZeNEnnpy1HwQJUicd4iYgt2coXyOmS16uQ3IxNCKmgdgpgKWhGRfiOUxLCPgtS7Y1EScILmjP-yzJQCVhzjtF3h" },
@@ -11,6 +13,9 @@ const REVIEWS = [
 export default async function RestaurantReviews({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
+  const restaurant = await getRestaurantBySlug(slug);
+
+  if (!restaurant) return <div>Restaurant not found</div>;
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Navbar />
@@ -23,7 +28,7 @@ export default async function RestaurantReviews({ params }: { params: Promise<{ 
                  <h1 className="text-6xl md:text-8xl font-headline font-black italic tracking-tighter leading-none">The <span className="text-zinc-400">Review.</span></h1>
                  <p className="text-slate-400 font-body text-sm font-medium italic mt-6">4.9 Average based on 1,240 curated responses.</p>
               </div>
-              <button className="bg-zinc-900 text-white px-8 py-4 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] shadow-2xl hover:bg-primary transition-all">Write Response</button>
+              <WriteReviewForm restaurantId={restaurant.id} />
            </header>
 
            <div className="space-y-20">

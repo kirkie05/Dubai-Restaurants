@@ -3,17 +3,29 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { getTranslations } from 'next-intl/server';
 import { RestaurantDirectory } from '@/components/restaurants/RestaurantDirectory';
+import { createAdminClient } from '@/lib/supabase-server';
 
-import { getRestaurants } from '@/lib/db';
+export const revalidate = 3600; // 1 hour
+
 
 export default async function RestaurantListing({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'RestaurantListing' });
   
-  // Fetch from Supabase
-  const dbRestaurants = await getRestaurants();
+  const supabase = createAdminClient();
+  const { data: dbRestaurants, count } = await supabase
+    .from('restaurants')
+    .select(`
+      *,
+      cuisines (
+        name,
+        slug
+      )
+    `, { count: 'exact' })
+    .order('created_at', { ascending: false })
+    .range(0, 11);
 
-  const LISTING_ITEMS = dbRestaurants.map(res => ({
+  const initialItems = (dbRestaurants || []).map(res => ({
     slug: res.slug,
     name: res.name,
     image: res.image_url,
@@ -49,7 +61,7 @@ export default async function RestaurantListing({ params }: { params: Promise<{ 
         </header>
 
         <section className="max-w-[1920px] mx-auto px-8 lg:px-16">
-           <RestaurantDirectory items={LISTING_ITEMS} />
+           <RestaurantDirectory initialItems={initialItems} total={count || 0} />
         </section>
 
         <section className="mt-48 max-w-[1920px] mx-auto px-8 lg:px-16">

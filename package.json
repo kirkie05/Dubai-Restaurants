@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.2.5",
+    "@hookform/resolvers": "^5.2.2",
     "@react-google-maps/api": "^2.20.8",
+    "@sentry/nextjs": "^10.50.0",
     "@supabase/supabase-js": "^2.104.0",
     "@tanstack/react-query": "^5.99.2",
     "dotenv": "^17.4.2",
+    "isomorphic-dompurify": "^3.10.0",
     "lucide-react": "^1.8.0",
     "next": "16.2.4",
     "next-intl": "^4.9.1",
@@ -22,6 +25,8 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-hook-form": "^7.72.1",
+    "resend": "^6.12.2",
+    "stripe": "^22.1.0",
     "zod": "^4.3.6",
     "zustand": "^5.0.12"
   },

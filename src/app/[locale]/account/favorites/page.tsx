@@ -1,22 +1,19 @@
-import Image from "next/image";
+"use client";
+
 import AccountLayout from "@/components/layout/AccountLayout";
 import { RestaurantCard } from "@/components/ui/RestaurantCard";
-
-const FAVORITES = [
-  {
-    name: "Al Mahara",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBcoFe6omNLIs7L32v-ULd2AqewYUWTBeHElsiYHNRC2ZHbGGUNFbcOf4TfXKaC-IQSgBqUUF0Td5Z4JOLYd9MbQeyCKpPcIIMV1NdXyCjCdb4NyvVEJa14-n27O9uuSEBtKhSgQmiVhXMe1IwnyOapfm3AEAhtsFevHDY0Gm0nuYInxRYULu9gsVCz1Ms4q0VX97ij367363xeRiFk2pghjkNDhkbeFnBEu-oKOxkvIemvkjYoL-mJ7ZjMiZnUV_YeVYDOjAuhhYTI",
-    rating: "4.9",
-    cuisine: "Seafood",
-    price: "AED 800+",
-    location: "Burj Al Arab",
-    description: "An underwater dining experience within the Burj Al Arab, featuring world-class seafood curated by Michelin-star chefs.",
-    slug: "al-mahara",
-    badge: "Saved"
-  }
-];
+import { useQuery } from "@tanstack/react-query";
 
 export default function FavoritesPage() {
+  const { data: favorites = [], isLoading } = useQuery({
+    queryKey: ['favorites'],
+    queryFn: async () => {
+      const res = await fetch('/api/account/favorites');
+      if (!res.ok) throw new Error('Failed to fetch favorites');
+      return res.json();
+    }
+  });
+
   return (
     <AccountLayout>
        <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-1000">
@@ -25,11 +22,21 @@ export default function FavoritesPage() {
              <h1 className="text-5xl md:text-7xl font-headline font-black italic tracking-tighter text-on-surface">The <span className="text-primary">Treasures.</span></h1>
           </header>
 
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-12">
-             {FAVORITES.map((item) => (
-               <RestaurantCard key={item.slug} {...item} />
-             ))}
-          </section>
+          {isLoading ? (
+            <div className="flex justify-center py-20 italic text-slate-400">Loading your treasures...</div>
+          ) : (
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-12">
+               {favorites.length > 0 ? (
+                 favorites.map((item: any) => (
+                   <RestaurantCard key={item.slug} {...item} />
+                 ))
+               ) : (
+                 <div className="col-span-2 py-20 text-center text-slate-400 italic">
+                   You haven&apos;t saved any restaurants yet.
+                 </div>
+               )}
+            </section>
+          )}
        </div>
     </AccountLayout>
   );

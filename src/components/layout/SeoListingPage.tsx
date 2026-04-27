@@ -7,6 +7,7 @@ import type { ScreenDefinition } from "@/lib/screen-catalog";
 
 const MOCK_RESTAURANTS = [
   {
+    id: "al-mahara",
     name: "Al Mahara",
     image: "/al_mahara_restaurant_1776785631205.png",
     location: "Burj Al Arab",
@@ -19,6 +20,7 @@ const MOCK_RESTAURANTS = [
     slug: "al-mahara"
   },
   {
+    id: "atmosphere",
     name: "Atmosphere",
     image: "/cuisine_italian_high_fidelity_1776785759860.png",
     location: "Burj Khalifa",
@@ -31,6 +33,7 @@ const MOCK_RESTAURANTS = [
     slug: "atmosphere"
   },
   {
+    id: "zuma-dubai",
     name: "Zuma Dubai",
     image: "/cuisine_japanese_high_fidelity_1776785722454.png",
     location: "DIFC",

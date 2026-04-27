@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { useUser } from "@clerk/nextjs";
+import { useUser, SignInButton } from "@clerk/nextjs";
 import { Navbar } from "@/components/layout/Navbar";
 import { Reveal } from "@/components/ui/Reveal";
 import { supabase } from "@/lib/supabase";
@@ -82,9 +82,12 @@ export default function ClaimListingPage() {
   const handleClaim = async () => {
     if (!restaurant || !selectedPlan) return;
 
+    // Guard: user must be signed in before we write to the database
+    if (!user?.id) return;
+
     setSubmitting(true);
 
-    const ownerId = user?.id || "guest-owner";
+    const ownerId = user.id;
 
     try {
       const { error } = await supabase
@@ -107,6 +110,33 @@ export default function ClaimListingPage() {
       setSubmitting(false);
     }
   };
+
+  if (!isLoaded) {
+    return <div className="h-screen flex items-center justify-center text-slate-500">Loading...</div>;
+  }
+
+  // Unauthenticated visitors cannot claim a listing
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex flex-col">
+        <Navbar />
+        <main className="flex-grow flex items-center justify-center px-6">
+          <div className="max-w-md w-full bg-white rounded-[2rem] border border-slate-100 shadow-xl p-10 space-y-6 text-center">
+            <span className="material-symbols-outlined text-5xl text-primary">verified</span>
+            <h2 className="text-3xl font-headline font-black italic tracking-tighter">Sign in to claim</h2>
+            <p className="text-slate-500 font-body italic text-sm leading-relaxed">
+              You must be signed in to claim ownership of a restaurant listing.
+            </p>
+            <SignInButton mode="modal">
+              <button className="w-full bg-zinc-900 text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary transition-all">
+                Sign In to Continue
+              </button>
+            </SignInButton>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   if (loading) {
     return <div className="h-screen flex items-center justify-center text-slate-500">Loading listing details...</div>;

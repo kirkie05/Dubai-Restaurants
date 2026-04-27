@@ -55,7 +55,7 @@ function NavItem({
       )}
 
       {items && isOpen ? (
-        <div className="absolute top-full left-0 w-64 bg-white/95 backdrop-blur-2xl border border-slate-100 shadow-2xl rounded-2xl p-6">
+        <div className="absolute top-full left-0 rtl:left-auto rtl:right-0 w-64 bg-white/95 backdrop-blur-2xl border border-slate-100 shadow-2xl rounded-2xl p-6">
           <div className="space-y-1">
             {items.map((item) => (
               <Link
@@ -128,7 +128,7 @@ export function Navbar() {
                 src="/logo.png"
                 alt="Dubai Restaurants"
                 fill
-                className="object-contain object-left"
+                className="object-contain object-left rtl:object-right"
                 priority
                 sizes="(max-width: 1024px) 160px, 256px"
               />
@@ -178,7 +178,7 @@ export function Navbar() {
               <span className="material-symbols-outlined text-[12px]">expand_more</span>
             </button>
             {isLangDropdownOpen ? (
-              <div className="absolute right-0 top-full mt-2 w-44 bg-white border border-slate-100 shadow-xl rounded-xl p-2 z-50">
+              <div className="absolute right-0 rtl:right-auto rtl:left-0 top-full mt-2 w-44 bg-white border border-slate-100 shadow-xl rounded-xl p-2 z-50">
                 {locales.map((lng) => (
                   <button
                     key={lng}

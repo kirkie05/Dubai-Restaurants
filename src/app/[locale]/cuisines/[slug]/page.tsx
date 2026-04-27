@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/Reveal";
 const getRestaurantsForCuisine = (slug: string) => {
   return [
     { 
-      id: 1, 
+      id: "1", 
       name: `${slug.charAt(0).toUpperCase() + slug.slice(1)} Atelier`, 
       location: "Downtown Dubai", 
       cuisine: slug.toUpperCase(), 
@@ -19,7 +19,7 @@ const getRestaurantsForCuisine = (slug: string) => {
       slug: slug + "-atelier"
     },
     { 
-      id: 2, 
+      id: "2", 
       name: `The ${slug.charAt(0).toUpperCase() + slug.slice(1)} House`, 
       location: "Dubai Marina", 
       cuisine: slug.toUpperCase(), 
@@ -30,7 +30,7 @@ const getRestaurantsForCuisine = (slug: string) => {
       slug: slug + "-house"
     },
     { 
-      id: 3, 
+      id: "3", 
       name: `Nexus ${slug.charAt(0).toUpperCase() + slug.slice(1)}`, 
       location: "DIFC", 
       cuisine: slug.toUpperCase(), 
@@ -41,7 +41,7 @@ const getRestaurantsForCuisine = (slug: string) => {
       slug: "nexus-" + slug
     },
     { 
-      id: 4, 
+      id: "4", 
       name: `Heritage ${slug.charAt(0).toUpperCase() + slug.slice(1)}`, 
       location: "JBR", 
       cuisine: slug.toUpperCase(), 
@@ -52,7 +52,7 @@ const getRestaurantsForCuisine = (slug: string) => {
       slug: "heritage-" + slug
     },
     { 
-      id: 5, 
+      id: "5", 
       name: `Royal ${slug.charAt(0).toUpperCase() + slug.slice(1)}`, 
       location: "Palm Jumeirah", 
       cuisine: slug.toUpperCase(), 
@@ -63,7 +63,7 @@ const getRestaurantsForCuisine = (slug: string) => {
       slug: "royal-" + slug
     },
     { 
-      id: 6, 
+      id: "6", 
       name: `Skyline ${slug.charAt(0).toUpperCase() + slug.slice(1)}`, 
       location: "Business Bay", 
       cuisine: slug.toUpperCase(), 

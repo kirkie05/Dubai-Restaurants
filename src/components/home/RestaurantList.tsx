@@ -42,7 +42,7 @@ export function RestaurantList({ items }: Props) {
             </header>
             <Link href="/restaurants" className="inline-flex items-center gap-6 text-[10px] font-black uppercase tracking-[0.4em] text-primary border-b-2 border-primary/20 pb-2 hover:border-primary transition-all group font-body">
                {t("browseAll")}
-               <span className="material-symbols-outlined text-base group-hover:translate-x-3 transition-transform">east</span>
+                  <span className="material-symbols-outlined text-lg relative z-10 group-hover:translate-x-3 rtl:group-hover:-translate-x-3 rtl:rotate-180 transition-transform">arrow_forward</span>
             </Link>
          </Reveal>
 
@@ -55,9 +55,9 @@ export function RestaurantList({ items }: Props) {
                 <Link href={`/restaurant/${item.slug}`} className="group flex flex-col md:flex-row items-center gap-12 p-10 bg-white/5 rounded-[4rem] border border-white/5 hover:border-primary/40 hover:bg-white/[0.07] transition-all duration-700 relative overflow-hidden">
                    <div className="relative w-full md:w-[320px] aspect-[4/3] rounded-[3rem] overflow-hidden shrink-0 shadow-2xl">
                       <Image src={item.image} alt={item.name} fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                      <div className="absolute top-6 left-6 bg-secondary text-white text-[8px] font-black px-4 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">{t("premiumBadge")}</div>
+                      <div className="absolute top-6 left-6 rtl:left-auto rtl:right-6 bg-secondary text-white text-[8px] font-black px-4 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">{t("premiumBadge")}</div>
                    </div>
-                   <div className="flex-grow space-y-6 text-center md:text-left">
+                    <div className="flex-grow space-y-6 text-center md:text-left rtl:md:text-right">
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                          <div>
                             <h3 className="text-4xl lg:text-5xl font-headline font-black italic tracking-tighter group-hover:text-primary transition-colors leading-none">{item.name}.</h3>
@@ -67,7 +67,7 @@ export function RestaurantList({ items }: Props) {
                                <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600">{item.location}</span>
                             </div>
                          </div>
-                         <div className="flex items-center justify-center md:justify-end gap-3 px-8 py-3 bg-zinc-900 rounded-2xl border border-white/10 shadow-2xl group-hover:border-secondary transition-colors">
+                         <div className="flex items-center justify-center md:justify-end gap-3 px-8 py-3 bg-zinc-900 rounded-2xl border border-white/10 shadow-2xl group-hover:border-secondary transition-colors rtl:md:justify-start">
                             <span className="material-symbols-outlined text-secondary text-base" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
                             <span className="text-2xl font-headline font-black italic">{item.rating}</span>
                          </div>

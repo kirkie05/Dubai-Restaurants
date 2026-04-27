@@ -1,8 +1,15 @@
-import { Link } from '@/navigation';
+"use client";
+
+import { useEffect, useState } from "react";
+import { Link, useRouter } from '@/navigation';
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 export default function PartnerLayout({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+  const [status, setStatus] = useState<string | null>(null);
+  const [ready, setReady] = useState(false);
+
   const MENU_ITEMS = [
     { name: "Control Center", path: "/partner/dashboard", icon: "grid_view" },
     { name: "Venue Manager", path: "/partner/venue", icon: "restaurant" },
@@ -12,6 +19,53 @@ export default function PartnerLayout({ children }: { children: React.ReactNode 
     { name: "Analytics", path: "/partner/analytics", icon: "analytics" },
     { name: "Billing", path: "/partner/billing", icon: "payments" },
   ];
+
+  useEffect(() => {
+    async function checkStatus() {
+      try {
+        const res = await fetch('/api/onboarding/partner');
+        if (res.ok) {
+          const data = await res.json();
+          setStatus(data.status);
+        } else {
+          router.replace("/partner/registration");
+        }
+      } catch (err) {
+        console.error("Failed to check partner status", err);
+      } finally {
+        setReady(true);
+      }
+    }
+    
+    checkStatus();
+  }, [router]);
+
+  if (!ready) return null;
+
+  if (status === "pending" || status === "submitted") {
+    return (
+      <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
+        <Navbar />
+        <main className="flex-grow pt-32 pb-24 flex items-center justify-center px-6">
+          <div className="text-center space-y-8 max-w-md animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <span className="material-symbols-outlined text-7xl text-primary block">pending_actions</span>
+            <div className="space-y-3">
+              <span className="text-secondary text-xs font-bold uppercase tracking-[0.3em]">Partner Onboarding</span>
+              <h1 className="text-5xl font-headline font-black italic text-white">Profile Under Review</h1>
+              <p className="text-zinc-400">
+                Your partnership application is awaiting admin verification. Dashboard access will be unlocked once approved.
+              </p>
+            </div>
+            <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-secondary">
+              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+              Pending Admin Approval
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-zinc-950 text-white">

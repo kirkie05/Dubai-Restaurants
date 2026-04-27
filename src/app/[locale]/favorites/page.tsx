@@ -4,6 +4,7 @@ import { RestaurantCard } from "@/components/ui/RestaurantCard";
 
 const FAVORITES = [
   {
+    id: "zuma-dubai",
     name: "Zuma Dubai",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBwQqPubJY4izw1XEZV-CwMh_AyiQ3RYV_ALs_BXd8nOgqec2OeTez0dV6nTGieYwVMdkaZtVYLZ210uqd8AepxHhBTlgu9UPgCgA12D0ibOR4P0UlmWRIzz_Qe6mbCGWtnNgUKx0sh4Yo320A6VB_YmANluVcZLuUlG4YSkWU9PMoFIqkm8lhF85Z6tMFFI-sZEcVSpdxkwpFoLkBqLVTcmFfRxtU7-_DHTRXZ4bUp1wWn82gTEGYPDDgTnE3RBSZzuQgQe-qGh6gX",
     location: "DIFC",
@@ -16,6 +17,7 @@ const FAVORITES = [
     slug: "zuma-dubai"
   },
   {
+    id: "gaia",
     name: "Gaia",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDI9YwhN4N1l9Wg4o8RJUwMAu_wi7z_2sbjiETdCq3hfV-ApJuYCvuGT8LrhmlrlYoxPg-Nwma5ezxR7KvvqYyp1JbQ90WNVPthHKqcprmXJIvjWy_mOoEYnb-IYOqoa9GI8BcSmok3EcPv91SVCx4Qo1-KqtqGrk-qsCb8iVkRWhonQM5z-7nvXfXB99e3fAQPam24D4WCJM5v2C8hSmrf-e6qWexzIm7UJaPOnLF3PQGT48j27Yld5jDInc_R9ZkW3IUPfKCaKqVm",
     location: "DIFC",

@@ -22,17 +22,17 @@ export function TrendingCarousel() {
   return (
     <section className="py-24 px-8 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-12">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-6 border-l-4 border-primary pl-8">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-6 border-l-4 rtl:border-l-0 rtl:border-r-4 border-primary ps-8">
           <div className="space-y-2">
             <h2 className="text-4xl font-headline font-black italic tracking-tight text-on-surface">{t("title")}</h2>
             <p className="text-slate-400 font-body text-sm font-medium">{t("subtitle")}</p>
           </div>
           <div className="flex gap-4">
              <button className="w-12 h-12 rounded-full border border-slate-100 flex items-center justify-center text-slate-300 hover:border-primary hover:text-primary transition-all">
-                <span className="material-symbols-outlined">west</span>
+                <span className="material-symbols-outlined rtl:rotate-180">west</span>
              </button>
              <button className="w-12 h-12 rounded-full border border-slate-100 flex items-center justify-center text-slate-300 hover:border-primary hover:text-primary transition-all">
-                <span className="material-symbols-outlined">east</span>
+                <span className="material-symbols-outlined rtl:rotate-180">east</span>
              </button>
           </div>
         </div>
@@ -48,7 +48,7 @@ export function TrendingCarousel() {
                     className="object-cover group-hover:scale-110 transition-transform duration-1000" 
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur px-3 py-1 rounded-sm text-[10px] font-black uppercase tracking-widest flex items-center gap-1 shadow-sm">
+                  <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-sm text-[10px] font-black uppercase tracking-widest flex items-center gap-1 shadow-sm">
                      <span className="material-symbols-outlined text-sm text-primary" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
                      {item.rating}
                   </div>
@@ -63,9 +63,9 @@ export function TrendingCarousel() {
                            {item.location}
                         </div>
                      </div>
-                     <Link href={`/restaurant/${item.id}`} className="bg-primary text-white p-3 rounded-lg hover:scale-110 transition-all shadow-lg">
+                      <Link href={`/restaurant/${item.id}`} className="bg-primary text-white p-3 rounded-lg hover:scale-110 transition-all shadow-lg rtl:rotate-[-90deg]">
                         <span className="material-symbols-outlined text-sm">arrow_outward</span>
-                     </Link>
+                      </Link>
                   </div>
                </div>
             </div>

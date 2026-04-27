@@ -1,39 +1,31 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import PartnerLayout from "@/components/layout/PartnerLayout";
 import { ImageUploader, type MediaAsset } from "@/components/upload/ImageUploader";
 import { MediaGrid } from "@/components/upload/MediaGrid";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export default function MediaAssets() {
-  const [assets, setAssets]   = useState<MediaAsset[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError]     = useState<string | null>(null);
+  const queryClient = useQueryClient();
 
-  const fetchAssets = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
+  const { data: assets = [], isLoading, error, refetch } = useQuery<MediaAsset[]>({
+    queryKey: ["media", "restaurant"],
+    queryFn: async () => {
       const res = await fetch("/api/upload?entityType=restaurant");
       if (!res.ok) throw new Error("Failed to load media");
       const { assets: data } = await res.json();
-      setAssets(data ?? []);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load media");
-    } finally {
-      setLoading(false);
+      return data ?? [];
     }
-  }, []);
-
-  useEffect(() => { fetchAssets(); }, [fetchAssets]);
+  });
 
   const handleUpload = useCallback((asset: MediaAsset) => {
-    setAssets((prev) => [asset, ...prev]);
-  }, []);
+    queryClient.setQueryData(["media", "restaurant"], (old: MediaAsset[] = []) => [asset, ...old]);
+  }, [queryClient]);
 
   const handleDelete = useCallback((id: string) => {
-    setAssets((prev) => prev.filter((a) => a.id !== id));
-  }, []);
+    queryClient.setQueryData(["media", "restaurant"], (old: MediaAsset[] = []) => old.filter((a) => a.id !== id));
+  }, [queryClient]);
 
   return (
     <PartnerLayout>
@@ -61,9 +53,9 @@ export default function MediaAssets() {
         {error && (
           <div className="flex items-center gap-3 p-4 rounded-2xl bg-red-900/20 border border-red-800/40 text-red-400 text-sm">
             <span className="material-symbols-outlined text-base">error</span>
-            {error}
+            {error instanceof Error ? error.message : "Failed to load media"}
             <button
-              onClick={fetchAssets}
+              onClick={() => refetch()}
               className="ml-auto text-[10px] font-black uppercase tracking-widest hover:text-red-300 transition-colors"
             >
               Retry
@@ -71,7 +63,7 @@ export default function MediaAssets() {
           </div>
         )}
 
-        {loading ? (
+        {isLoading ? (
           <div className="flex justify-center py-16">
             <span className="material-symbols-outlined text-3xl text-zinc-700 animate-spin">
               progress_activity

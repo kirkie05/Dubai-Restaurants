@@ -8,14 +8,17 @@ export default getRequestConfig(async ({requestLocale}) => {
 
   if (!locale || !locales.includes(locale)) notFound();
 
+  const enMessages = (await import('../../messages/en.json')).default;
+  const localeMessages = (await (
+    locale === 'ar' ? import('../../messages/ar.json') :
+    locale === 'fr' ? import('../../messages/fr.json') :
+    locale === 'de' ? import('../../messages/de.json') :
+    locale === 'es' ? import('../../messages/es.json') :
+    Promise.resolve({ default: {} })
+  )).default;
+
   return {
     locale,
-    messages: (await (
-      locale === 'ar' ? import('../../messages/ar.json') :
-      locale === 'fr' ? import('../../messages/fr.json') :
-      locale === 'de' ? import('../../messages/de.json') :
-      locale === 'es' ? import('../../messages/es.json') :
-      import('../../messages/en.json')
-    )).default
+    messages: { ...enMessages, ...localeMessages }
   };
 });

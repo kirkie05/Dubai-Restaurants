@@ -1,6 +1,7 @@
 {
+  "locale": "ar",
   "Hero": {
-    "title": "<red>مطاعم دبي</red> المختارة.",
+    "title": "The <red>Collection.</red>",
     "subtitle": "الدليل النهائي لوجهات نجمة ميشلان في دبي، والمطابخ العالمية، والجواهر الخفية. منسق بخبرة، ومتحقق منه تحريريًا.",
     "searchPlaceholder": "بحث عن موقع...",
     "locateMe": "حدد موقعي",
@@ -193,15 +194,15 @@
     "title": "قصص عملائنا"
   },
   "Footer": {
-    "copyright": "دبي ريستورانتس. المنسق الرقمي. جميع الحقوق محفوظة.",
+    "copyright": "دليل مطاعم دبي. جميع الحقوق محفوظة.",
     "neighborhoods": "الأحياء",
-    "cuisines": "المطابخ",
-    "company": "الشركة",
     "jumeirah": "جميرا",
     "downtownDubai": "داون تاون دبي",
     "difc": "مركز دبي المالي",
-    "fineDining": "مطبخ راقي",
-    "brunchGuides": "أدلة البرانش",
+    "cuisines": "المطابخ",
+    "fineDining": "عشاء فاخر",
+    "brunchGuides": "أدلة البرنش",
+    "company": "الشركة",
     "aboutUs": "من نحن",
     "contact": "اتصل بنا",
     "faq": "الأسئلة الشائعة"
@@ -354,24 +355,22 @@
       "vybeDesc": "مشهد صوتي منسق يمزج بين موسيقى الديب هاوس والآلات المشرقية التقليدية."
     },
     "dishes": {
-      "scallop": { "name": "اسكالوب زعفران كريستال", "desc": "اسكالوب غطس يدوي مع صبغة زعفران عالية النقاء." },
-      "lamb": { "name": "ريش غنم مشرقية", "desc": "طهي بطيء لمدة 12 ساعة مع دبس رمان." },
-      "baklava": { "name": "بقلاوة برقائق الذهب", "desc": "لمسة من رقائق الذهب عيار 24 مع كريمة الفستق." }
-    }
-  },
-  "Footer": {
-    "copyright": "دليل مطاعم دبي. جميع الحقوق محفوظة.",
-    "neighborhoods": "الأحياء",
-    "jumeirah": "جميرا",
-    "downtownDubai": "داون تاون دبي",
-    "difc": "مركز دبي المالي",
-    "cuisines": "المطابخ",
-    "fineDining": "عشاء فاخر",
-    "brunchGuides": "أدلة البرنش",
-    "company": "الشركة",
-    "aboutUs": "من نحن",
-    "contact": "اتصل بنا",
-    "faq": "الأسئلة الشائعة"
+      "scallop": {
+        "name": "اسكالوب زعفران كريستال",
+        "desc": "اسكالوب غطس يدوي مع صبغة زعفران عالية النقاء."
+      },
+      "lamb": {
+        "name": "ريش غنم مشرقية",
+        "desc": "طهي بطيء لمدة 12 ساعة مع دبس رمان."
+      },
+      "baklava": {
+        "name": "بقلاوة برقائق الذهب",
+        "desc": "لمسة من رقائق الذهب عيار 24 مع كريمة الفستق."
+      }
+    },
+    "discoveryLabel": "TODO_TRANSLATE",
+    "claimListing": "TODO_TRANSLATE",
+    "claimDesc": "TODO_TRANSLATE"
   },
   "RestaurantCard": {
     "pricing": "الأسعار",
@@ -406,7 +405,9 @@
       "japanese": "ياباني",
       "lebanese": "لبناني",
       "contemporary": "معاصر",
-      "indian-fusion": "فيوجن هندي"
+      "indian-fusion": "فيوجن هندي",
+      "french": "TODO_TRANSLATE",
+      "mexican": "TODO_TRANSLATE"
     },
     "occasions": {
       "romantic": "عشاء رومانسي",
@@ -450,6 +451,196 @@
       "role": "رائد معاصر",
       "restaurant": "أورفلي بروز",
       "quote": "رحلة من النكهات التي تجسر الثقافات."
+    }
+  },
+  "Dashboard": {
+    "culinaryCommand": "TODO_TRANSLATE",
+    "thePortfolio": "TODO_TRANSLATE",
+    "profileImpressions": "TODO_TRANSLATE",
+    "restaurantTraffic": "TODO_TRANSLATE",
+    "curationPulse": "TODO_TRANSLATE",
+    "mediaAssets": "TODO_TRANSLATE",
+    "recentMentions": "TODO_TRANSLATE",
+    "liveVenues": "TODO_TRANSLATE",
+    "verifiedGuest": "TODO_TRANSLATE",
+    "stable": "TODO_TRANSLATE"
+  },
+  "Partner": {
+    "dashboard": "TODO_TRANSLATE",
+    "billing": "TODO_TRANSLATE",
+    "menu": "TODO_TRANSLATE",
+    "businessProfile": "TODO_TRANSLATE",
+    "activeTenure": "TODO_TRANSLATE",
+    "upgrade": "TODO_TRANSLATE",
+    "loadingFinancial": "TODO_TRANSLATE",
+    "financialProtocol": "TODO_TRANSLATE",
+    "tenure": "TODO_TRANSLATE",
+    "activeSubscription": "TODO_TRANSLATE",
+    "launchingSoon": "TODO_TRANSLATE",
+    "launchingSoonBtn": "TODO_TRANSLATE",
+    "month": "TODO_TRANSLATE",
+    "currentChoice": "TODO_TRANSLATE",
+    "manageTenure": "TODO_TRANSLATE",
+    "activePlan": "TODO_TRANSLATE",
+    "upgradeSequence": "TODO_TRANSLATE",
+    "recentInvoices": "TODO_TRANSLATE",
+    "downloadAll": "TODO_TRANSLATE",
+    "noInvoices": "TODO_TRANSLATE",
+    "plans": {
+      "basic": {
+        "name": "TODO_TRANSLATE",
+        "tier": "TODO_TRANSLATE",
+        "features": {
+          "0": "TODO_TRANSLATE",
+          "1": "TODO_TRANSLATE",
+          "2": "TODO_TRANSLATE"
+        }
+      },
+      "premium": {
+        "name": "TODO_TRANSLATE",
+        "tier": "TODO_TRANSLATE",
+        "features": {
+          "0": "TODO_TRANSLATE",
+          "1": "TODO_TRANSLATE",
+          "2": "TODO_TRANSLATE",
+          "3": "TODO_TRANSLATE"
+        }
+      }
+    },
+    "onboarding": {
+      "title": "TODO_TRANSLATE",
+      "subtitle": "TODO_TRANSLATE",
+      "claimPrompt": "TODO_TRANSLATE",
+      "claimLink": "TODO_TRANSLATE",
+      "chefLink": "TODO_TRANSLATE",
+      "step1Title": "TODO_TRANSLATE",
+      "step2Title": "TODO_TRANSLATE",
+      "step3Title": "TODO_TRANSLATE",
+      "planDesc": "TODO_TRANSLATE",
+      "owner": "TODO_TRANSLATE",
+      "business": "TODO_TRANSLATE",
+      "plan": "TODO_TRANSLATE",
+      "finishing": "TODO_TRANSLATE",
+      "complete": "TODO_TRANSLATE",
+      "guideTitle": "TODO_TRANSLATE",
+      "guideSteps": {
+        "0": "TODO_TRANSLATE",
+        "1": "TODO_TRANSLATE",
+        "2": "TODO_TRANSLATE",
+        "3": "TODO_TRANSLATE"
+      },
+      "alreadyInDb": "TODO_TRANSLATE",
+      "alreadyInDbDesc": "TODO_TRANSLATE"
+    },
+    "stats": {
+      "revenue": "TODO_TRANSLATE",
+      "bookings": "TODO_TRANSLATE",
+      "conversions": "TODO_TRANSLATE"
+    }
+  },
+  "Chef": {
+    "dashboard": "TODO_TRANSLATE",
+    "profile": "TODO_TRANSLATE",
+    "venues": "TODO_TRANSLATE",
+    "media": "TODO_TRANSLATE",
+    "onboarding": {
+      "label": "TODO_TRANSLATE",
+      "submittedTitle": "TODO_TRANSLATE",
+      "underReview": "TODO_TRANSLATE",
+      "underReviewDesc": "TODO_TRANSLATE",
+      "pendingApproval": "TODO_TRANSLATE",
+      "onboardingLabel": "TODO_TRANSLATE",
+      "whoAreYou": "TODO_TRANSLATE",
+      "whoAreYouDesc": "TODO_TRANSLATE",
+      "chefRole": "TODO_TRANSLATE",
+      "imAChef": "TODO_TRANSLATE",
+      "chefRoleDesc": "TODO_TRANSLATE",
+      "restaurantRole": "TODO_TRANSLATE",
+      "imARestaurant": "TODO_TRANSLATE",
+      "restaurantRoleDesc": "TODO_TRANSLATE",
+      "buildProfile": "TODO_TRANSLATE",
+      "buildProfileDesc": "TODO_TRANSLATE",
+      "step1Title": "TODO_TRANSLATE",
+      "step2Title": "TODO_TRANSLATE",
+      "step3Title": "TODO_TRANSLATE",
+      "restaurantAffiliation": "TODO_TRANSLATE",
+      "freePlanLabel": "TODO_TRANSLATE",
+      "freePlanTitle": "TODO_TRANSLATE",
+      "freePlanDesc": "TODO_TRANSLATE",
+      "proPlanLabel": "TODO_TRANSLATE",
+      "proPlanTitle": "TODO_TRANSLATE",
+      "proPlanDesc": "TODO_TRANSLATE",
+      "chef": "TODO_TRANSLATE",
+      "plan": "TODO_TRANSLATE",
+      "notSelected": "TODO_TRANSLATE",
+      "back": "TODO_TRANSLATE",
+      "continue": "TODO_TRANSLATE",
+      "submitting": "TODO_TRANSLATE",
+      "submit": "TODO_TRANSLATE"
+    }
+  },
+  "Admin": {
+    "moderation": "TODO_TRANSLATE",
+    "pendingClaims": "TODO_TRANSLATE",
+    "approve": "TODO_TRANSLATE",
+    "reject": "TODO_TRANSLATE",
+    "stats": "TODO_TRANSLATE",
+    "vault": "TODO_TRANSLATE",
+    "sanctity": "TODO_TRANSLATE",
+    "reviews": "TODO_TRANSLATE",
+    "chefs": "TODO_TRANSLATE",
+    "partners": "TODO_TRANSLATE",
+    "masterControl": "TODO_TRANSLATE",
+    "qualityControl": "TODO_TRANSLATE",
+    "loading": "TODO_TRANSLATE",
+    "noPending": "TODO_TRANSLATE"
+  },
+  "Account": {
+    "profile": "TODO_TRANSLATE",
+    "memberSince": "TODO_TRANSLATE",
+    "totalBookings": "TODO_TRANSLATE",
+    "eliteStatus": "TODO_TRANSLATE",
+    "active": "TODO_TRANSLATE",
+    "quickActions": "TODO_TRANSLATE",
+    "editDetails": "TODO_TRANSLATE",
+    "manageReservations": "TODO_TRANSLATE",
+    "yourJournal": "TODO_TRANSLATE",
+    "journalDesc": "TODO_TRANSLATE",
+    "upcoming": "TODO_TRANSLATE",
+    "past": "TODO_TRANSLATE",
+    "manage": "TODO_TRANSLATE",
+    "rewardsLabel": "TODO_TRANSLATE",
+    "benefitsTitle": "TODO_TRANSLATE",
+    "benefitsDesc": "TODO_TRANSLATE",
+    "points": "TODO_TRANSLATE",
+    "priority": "TODO_TRANSLATE",
+    "visits": "TODO_TRANSLATE",
+    "badges": "TODO_TRANSLATE",
+    "eliteMember": "TODO_TRANSLATE",
+    "loading": "TODO_TRANSLATE"
+  },
+  "Form": {
+    "labels": {
+      "fullName": "TODO_TRANSLATE",
+      "email": "TODO_TRANSLATE",
+      "phone": "TODO_TRANSLATE",
+      "bio": "TODO_TRANSLATE",
+      "specialty": "TODO_TRANSLATE",
+      "experience": "TODO_TRANSLATE",
+      "businessName": "TODO_TRANSLATE",
+      "contactName": "TODO_TRANSLATE",
+      "plan": "TODO_TRANSLATE"
+    },
+    "placeholders": {
+      "bio": "TODO_TRANSLATE",
+      "fullName": "TODO_TRANSLATE",
+      "email": "TODO_TRANSLATE",
+      "specialty": "TODO_TRANSLATE"
+    },
+    "errors": {
+      "required": "TODO_TRANSLATE",
+      "invalidEmail": "TODO_TRANSLATE",
+      "minChars": "TODO_TRANSLATE"
     }
   }
 }

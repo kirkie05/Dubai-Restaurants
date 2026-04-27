@@ -4,12 +4,28 @@ import { createAdminClient } from '@/lib/supabase-server'
 const BUCKET = 'media'
 const ALLOWED_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp'])
 const MAX_BYTES = 10 * 1024 * 1024 // 10 MB
+const UPLOAD_LIMIT_PER_HOUR = 20
 
 // POST /api/upload — upload an image to Supabase Storage and save metadata
 export async function POST(request: Request) {
   const { userId } = await auth()
   if (!userId) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  // Supabase-backed rate limit: 20 uploads per user per hour.
+  // check_upload_rate_limit() atomically increments the counter and resets
+  // it on a new hour window, returning false when the limit is exceeded.
+  const supabaseForRateLimit = createAdminClient()
+  const { data: withinLimit, error: rateError } = await supabaseForRateLimit
+    .rpc('check_upload_rate_limit', { p_user_id: userId, p_limit: UPLOAD_LIMIT_PER_HOUR })
+
+  if (rateError) {
+    console.error('Rate limit check failed:', rateError.message)
+    return Response.json({ error: 'Internal server error' }, { status: 500 })
+  }
+  if (!withinLimit) {
+    return Response.json({ error: 'Upload limit reached. Try again next hour.' }, { status: 429 })
   }
 
   let formData: FormData
@@ -32,7 +48,7 @@ export async function POST(request: Request) {
     return Response.json({ error: 'File must be under 10 MB' }, { status: 422 })
   }
 
-  const supabase = createAdminClient()
+  const supabase = supabaseForRateLimit
 
   // Build a unique, safe storage path
   const ext = file.name.split('.').pop()?.toLowerCase() ?? 'jpg'
