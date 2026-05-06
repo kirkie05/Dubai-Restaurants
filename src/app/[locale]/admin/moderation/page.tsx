@@ -1,7 +1,10 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-
+import { useState } from 'react';
+import { useQueryClient, useQuery, useMutation } from '@tanstack/react-query';
+import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/Footer';
 export default function ModerationPage() {
   const t = useTranslations('Admin');
   const [activeTab, setActiveTab] = useState<'reviews' | 'chefs' | 'partners'>('reviews');
