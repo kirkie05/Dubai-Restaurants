@@ -11,17 +11,19 @@ import { getRestaurants } from "@/lib/db";
 export const revalidate = 1800; // 30 mins
 
 export async function generateStaticParams() {
-  const restaurants = await getRestaurants();
-  const paths: { slug: string, locale: string }[] = [];
-
-  // Generate paths for top 50 restaurants in all locales
-  restaurants.slice(0, 50).forEach(res => {
-    locales.forEach(locale => {
-      paths.push({ slug: res.slug, locale });
+  try {
+    const restaurants = await getRestaurants();
+    const paths: { slug: string; locale: string }[] = [];
+    restaurants.slice(0, 50).forEach((res) => {
+      locales.forEach((locale) => {
+        paths.push({ slug: res.slug, locale });
+      });
     });
-  });
-
-  return paths;
+    return paths;
+  } catch {
+    // Supabase unreachable at build time — fall back to on-demand ISR
+    return [];
+  }
 }
 
 
