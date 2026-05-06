@@ -85,7 +85,7 @@ export default withSentryConfig(withNextIntl(nextConfig), {
   
   sourcemaps: {
     // Hides source maps from visitors
-    deleteMapFilesAfterUpload: true,
+    deleteSourcemapsAfterUpload: true,
   },
 
 });
