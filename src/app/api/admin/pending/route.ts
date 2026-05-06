@@ -5,8 +5,10 @@ import { createAdminClient } from '@/lib/supabase-server';
 export async function GET(request: Request) {
   try {
     const { userId: adminUserId } = await auth();
+    if (!adminUserId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const client = await clerkClient();
-    const adminUser = await client.users.getUser(adminUserId!);
+    const adminUser = await client.users.getUser(adminUserId);
     if (adminUser.publicMetadata.role !== 'admin') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
     }

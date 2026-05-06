@@ -72,7 +72,6 @@ export function BookingForm({ restaurant, locale }: BookingFormProps) {
           bookingDatetime,
           guestCount: data.guestCount,
           specialRequests: data.specialRequests,
-          depositAmountAed: 50, // Standard booking fee as shown in summary
         }),
       });
 

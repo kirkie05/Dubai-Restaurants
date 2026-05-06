@@ -22,7 +22,6 @@ export const bookingSchema = z.object({
   bookingDatetime: z.string().min(1, "Please select a date and time"),
   guestCount: z.number().min(1).max(20),
   specialRequests: z.string().optional(),
-  depositAmountAed: z.number(),
   // Form fields
   date: z.string().optional(),
   time: z.string().optional(),
@@ -45,5 +44,7 @@ export const profileEditSchema = z.object({
 export type PartnerFormData = z.infer<typeof partnerSchema>;
 export type ChefFormData = z.infer<typeof chefSchema>;
 export type BookingFormData = z.infer<typeof bookingSchema>;
+
+export const BOOKING_DEPOSIT_AED = 50;
 export type ReviewFormData = z.infer<typeof reviewSchema>;
 export type ProfileEditFormData = z.infer<typeof profileEditSchema>;

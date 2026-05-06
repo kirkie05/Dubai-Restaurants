@@ -27,7 +27,6 @@ export const BookingWidget = ({ restaurantName, restaurantId }: BookingWidgetPro
       time: '20:30',
       restaurantId: restaurantId || '',
       bookingDatetime: '',
-      depositAmountAed: 50,
     },
     mode: 'onChange',
   });

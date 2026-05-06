@@ -46,7 +46,6 @@ export async function GET() {
 
     return NextResponse.json({
       totalBookings: totalBookings || 0,
-      profileViews: Math.floor(Math.random() * 1000) + 500, // Mock for now
       revenue: (totalBookings || 0) * 50, // AED 50 per booking fee
       rating: restaurant?.rating || 0,
       reviewsCount: restaurant?.reviews_count || 0,

@@ -1,6 +1,8 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resendKey = process.env.RESEND_API_KEY;
+export const isEmailConfigured = Boolean(resendKey && resendKey.startsWith('re_'));
+export const resend = isEmailConfigured ? new Resend(resendKey) : null;
 
 export async function sendBookingConfirmation({
   email,
@@ -17,6 +19,11 @@ export async function sendBookingConfirmation({
   time: string;
   guests: number;
 }) {
+  if (!isEmailConfigured || !resend) {
+    console.warn('Email not configured. Skipping booking confirmation email.');
+    return;
+  }
+
   try {
     await resend.emails.send({
       from: 'Dubai Restaurants <noreply@dubaidining.guide>',
@@ -52,6 +59,11 @@ export async function sendClaimNotification({
   restaurantName: string;
   ownerName: string;
 }) {
+  if (!isEmailConfigured || !resend) {
+    console.warn('Email not configured. Skipping claim notification email.');
+    return;
+  }
+
   try {
     await resend.emails.send({
       from: 'Dubai Restaurants <noreply@dubaidining.guide>',

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import { createAdminClient } from '@/lib/supabase-server';
-import { stripe, isStripeConfigured } from '@/lib/stripe';
+import { stripe, isStripeConfigured, getPartnerPriceId } from '@/lib/stripe';
 
 export async function POST(req: Request) {
   if (!isStripeConfigured) {
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
       mode: 'subscription',
       payment_method_types: ['card'],
       line_items: [{ 
-        price: process.env.STRIPE_PARTNER_PRICE_ID!, 
+        price: getPartnerPriceId(), 
         quantity: 1 
       }],
       metadata: { userId, partnerId: partner.id },

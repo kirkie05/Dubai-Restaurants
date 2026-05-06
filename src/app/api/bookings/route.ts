@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import { createAdminClient } from '@/lib/supabase-server';
-import { bookingSchema } from '@/lib/validations';
+import { bookingSchema, BOOKING_DEPOSIT_AED } from '@/lib/validations';
 import { stripe, isStripeConfigured } from '@/lib/stripe';
 
 export async function POST(request: Request) {
@@ -18,7 +18,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Validation failed', details: result.error.format() }, { status: 400 });
     }
 
-    const { restaurantId, bookingDatetime, guestCount, specialRequests, depositAmountAed } = result.data;
+    const { restaurantId, bookingDatetime, guestCount, specialRequests } = result.data;
+    const depositAmountAed = BOOKING_DEPOSIT_AED;
 
     const supabase = createAdminClient();
 

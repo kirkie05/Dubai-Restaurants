@@ -5,10 +5,10 @@ import { createAdminClient } from '@/lib/supabase-server';
 export async function POST(request: Request) {
   try {
     const { userId: adminUserId } = await auth();
-    // Check if user is admin (in production, check publicMetadata.role)
-    // For now, let's assume if they can hit this, they are authorized or we check role
+    if (!adminUserId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const client = await clerkClient();
-    const adminUser = await client.users.getUser(adminUserId!);
+    const adminUser = await client.users.getUser(adminUserId);
     if (adminUser.publicMetadata.role !== 'admin') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
     }

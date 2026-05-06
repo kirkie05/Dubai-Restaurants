@@ -5,13 +5,15 @@ import { createAdminClient } from '@/lib/supabase-server';
 export async function POST(request: Request) {
   try {
     const { userId: adminUserId } = await auth();
+    if (!adminUserId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const client = await clerkClient();
-    const adminUser = await client.users.getUser(adminUserId!);
+    const adminUser = await client.users.getUser(adminUserId);
     if (adminUser.publicMetadata.role !== 'admin') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
     }
 
-    const { type, id } = await request.json();
+    const { type, id, clerkUserId } = await request.json();
     const supabase = createAdminClient();
 
     if (type === 'chef') {
@@ -19,7 +21,7 @@ export async function POST(request: Request) {
         .from('chef_profiles')
         .update({ status: 'rejected' })
         .eq('id', id);
-      
+
       if (error) throw error;
     } else if (type === 'partner') {
       const { error } = await supabase
@@ -28,6 +30,13 @@ export async function POST(request: Request) {
         .eq('id', id);
 
       if (error) throw error;
+    }
+
+    // Revoke role in Clerk so the user loses dashboard access immediately.
+    if (clerkUserId) {
+      await client.users.updateUserMetadata(clerkUserId, {
+        publicMetadata: { role: 'user' },
+      });
     }
 
     return NextResponse.json({ success: true });
