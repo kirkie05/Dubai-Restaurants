@@ -212,7 +212,7 @@ export function Navbar() {
                   <SignInButton mode="modal">
                     <button
                       type="button"
-                      className="hidden md:block text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-primary transition-colors px-2 py-1"
+                      className="flex items-center px-5 py-2.5 rounded-full border border-zinc-200 text-zinc-900 text-[10px] font-black uppercase tracking-widest hover:bg-zinc-50 transition-colors"
                     >
                       {t("signIn")}
                     </button>
