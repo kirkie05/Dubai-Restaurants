@@ -6,48 +6,24 @@ import path from 'path';
 const withNextIntl = createNextIntlPlugin();
 
 const securityHeaders = [
-  {
-    key: 'X-DNS-Prefetch-Control',
-    value: 'on',
-  },
-  {
-    key: 'X-Frame-Options',
-    value: 'SAMEORIGIN',
-  },
-  {
-    key: 'X-Content-Type-Options',
-    value: 'nosniff',
-  },
-  {
-    key: 'Referrer-Policy',
-    value: 'strict-origin-when-cross-origin',
-  },
-  {
-    key: 'Permissions-Policy',
-    // Allow geolocation only from same origin (used by hero Locate Me button)
-    value: 'camera=(), microphone=(), geolocation=(self)',
-  },
+  { key: 'X-DNS-Prefetch-Control', value: 'on' },
+  { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(self)' },
   {
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      // Clerk JS, Google Maps scripts
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.clerk.dev https://*.clerk.accounts.dev https://maps.googleapis.com",
-      // Tailwind inline styles + Google Fonts
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.clerk.dev https://maps.googleapis.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      // Next/Image remote patterns + Supabase storage + maps tiles
-      "img-src 'self' data: blob: https://*.supabase.co https://images.unsplash.com https://lh3.googleusercontent.com https://api.dicebear.com https://maps.gstatic.com https://maps.googleapis.com",
-      // Google Fonts files
-      "font-src 'self' data: https://fonts.gstatic.com",
-      // Supabase REST/Realtime + Clerk API + Google Maps
-      "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.clerk.dev https://*.clerk.accounts.dev https://maps.googleapis.com",
+      "img-src 'self' data: blob: https://*.supabase.co https://maps.gstatic.com https://maps.googleapis.com",
+      "font-src 'self' https://fonts.gstatic.com",
+      "connect-src 'self' https://*.supabase.co https://api.clerk.dev wss://*.supabase.co",
       "frame-src 'none'",
-      "object-src 'none'",
-      "base-uri 'self'",
-      "form-action 'self'",
-    ].join('; '),
-  },
-];
+    ].join('; ')
+  }
+]
 
 const nextConfig: NextConfig = {
   turbopack: {

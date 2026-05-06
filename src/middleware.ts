@@ -9,18 +9,16 @@ const intlMiddleware = createIntlMiddleware({
 });
 
 // Route matchers — locale-prefix aware (e.g. /en/admin/..., /ar/partner/...)
-const isAdminRoute = createRouteMatcher(["/(.*)/admin(.*)"]);
-const isPartnerRoute = createRouteMatcher([
-  "/(.*)/partner/(dashboard|venue|bookings|menu|media|analytics|billing)(.*)",
-]);
-const isChefRoute = createRouteMatcher([
-  "/(.*)/chef/(dashboard|restaurants|media|menu)(.*)",
-]);
-const isAccountRoute = createRouteMatcher(["/(.*)/account(.*)"]);
+const isAdminRoute = createRouteMatcher(['/(.*)admin(.*)']);
+const isPartnerRoute = createRouteMatcher(['/(.*)partner(.*)']);
+const isChefRoute = createRouteMatcher(['/(.*)chef(.*)']);
+const isProtectedRoute = createRouteMatcher(['/(.*)account(.*)']);
 
 const MUTATION_METHODS = ["POST", "PUT", "PATCH", "DELETE"];
 
 export default clerkMiddleware(async (auth, req) => {
+  console.log('Middleware loaded for route:', req.nextUrl.pathname);
+
   // ── CSRF origin check for mutating API calls ──────────────────────────────
   if (MUTATION_METHODS.includes(req.method) && req.nextUrl.pathname.startsWith("/api")) {
     const origin = req.headers.get("origin") ?? req.headers.get("referer") ?? "";
@@ -67,7 +65,7 @@ export default clerkMiddleware(async (auth, req) => {
   }
 
   // ── Account routes: any authenticated user ────────────────────────────────
-  if (isAccountRoute(req) && !userId) {
+  if (isProtectedRoute(req) && !userId) {
     return NextResponse.redirect(new URL(`/${locale}`, req.url));
   }
 

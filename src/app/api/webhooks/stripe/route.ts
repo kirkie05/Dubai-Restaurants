@@ -55,7 +55,6 @@ export async function POST(req: Request) {
 
           console.log(`Booking ${bookingId} confirmed and email sent`);
         }
-      }
       break;
     }
     case 'customer.subscription.deleted': {
