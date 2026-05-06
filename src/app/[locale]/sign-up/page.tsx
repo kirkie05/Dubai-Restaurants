@@ -1,4 +1,4 @@
-import { Link } from '@/navigation';
+import { SignUp } from "@clerk/nextjs";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
@@ -14,34 +14,21 @@ export default function SignUpPage() {
         <div className="max-w-[1920px] w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center z-10">
            {/* Left: Auth Card */}
            <div className="flex justify-center lg:justify-start">
-              <div className="bg-white p-12 md:p-20 rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-slate-50 w-full max-w-[560px] space-y-12 animate-float">
-                 <div className="text-center space-y-4">
-                    <h2 className="text-4xl font-headline font-black italic text-zinc-900">Join the Elite.</h2>
-                    <p className="text-sm text-slate-400 font-body italic">Initialize your culinary portfolio and start curating your taste.</p>
-                 </div>
-
-                 <form className="space-y-10">
-                    <div className="space-y-4">
-                       <input type="text" placeholder="FULL NAME" className="w-full bg-slate-50 border-b-2 border-slate-100 py-6 px-8 rounded-2xl font-headline font-black italic text-xl placeholder:text-slate-200 focus:border-primary outline-none transition-all" />
-                       <input type="email" placeholder="EMAIL ADDRESS" className="w-full bg-slate-50 border-b-2 border-slate-100 py-6 px-8 rounded-2xl font-headline font-black italic text-xl placeholder:text-slate-200 focus:border-primary outline-none transition-all" />
-                       <input type="password" placeholder="CREATE PASSWORD" className="w-full bg-slate-50 border-b-2 border-slate-100 py-6 px-8 rounded-2xl font-headline font-black italic text-xl placeholder:text-slate-200 focus:border-primary outline-none transition-all" />
-                    </div>
-
-                    <p className="text-[9px] font-medium text-slate-400 leading-relaxed text-center">
-                       By joining, you agree to our Digital Curation Terms and the Privacy Manifestos of Dubai Restaurants.
-                    </p>
-
-                    <button className="w-full bg-zinc-900 text-white py-6 rounded-2xl font-headline font-black text-xl italic shadow-2xl hover:bg-primary transition-all group flex items-center justify-center gap-4">
-                       Create Portfolio
-                       <span className="material-symbols-outlined group-hover:translate-x-4 transition-transform">east</span>
-                    </button>
-                    
-                    <div className="text-center pt-8 border-t border-slate-50">
-                       <p className="text-sm text-slate-400 font-body italic mb-4">Already a member?</p>
-                       <Link href="/login" className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Resume Session</Link>
-                    </div>
-                 </form>
-              </div>
+              <SignUp 
+                signInUrl="/login" 
+                appearance={{
+                  elements: {
+                    rootBox: 'w-full max-w-[480px]',
+                    card: 'bg-white p-10 md:p-14 rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-slate-100 w-full',
+                    headerTitle: 'font-headline font-black italic text-3xl text-zinc-900 tracking-tight',
+                    headerSubtitle: 'font-body italic text-sm text-slate-400',
+                    socialButtonsBlockButton: 'rounded-2xl border-slate-200 hover:bg-slate-50 transition-all py-3',
+                    formButtonPrimary: 'bg-zinc-900 hover:bg-primary text-white font-headline italic font-black rounded-2xl py-4 transition-all text-sm',
+                    formFieldInput: 'bg-slate-50 border-b-2 border-slate-100 py-4 px-6 rounded-2xl focus:border-primary outline-none transition-all text-sm',
+                    footerActionLink: 'text-primary hover:text-zinc-900 font-bold',
+                  }
+                }}
+              />
            </div>
 
            {/* Right: Content */}

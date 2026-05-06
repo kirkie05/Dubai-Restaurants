@@ -40,19 +40,19 @@ export default async function RootLayout({
   const dir = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <ClerkProvider>
-      <html lang={locale} dir={dir} className={`${manrope.variable} ${playfair.variable} ${ibmPlexArabic.variable} h-full antialiased`} suppressHydrationWarning>
-        <head>
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" />
-        </head>
-        <body className={`min-h-full text-zinc-900 ${locale === 'ar' ? 'font-arabic' : 'font-manrope'}`} suppressHydrationWarning>
+    <html lang={locale} dir={dir} className={`${manrope.variable} ${playfair.variable} ${ibmPlexArabic.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" />
+      </head>
+      <body className={`min-h-full text-zinc-900 ${locale === 'ar' ? 'font-arabic' : 'font-manrope'}`} suppressHydrationWarning>
+        <ClerkProvider>
           <NextIntlClientProvider messages={messages}>
             <ReactQueryProvider>
               {children}
             </ReactQueryProvider>
           </NextIntlClientProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }

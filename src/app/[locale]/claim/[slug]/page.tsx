@@ -120,7 +120,7 @@ export default function ClaimListingPage() {
     if (typeof window !== "undefined") {
       const currentUrl = encodeURIComponent(window.location.href);
       const locale = window.location.pathname.split("/")[1] || "en";
-      router.push(`/${locale}/sign-in?redirect_url=${currentUrl}`);
+      router.push(`/${locale}/login?redirect_url=${currentUrl}`);
     }
     return null;
   }

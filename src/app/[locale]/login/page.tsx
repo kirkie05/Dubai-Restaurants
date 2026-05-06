@@ -1,4 +1,4 @@
-import { Link } from '@/navigation';
+import { SignIn } from "@clerk/nextjs";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
@@ -37,37 +37,21 @@ export default function LoginPage() {
 
            {/* Right: Auth Card */}
            <div className="flex justify-center lg:justify-end">
-              <div className="bg-white p-12 md:p-20 rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-slate-50 w-full max-w-[560px] space-y-12 animate-float">
-                 <div className="text-center space-y-4">
-                    <h2 className="text-4xl font-headline font-black italic text-zinc-900">Sign In.</h2>
-                    <p className="text-sm text-slate-400 font-body italic">Connect your credentials to access your treasury.</p>
-                 </div>
-
-                 <form className="space-y-10">
-                    <div className="space-y-4">
-                       <input type="email" placeholder="EMAIL ADDRESS" className="w-full bg-slate-50 border-b-2 border-slate-100 py-6 px-8 rounded-2xl font-headline font-black italic text-xl placeholder:text-slate-200 focus:border-primary outline-none transition-all" />
-                       <input type="password" placeholder="PASSWORD" className="w-full bg-slate-50 border-b-2 border-slate-100 py-6 px-8 rounded-2xl font-headline font-black italic text-xl placeholder:text-slate-200 focus:border-primary outline-none transition-all" />
-                    </div>
-
-                    <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-slate-400">
-                       <div className="flex items-center gap-2">
-                          <input type="checkbox" className="w-4 h-4 rounded border-slate-200 text-primary" />
-                          <span>Remember Me</span>
-                       </div>
-                       <Link href="/forgot-password" title="Forgot Password Page" className="hover:text-primary">Forgot Password?</Link>
-                    </div>
-
-                    <button className="w-full bg-zinc-900 text-white py-6 rounded-2xl font-headline font-black text-xl italic shadow-2xl hover:bg-primary transition-all group flex items-center justify-center gap-4">
-                       Authenticate
-                       <span className="material-symbols-outlined group-hover:translate-x-4 transition-transform">east</span>
-                    </button>
-                    
-                    <div className="text-center pt-8 border-t border-slate-50">
-                       <p className="text-sm text-slate-400 font-body italic mb-4">No portfolio yet?</p>
-                       <Link href="/sign-up" className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Join the Selection</Link>
-                    </div>
-                 </form>
-              </div>
+              <SignIn 
+                signUpUrl="/sign-up" 
+                appearance={{
+                  elements: {
+                    rootBox: 'w-full max-w-[480px]',
+                    card: 'bg-white p-10 md:p-14 rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-slate-100 w-full',
+                    headerTitle: 'font-headline font-black italic text-3xl text-zinc-900 tracking-tight',
+                    headerSubtitle: 'font-body italic text-sm text-slate-400',
+                    socialButtonsBlockButton: 'rounded-2xl border-slate-200 hover:bg-slate-50 transition-all py-3',
+                    formButtonPrimary: 'bg-zinc-900 hover:bg-primary text-white font-headline italic font-black rounded-2xl py-4 transition-all text-sm',
+                    formFieldInput: 'bg-slate-50 border-b-2 border-slate-100 py-4 px-6 rounded-2xl focus:border-primary outline-none transition-all text-sm',
+                    footerActionLink: 'text-primary hover:text-zinc-900 font-bold',
+                  }
+                }}
+              />
            </div>
         </div>
       </main>
