@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 import { Link, locales, usePathname, useRouter } from "@/navigation";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
@@ -208,14 +208,24 @@ export function Navbar() {
                   <UserButton />
                 </>
               ) : (
-                <SignInButton mode="modal">
-                  <button
-                    type="button"
-                    className="hidden md:flex items-center px-5 py-2.5 rounded-full bg-zinc-900 text-white text-[10px] font-black uppercase tracking-widest hover:bg-secondary transition-colors"
-                  >
-                    {t("signIn")}
-                  </button>
-                </SignInButton>
+                <div className="flex items-center gap-4">
+                  <SignInButton mode="modal">
+                    <button
+                      type="button"
+                      className="hidden md:block text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-primary transition-colors px-2 py-1"
+                    >
+                      {t("signIn")}
+                    </button>
+                  </SignInButton>
+                  <SignUpButton mode="modal">
+                    <button
+                      type="button"
+                      className="flex items-center px-5 py-2.5 rounded-full bg-zinc-900 text-white text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-colors"
+                    >
+                      {t("signUp") || "Sign Up."}
+                    </button>
+                  </SignUpButton>
+                </div>
               )
             ) : null}
           </div>
