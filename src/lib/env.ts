@@ -23,6 +23,13 @@ const envSchema = z.object({
 });
 
 const parseEnv = () => {
+  if (
+    process.env.SKIP_ENV_VALIDATION === "true" ||
+    process.env.NEXT_PHASE === "phase-production-build"
+  ) {
+    return process.env as any;
+  }
+
   const parsed = envSchema.safeParse(process.env);
 
   if (!parsed.success) {
