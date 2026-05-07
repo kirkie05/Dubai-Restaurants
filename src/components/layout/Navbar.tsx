@@ -168,6 +168,29 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4 lg:gap-8">
+          <div className="flex items-center gap-4">
+            {isLoaded && isSignedIn ? (
+              <>
+                <Link
+                  href="/account/profile"
+                  className="text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-primary hidden md:block"
+                >
+                  Account
+                </Link>
+                <UserButton />
+              </>
+            ) : (
+              <SignInButton mode="modal">
+                <button
+                  type="button"
+                  className="flex items-center px-5 py-2.5 rounded-full bg-zinc-900 text-white text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-colors"
+                >
+                  {t("signIn")}
+                </button>
+              </SignInButton>
+            )}
+          </div>
+
           <div className="relative">
             <button
               type="button"
@@ -192,41 +215,6 @@ export function Navbar() {
                   </button>
                 ))}
               </div>
-            ) : null}
-          </div>
-
-          <div className="flex items-center gap-4">
-            {isLoaded ? (
-              isSignedIn ? (
-                <>
-                  <Link
-                    href="/account/profile"
-                    className="text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-primary hidden md:block"
-                  >
-                    Account
-                  </Link>
-                  <UserButton />
-                </>
-              ) : (
-                <div className="flex items-center gap-4">
-                  <SignInButton mode="modal">
-                    <button
-                      type="button"
-                      className="flex items-center px-5 py-2.5 rounded-full border border-zinc-200 text-zinc-900 text-[10px] font-black uppercase tracking-widest hover:bg-zinc-50 transition-colors"
-                    >
-                      {t("signIn")}
-                    </button>
-                  </SignInButton>
-                  <SignUpButton mode="modal">
-                    <button
-                      type="button"
-                      className="flex items-center px-5 py-2.5 rounded-full bg-zinc-900 text-white text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-colors"
-                    >
-                      {t("signUp") || "Sign Up."}
-                    </button>
-                  </SignUpButton>
-                </div>
-              )
             ) : null}
           </div>
 
