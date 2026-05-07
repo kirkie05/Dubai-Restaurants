@@ -15,12 +15,12 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://js.clerk.dev https://clerk.dubai-restaurants.com https://maps.googleapis.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://js.clerk.dev https://clerk.dubai-restaurants.com https://*.clerk.accounts.dev https://maps.googleapis.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "img-src 'self' data: blob: https://*.supabase.co https://img.clerk.com https://maps.gstatic.com https://maps.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "connect-src 'self' https://*.supabase.co https://api.clerk.dev https://clerk.dubai-restaurants.com wss://*.supabase.co https://maps.googleapis.com https://*.googleapis.com",
-      "frame-src 'self' https://clerk.dubai-restaurants.com",
+      "connect-src 'self' https://*.supabase.co https://api.clerk.dev https://clerk.dubai-restaurants.com https://*.clerk.accounts.dev wss://*.supabase.co https://maps.googleapis.com https://*.googleapis.com",
+      "frame-src 'self' https://clerk.dubai-restaurants.com https://*.clerk.accounts.dev",
     ].join('; ')
   }
 ]
