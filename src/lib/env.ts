@@ -12,8 +12,13 @@ const envSchema = z.object({
 
   // Stripe
   STRIPE_SECRET_KEY: z.string().min(1),
-  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(1).optional(),
-  STRIPE_WEBHOOK_SECRET: z.string().min(1).optional(),
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(1),
+  STRIPE_WEBHOOK_SECRET: z.string().min(1),
+  STRIPE_PARTNER_PRICE_ID: z.string().min(1),
+  STRIPE_CHEF_PRICE_ID: z.string().min(1),
+
+  // Resend
+  RESEND_API_KEY: z.string().min(1),
 
   // Google Maps
   NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: z.string().min(1),

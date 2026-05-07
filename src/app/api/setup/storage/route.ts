@@ -1,10 +1,20 @@
+import { auth, clerkClient } from '@clerk/nextjs/server'
 import { createAdminClient } from '@/lib/supabase-server'
 
 const BUCKET = 'media'
 
 // POST /api/setup/storage — creates the public storage bucket.
-// Call once after running the SQL migration.
+// Admin-only. Call once after running the SQL migration.
 export async function POST() {
+  const { userId } = await auth()
+  if (!userId) return Response.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const client = await clerkClient()
+  const user = await client.users.getUser(userId)
+  if (user.publicMetadata.role !== 'admin') {
+    return Response.json({ error: 'Forbidden' }, { status: 403 })
+  }
+
   const supabase = createAdminClient()
 
   // Check if bucket already exists

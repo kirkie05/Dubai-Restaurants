@@ -37,11 +37,11 @@ export default function ModerationPage() {
   });
 
   const rejectMutation = useMutation({
-    mutationFn: async ({ type, id }: { type: string, id: string }) => {
+    mutationFn: async ({ type, id, clerkUserId }: { type: string, id: string, clerkUserId: string }) => {
       const res = await fetch('/api/admin/reject', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type, id }),
+        body: JSON.stringify({ type, id, clerkUserId }),
       });
       if (!res.ok) throw new Error('Rejection failed');
       return res.json();
@@ -111,8 +111,8 @@ export default function ModerationPage() {
                        >
                           <span className="material-symbols-outlined text-sm">check</span>
                        </button>
-                       <button 
-                         onClick={() => rejectMutation.mutate({ type: 'chef', id: chef.id })}
+                       <button
+                         onClick={() => rejectMutation.mutate({ type: 'chef', id: chef.id, clerkUserId: chef.clerk_user_id })}
                          className="p-4 bg-slate-100 text-slate-400 rounded-full hover:bg-primary hover:text-white transition-all shadow-sm"
                        >
                           <span className="material-symbols-outlined text-sm">close</span>
@@ -135,8 +135,8 @@ export default function ModerationPage() {
                        >
                           <span className="material-symbols-outlined text-sm">check</span>
                        </button>
-                       <button 
-                         onClick={() => rejectMutation.mutate({ type: 'partner', id: partner.id })}
+                       <button
+                         onClick={() => rejectMutation.mutate({ type: 'partner', id: partner.id, clerkUserId: partner.clerk_user_id })}
                          className="p-4 bg-slate-100 text-slate-400 rounded-full hover:bg-primary hover:text-white transition-all shadow-sm"
                        >
                           <span className="material-symbols-outlined text-sm">close</span>

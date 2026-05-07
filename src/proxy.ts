@@ -18,7 +18,9 @@ const MUTATION_METHODS = ["POST", "PUT", "PATCH", "DELETE"];
 
 export default clerkMiddleware(async (auth, req) => {
   // ── CSRF origin check for mutating API calls ──────────────────────────────
-  if (MUTATION_METHODS.includes(req.method) && req.nextUrl.pathname.startsWith("/api")) {
+  // Webhooks from Stripe/external services send no Origin header — exempt them.
+  const isWebhook = req.nextUrl.pathname.startsWith("/api/webhooks/");
+  if (!isWebhook && MUTATION_METHODS.includes(req.method) && req.nextUrl.pathname.startsWith("/api")) {
     const origin = req.headers.get("origin") ?? req.headers.get("referer") ?? "";
     const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
     const isLocalhost = origin.startsWith("http://localhost") || origin.startsWith("http://127.0.0.1");
